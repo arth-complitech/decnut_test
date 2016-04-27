@@ -4,7 +4,9 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
       }
-
+  resources :pathways
+  resources :steps
+  get "assign_user/:pathway_id", to: "assignments#assign_user", as: :assign_user
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
