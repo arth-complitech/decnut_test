@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  #before_create :set_user_type
   has_many :assignments
   has_many :pathways
   belongs_to :department
@@ -15,7 +16,12 @@ class User < ActiveRecord::Base
   	self.type=="LocalAdmin" 
   end
   def user?
-  	self.type=="User" 
+  	self.type=="LocalUser" 
   end
+
+  #Helper method to set user type default as user
+  # def set_user_type
+  #   self.type="LocalUser" 
+  # end
 
 end

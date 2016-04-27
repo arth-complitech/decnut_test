@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @department.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @department.status %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @department.memo %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @department.group.try(:name) %>
+</p>
+
+<%= link_to 'Edit', edit_department_path(@department) %> |
+<%= link_to 'Back', departments_path %>

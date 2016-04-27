@@ -39,6 +39,16 @@
     <%= f.label :memo %><br />
     <%= f.text_area :memo%>
   </div>
+  
+  <div class="field">
+    <%= f.label :department %><br>
+    <%= f.select :department_id ,options_from_collection_for_select(Department.all,'id','name',@user.department_id) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin"]) %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />

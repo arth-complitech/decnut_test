@@ -1,0 +1,2 @@
+class LocalUser < User 
+end
