@@ -1,0 +1,2 @@
+class LocalAdmin < User
+end
