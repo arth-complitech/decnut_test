@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pathway:</strong>
+  <%= @step.pathway.try(:title) %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @step.title %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @step.subtitle %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @step.body %>
+</p>
+
+<p>
+  <strong>Child step:</strong>
+  <%= @step.child_step %>
+</p>
+
+<p>
+  <strong>Parent step:</strong>
+  <%= @step.parent_step %>
+</p>
+
+<p>
+  <strong>Url link:</strong>
+  <%= @step.url_link %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @step.active %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @step.memo %>
+</p>
+
+<%= link_to 'Edit', edit_step_path(@step) %> |
+<%= link_to 'Back', steps_path %>

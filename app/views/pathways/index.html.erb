@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pathways</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Active</th>
+      <th>Memo</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pathways.each do |pathway| %>
+      <tr>
+        <td><%= pathway.title %></td>
+        <td><%= pathway.active %></td>
+        <td><%= pathway.memo %></td>
+        <td><%= pathway.user.try(:first_name) %></td>
+        <td><%= link_to 'Assign to User', "#" %></td>
+        <td><%= link_to 'Show', pathway %></td>
+        <td><%= link_to 'Edit', edit_pathway_path(pathway) %></td>
+        <td><%= link_to 'Destroy', pathway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pathway', new_pathway_path %>

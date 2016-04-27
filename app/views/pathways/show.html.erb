@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pathway.title %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @pathway.active %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @pathway.memo %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pathway.user.try(:first_name) %>
+</p>
+
+<%= link_to 'Edit', edit_pathway_path(@pathway) %> |
+<%= link_to 'Back', pathways_path %>
