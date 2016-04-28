@@ -20,7 +20,7 @@
         <td><%= pathway.active %></td>
         <td><%= pathway.memo %></td>
         <td><%= pathway.user.try(:first_name) %></td>
-        <td><%= link_to 'Assign to User', "#" %></td>
+        <td><%= link_to 'Assign to User', assign_user_path(pathway) %></td>
         <td><%= link_to 'Show', pathway %></td>
         <td><%= link_to 'Edit', edit_pathway_path(pathway) %></td>
         <td><%= link_to 'Destroy', pathway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
