@@ -6,10 +6,11 @@ Rails.application.routes.draw do
       }
   resources :groups
   resources :departments
-  root 'users#index'
+  root 'pathways#homepage'
   resources :pathways
   resources :steps
-  get "assign_user/:pathway_id", to: "assignments#assign_user", as: :assign_user
+  resources :users
+  get "step_index/:pathway_id", to: "steps#step_index", as: :step_index
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

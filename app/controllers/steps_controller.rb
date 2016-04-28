@@ -61,6 +61,11 @@ class StepsController < ApplicationController
     end
   end
 
+  def step_index
+    @pathway = Pathway.find(params[:pathway_id])
+    @steps = @pathway.steps
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_step

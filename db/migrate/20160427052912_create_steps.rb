@@ -2,13 +2,12 @@ class CreateSteps < ActiveRecord::Migration
   def change
     create_table :steps do |t|
       t.references :pathway, index: true, foreign_key: true
-      t.string :title
+      t.string :title, null: false
       t.string :subtitle
       t.text :body
-      t.integer :child_step
-      t.integer :parent_step
+      t.integer :parent_step_id
       t.string :url_link
-      t.boolean :active
+      t.boolean :active, :default => true
       t.text :memo
 
       t.timestamps null: false

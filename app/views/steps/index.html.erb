@@ -2,10 +2,11 @@
 
 <h1>Listing Steps</h1>
 
-<table>
+<table border="1">
   <thead>
     <tr>
       <th>Pathway</th>
+      <th>Pathway Title</th>
       <th>Title</th>
       <th>Subtitle</th>
       <th>Body</th>
@@ -22,6 +23,7 @@
     <% @steps.each do |step| %>
       <tr>
         <td><%= step.pathway.try(:title) %></td>
+        <td><%= step.pathway.try(:memo) %></td>
         <td><%= step.title %></td>
         <td><%= step.subtitle %></td>
         <td><%= step.body %></td>
