@@ -5,10 +5,11 @@ class AssignmentsController < ApplicationController
 		@assignment=@pathway.assignments.build
 	end
 	def create_assignment
-	 @assignment=@pathway.assignment.build(params[:user_id])
-	 respond_to do |format|
+	 @pathway=Pathway.find(params[:pathway_id])
+	 @assignment=@pathway.assignments.build(user_id: params[:assignment][:user_id])
+	  respond_to do |format|
       	if @assignment.save
-        	format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
+        	format.html { redirect_to pathways_url, notice: 'Assignment was successfully created.' }
      	end
      end
 	end
