@@ -1,0 +1,9 @@
+<h2>List of Assigned Pathways </h2>
+<b>
+    Pathway:
+    <%= @pathway.title %>
+</b><br><br>
+<b>
+    User:
+    <%= @pathway.user.try(:first_name) %>
+</b>

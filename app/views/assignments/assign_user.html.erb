@@ -1,0 +1,26 @@
+<%= form_for(@assignment,url: assign_user_path(@pathway),method: :post) do |f| %>
+  <% if @assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+      <ul>
+      <% @assignment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+<h2>Assign pathway </h2>
+  <b>
+    Pathway:
+    <%= @pathway.title %>
+  </b><br><br>
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.select :user_id ,options_from_collection_for_select(User.all,'id','first_name',@assignment.user_id) %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
