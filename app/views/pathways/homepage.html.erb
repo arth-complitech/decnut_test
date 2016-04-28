@@ -1,0 +1,85 @@
+<center>
+<p id="notice"><%= notice %></p>
+
+<h3 align="center">
+<% if user_signed_in? %>
+<%= current_user.first_name %>
+<%= current_user.last_name %>
+<% else %>
+<%= link_to "sign_in", new_user_session_path %>
+<% end %>
+</h3>
+
+<h2 align="center">
+Assigned Pathways
+</h1>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Memo</th>
+			<th>Steps</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pathways.each do |pathway| %>
+			<% if pathway.active == true %>
+			<tr>
+				<td><%= pathway.title %></td>
+				<td><%= pathway.memo %></td>
+				<td><%= link_to 'Show', step_index_path(pathway) %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
+<br>
+
+<h2 align="center">
+Completed Pathways
+</h1>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Memo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pathways.each do |pathway| %>
+			<% if pathway.active == false %>
+			<tr>
+				<td><%= pathway.title %></td>
+				<td><%= pathway.memo %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
+<br>
+
+<h2 align="center">
+Library
+</h1>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Memo</th>
+			<th>Steps</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pathways.each do |pathway| %>
+			<tr>
+				<td><%= pathway.title %></td>
+				<td><%= pathway.memo %></td>
+				<td><%= link_to 'Show', step_index_path(pathway) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<br>
+
+<%= link_to "sign out", destroy_user_session_path, method: :delete %>
+</center>
