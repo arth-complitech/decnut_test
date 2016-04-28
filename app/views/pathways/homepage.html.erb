@@ -2,17 +2,28 @@
 <p id="notice"><%= notice %></p>
 
 <h3 align="center">
+
 <% if user_signed_in? %>
+Hello,
 <%= current_user.first_name %>
 <%= current_user.last_name %>
 <% else %>
 <%= link_to "sign_in", new_user_session_path %>
 <% end %>
-</h3>
+<br><br>
+<% if current_user.content_admin? %>
+	<%= link_to "Groups", new_group_path %>&nbsp;
+	<%= link_to "Departments", new_department_path %>&nbsp;
+	<%= link_to "Pathways", new_pathway_path %>&nbsp;
+	<%= link_to "Steps", new_step_path %>&nbsp;
+<% elsif current_user.local_admin? %>
+	<%= link_to "Pathways", new_pathway_path %>&nbsp;
+	<%= link_to "Steps", new_step_path %>&nbsp;
+<% else %>
 
 <h2 align="center">
 Assigned Pathways
-</h1>
+</h2>
 <table border="1">
 	<thead>
 		<tr>
@@ -37,7 +48,7 @@ Assigned Pathways
 
 <h2 align="center">
 Completed Pathways
-</h1>
+</h2>
 <table border="1">
 	<thead>
 		<tr>
@@ -60,7 +71,7 @@ Completed Pathways
 
 <h2 align="center">
 Library
-</h1>
+</h2>
 <table border="1">
 	<thead>
 		<tr>
@@ -79,7 +90,9 @@ Library
 		<% end %>
 	</tbody>
 </table>
-<br>
+
+<% end %>
+</h3>
 
 <%= link_to "sign out", destroy_user_session_path, method: :delete %>
 </center>
