@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h3>
+	<% if user_signed_in? %>
+		<%= link_to "back", step_index_path(@step.pathway) %>&nbsp;
+		<%= current_user.first_name %>
+		<%= current_user.last_name %>
+	<% else %>
+		<%= link_to "sign_in", new_user_session_path %>
+	<% end %>
+</h3>
+
+<h2>
+	<%= @step.pathway.title %><br>
+	<%= @step.title %>
+</h2>
+
+<h4>
+	<%= @step.subtitle %>
+</h4>
+
+<%= @step.url_link %><br>
+<%= @step.body %><br>
+<%= @step.memo %><br>
+
+<%= link_to "complete", "#" %>
