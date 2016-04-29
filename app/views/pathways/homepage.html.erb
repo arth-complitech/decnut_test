@@ -1,10 +1,9 @@
-<center>
 <p id="notice"><%= notice %></p>
 
-<h3 align="center">
+<h3>
 
 <% if user_signed_in? %>
-Hello,
+Welcome,
 <%= current_user.first_name %>
 <%= current_user.last_name %>
 <% else %>
@@ -21,7 +20,7 @@ Hello,
 	<%#= link_to "Steps", steps_path %>&nbsp;
 <% else %>
 
-<h2 align="center">
+<h2>
 Assigned Pathways
 </h2>
 <table border="1">
@@ -29,7 +28,7 @@ Assigned Pathways
 		<tr>
 			<th>Title</th>
 			<th>Memo</th>
-			<th>Steps</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,7 +37,7 @@ Assigned Pathways
 			<tr>
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
-				<td><%= link_to 'Show', step_index_path(pathway) %></td>
+				<td><%= link_to 'steps', step_index_path(pathway) %></td>
 			</tr>
 			<% end %>
 		<% end %>
@@ -46,7 +45,7 @@ Assigned Pathways
 </table>
 <br>
 
-<h2 align="center">
+<h2>
 Completed Pathways
 </h2>
 <table border="1">
@@ -69,7 +68,7 @@ Completed Pathways
 </table>
 <br>
 
-<h2 align="center">
+<h2>
 Library
 </h2>
 <table border="1">
@@ -77,7 +76,7 @@ Library
 		<tr>
 			<th>Title</th>
 			<th>Memo</th>
-			<th>Steps</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -85,7 +84,7 @@ Library
 			<tr>
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
-				<td><%= link_to 'Show', step_index_path(pathway) %></td>
+				<td><%= link_to 'steps', step_index_path(pathway) %></td>
 			</tr>
 		<% end %>
 	</tbody>
@@ -95,4 +94,3 @@ Library
 </h3>
 
 <%= link_to "sign out", destroy_user_session_path, method: :delete %>
-</center>

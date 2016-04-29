@@ -66,6 +66,14 @@ class StepsController < ApplicationController
     @steps = @pathway.steps
   end
 
+  def step_show
+    @step = Step.find(params[:step_id])
+  end
+
+  def add_assignments_steps
+      @step.assignments_steps.build
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_step
@@ -74,6 +82,6 @@ class StepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
-      params.require(:step).permit(:pathway_id, :title, :subtitle, :body, :child_step, :parent_step, :url_link, :active, :memo)
+      params.require(:step).permit(:pathway_id, :title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo)
     end
 end

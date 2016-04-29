@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <strong>Pathway Title:</strong>
+  <strong>Memo:</strong>
   <%= @step.pathway.try(:memo) %>
 </p>
 
@@ -26,13 +26,8 @@
 </p>
 
 <p>
-  <strong>Child step:</strong>
-  <%= @step.child_step %>
-</p>
-
-<p>
   <strong>Parent step:</strong>
-  <%= @step.parent_step %>
+  <%= @step.parent_step_id %>
 </p>
 
 <p>

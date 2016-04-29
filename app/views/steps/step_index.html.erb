@@ -1,9 +1,8 @@
-<center>
 <p id="notice"><%= notice %></p>
 
-<h3 align="center">
+<h3>
 <% if user_signed_in? %>
-<%= link_to "back", root_path %>
+<%= link_to "back", root_path %>&nbsp;
 <%= current_user.first_name %>
 <%= current_user.last_name %>
 <% else %>
@@ -11,7 +10,7 @@
 <% end %>
 </h3>
 
-<h2 align="center">
+<h2>
 <%= @pathway.title %>
 </h2>
 
@@ -27,11 +26,9 @@
 			<% if step.active == true %>
 				<tr>
 					<td><%= step.title %></td>
-					<td>==></td>
+					<td><%= link_to 'details', step_show_path(step) %></td>
 				</tr>
 			<% end %>
 		<% end %>
 	</tbody>
 </table>
-
-</center>

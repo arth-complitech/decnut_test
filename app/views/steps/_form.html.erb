@@ -16,7 +16,7 @@
     <%= f.select :pathway_id ,options_from_collection_for_select(Pathway.all,'id','title',@step.pathway_id) %>
   </div>
   <div class="field">
-    <%= f.label :pathway_id %><br>
+    <%= f.label :memo %><br>
     <%= f.select :pathway_id ,options_from_collection_for_select(Pathway.all,'id','memo',@step.pathway_id) %>
   </div>
   <div class="field">
@@ -32,12 +32,8 @@
     <%= f.text_area :body %>
   </div>
   <div class="field">
-    <%= f.label :child_step %><br>
-    <%= f.number_field :child_step %>
-  </div>
-  <div class="field">
     <%= f.label :parent_step %><br>
-    <%= f.number_field :parent_step %>
+    <%= f.text_field :parent_step_id %>
   </div>
   <div class="field">
     <%= f.label :url_link %><br>

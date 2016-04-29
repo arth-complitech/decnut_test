@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "step_index/:pathway_id", to: "steps#step_index", as: :step_index
   get "assign_user/:pathway_id", to: "assignments#assign_user", as: :assign_user
   post "assign_user/:pathway_id", to: "assignments#create_assignment"
+  get "step_show/:step_id", to: "steps#step_show", as: :step_show
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
