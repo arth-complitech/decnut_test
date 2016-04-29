@@ -1,4 +1,4 @@
-<%= form_for(@pathway) do |f| %>
+<%= nested_form_for(@pathway) do |f| %>
   <% if @pathway.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pathway.errors.count, "error") %> prohibited this pathway from being saved:</h2>
@@ -27,6 +27,25 @@
     <%= f.label :user_id %><br>
     <%= f.select :user_id ,options_from_collection_for_select(User.all,'id','first_name',@pathway.user_id) %>
   </div>
+  <div class="field">
+    <%= f.fields_for :steps do |step| %>
+      <%= step.label :title %> <br>
+      <%= step.text_field :title %><br>
+      <%= step.label :subtitle %><br>
+      <%= step.text_field :subtitle %><br>
+      <%= step.label :body %> <br>
+      <%= step.text_area :body %><br>
+      <%= step.label :parent_step %> <br>
+      <%= step.text_field :parent_step_id %><br>
+      <%= step.label :url %> <br>
+      <%= step.file_field :url_link %><br>
+      <%= step.label :memo %> <br>
+      <%= step.text_field :memo %><br>
+      <%= step.link_to_remove "Remove this step" %>
+    <% end %>
+    <p><%= f.link_to_add "Add a step", :steps %></p>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

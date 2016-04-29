@@ -7,6 +7,8 @@ gem 'rails', '4.2.6'
 gem 'pg'
 #Use Devise for authenticating users
 gem 'devise'
+# Use nested_form to manage multiple nested models in a single form
+gem "nested_form"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

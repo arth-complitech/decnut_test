@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :departments
   root 'pathways#homepage'
   resources :pathways
-  resources :steps
+  #resources :steps
   resources :users
   get "step_index/:pathway_id", to: "steps#step_index", as: :step_index
   get "assign_user/:pathway_id", to: "assignments#assign_user", as: :assign_user

@@ -15,10 +15,10 @@ Hello,
 	<%= link_to "Groups", groups_path %>&nbsp;
 	<%= link_to "Departments", departments_path %>&nbsp;
 	<%= link_to "Pathways", pathways_path %>&nbsp;
-	<%= link_to "Steps", steps_path %>&nbsp;
+	<%#= link_to "Steps", steps_path %>&nbsp;
 <% elsif current_user.local_admin? %>
 	<%= link_to "Pathways", pathways_path %>&nbsp;
-	<%= link_to "Steps", steps_path %>&nbsp;
+	<%#= link_to "Steps", steps_path %>&nbsp;
 <% else %>
 
 <h2 align="center">

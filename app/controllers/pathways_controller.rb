@@ -15,6 +15,7 @@ class PathwaysController < ApplicationController
   # GET /pathways/new
   def new
     @pathway = Pathway.new
+    @pathway.steps.build
   end
 
   # GET /pathways/1/edit
@@ -73,6 +74,6 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo, :user_id)
+      params.require(:pathway).permit(:title, :active, :memo, :user_id,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo])
     end
 end
