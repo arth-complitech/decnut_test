@@ -9,6 +9,13 @@ gem 'pg'
 gem 'devise'
 # Use nested_form to manage multiple nested models in a single form
 gem "nested_form"
+# Use bootstrap-sass to use Bootstrap stylesheets
+gem 'bootstrap-sass'
+	
+# Use bootstrap form to add bootstrap-style forms 
+gem 'bootstrap_form'
+# Use paperclip to upload image 
+gem "paperclip"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

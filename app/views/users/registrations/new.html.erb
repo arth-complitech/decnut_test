@@ -1,66 +1,67 @@
 <h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true , :hide_label => true %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name%>
+  <div class="col-lg-6">
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name , :hide_label => true%>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title%>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="field">
+      <%= f.label :type %><br>
+      <%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin"]), :hide_label => true %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :mobile_number %><br />
-    <%= f.text_field :mobile_number%>
-  </div>
-
-  <div class="field">
-  
-    <%= f.radio_button :active,true%> Active 
-     <%= f.radio_button :active,false%> In-Active 
-  </div>
-
-  <div class="field">
-    <%= f.label :memo %><br />
-    <%= f.text_area :memo%>
+  <div class="col-lg-6">
+    <div class="field">
+      <%= f.label :mobile_number %><br />
+      <%= f.text_field :mobile_number , :hide_label => true%>
+    </div>
   </div>
   
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin"]) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+</div>
+<!-- <div class="field">
+  <%= f.label :title %><br />
+  <%= f.text_field :title , :hide_label => true%>
+</div> -->
+<div class="field">
+  <%= f.radio_button :active,true%>
+  <%= f.label :active %>
+  <%= f.radio_button :active,false, :hide_label => true%>
+  <%= f.label :inactive %>
+</div>
+<!-- <div class="field">
+  <%= f.label :memo %><br />
+  <%= f.text_area :memo, :hide_label => true%>
+</div> -->
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true , :hide_label => true%>
+</div>
+<div class="field">
+  <%= f.label :password %>
+  <% if @minimum_password_length %>
+  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <% end %><br />
+  <%= f.password_field :password, autocomplete: "off", :hide_label => true %>
+</div>
+<div class="field">
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation, autocomplete: "off", :hide_label => true %>
+</div>
+<div class="actions">
+  <%= f.submit "Sign up" %>
+</div>
 <% end %>
-
+<br>
 <%= render "users/shared/links" %>

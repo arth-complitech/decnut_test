@@ -1,4 +1,4 @@
-<%= nested_form_for(@pathway) do |f| %>
+<%= nested_form_for(@pathway, html: { multipart: true } ) do |f| %>
   <% if @pathway.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pathway.errors.count, "error") %> prohibited this pathway from being saved:</h2>

@@ -1,25 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<h3>
-
-<% if user_signed_in? %>
-Welcome,
-<%= current_user.first_name %>
-<%= current_user.last_name %>
-<% else %>
-<%= link_to "sign_in", new_user_session_path %>
-<% end %>
-<br><br>
-<% if current_user.content_admin? %>
-	<%= link_to "Groups", groups_path %>&nbsp;
-	<%= link_to "Departments", departments_path %>&nbsp;
-	<%= link_to "Pathways", pathways_path %>&nbsp;
-	<%#= link_to "Steps", steps_path %>&nbsp;
-<% elsif current_user.local_admin? %>
-	<%= link_to "Pathways", pathways_path %>&nbsp;
-	<%#= link_to "Steps", steps_path %>&nbsp;
-<% else %>
-
+<% if current_user.user? %>
 <h2>
 Assigned Pathways
 </h2>
@@ -33,20 +13,26 @@ Assigned Pathways
 	</thead>
 	<tbody>
 		<% @pathways.each do |pathway| %>
-			<% if pathway.active == true %>
-			<tr>
-				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
-				<td><%= pathway.title %></td>
-				<td><%= pathway.memo %></td>
-				<td><%= link_to 'steps', step_index_path(pathway) %></td>
-				<% end %>
-			</tr>
+		<% if pathway.active == true %>
+		<tr>
+			<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
+			<td><%= pathway.title %></td>
+			<td><%= pathway.memo %></td>
+			<td><%= link_to 'steps', step_index_path(pathway) %></td>
 			<% end %>
+		</tr>
+		<% end %>
+		<% if pathway.active == true %>
+		<tr>
+			<td><%= pathway.title %></td>
+			<td><%= pathway.memo %></td>
+			<td><%= link_to 'steps', step_index_path(pathway) %></td>
+		</tr>
+		<% end %>
 		<% end %>
 	</tbody>
 </table>
 <br>
-
 <h2>
 Completed Pathways
 </h2>
@@ -59,17 +45,23 @@ Completed Pathways
 	</thead>
 	<tbody>
 		<% @pathways.each do |pathway| %>
-			<tr>
-				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == "completed" %>
-					<td><%= pathway.title %></td>
-					<td><%= pathway.memo %></td>
-				<% end %>
-			</tr>
+		<<<<<<< Updated upstream
+		<tr>
+			<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == "completed" %>
+			<td><%= pathway.title %></td>
+			<td><%= pathway.memo %></td>
+			<% end %>
+		</tr>
+		<% if pathway.active == false %>
+		<tr>
+			<td><%= pathway.title %></td>
+			<td><%= pathway.memo %></td>
+		</tr>
+		<% end %>
 		<% end %>
 	</tbody>
 </table>
 <br>
-
 <h2>
 Library
 </h2>
@@ -83,18 +75,20 @@ Library
 	</thead>
 	<tbody>
 		<% @references.each do |pathway| %>
-			<tr>
+		<tr>
 			
-				<td><%= pathway.title %></td>
-				<td><%= pathway.memo %></td>
-				<td><%= link_to 'steps', step_index_path(pathway) %></td>
+			<td><%= pathway.title %></td>
+			<td><%= pathway.memo %></td>
+			<td><%= link_to 'steps', step_index_path(pathway) %></td>
 			
-			</tr>
+		</tr>
+		<% @pathways.each do |pathway| %>
+		<tr>
+			<td><%= pathway.title %></td>
+			<td><%= pathway.memo %></td>
+			<td><%= link_to 'steps', step_index_path(pathway) %></td>
+		</tr>
 		<% end %>
 	</tbody>
 </table>
-
 <% end %>
-</h3>
-
-<%= link_to "sign out", destroy_user_session_path, method: :delete %>
