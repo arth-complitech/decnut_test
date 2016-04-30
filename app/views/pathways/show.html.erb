@@ -1,24 +1,41 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @pathway.title %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @pathway.active %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @pathway.memo %>
-</p>
-
-<p>
-  <strong>Pathway Type:</strong>
-  <%= @pathway.pathway_type %>
-</p>
-
+<h3>Pathway Details</h3><hr><br>
+<strong>Title:</strong>
+<%= @pathway.title %><br>
+<strong>Active:</strong>
+<%= @pathway.active %><br>
+<strong>Memo:</strong>
+<%= @pathway.memo %><br>
+<strong>Pathway Type:</strong>
+<%= @pathway.pathway_type %><hr><br>
+<b><h4>List of Steps</h4></b><br>
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<td>Image</td>
+				<th>Title</th>
+				<th>Subtitle</th>
+				<th>Body</th>
+				<th>Active</th>
+				<th>memo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @pathway.steps.each do |step| %>
+			<tr>
+				<td><%= image_tag step.url_link.url(:thumb)%></td>
+				<td><%= step.title %></td>
+				<td><%= step.subtitle %></td>
+				<td><%= step.body %></td>
+				<td><%= step.active %></td>
+				<td><%= step.memo %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<br>
+</div>
+<br>
 <%= link_to 'Edit', edit_pathway_path(@pathway) %> |
 <%= link_to 'Back', pathways_path %>

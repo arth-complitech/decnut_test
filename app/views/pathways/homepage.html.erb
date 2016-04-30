@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 <% if current_user.user? %>
-	<h2>
-	Assigned Pathway
-	</h2>
-	<table>
+<h3>Assigned Pathway</h3><br>
+<div class="table-responsive">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Title</th>
 				<th>Memo</th>
-				<th>Action</th>
+				<th>List of Steps</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -18,18 +17,18 @@
 				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
-				<td><%= link_to 'steps', step_index_path(pathway) %></td>
+				<td><%= link_to 'Steps', step_index_path(pathway) %></td>
 				<% end %>
 			</tr>
 			<% end %>
 			<% end %>
 		</tbody>
 	</table>
-	<br>
-	<h2>
-	Completed Pathways
-	</h2>
-	<table>
+</div>
+<br>
+<h3>Completed Pathways</h3><br>
+<div class="table-responsive">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Title</th>
@@ -53,28 +52,29 @@
 			<% end %>
 		</tbody>
 	</table>
-	<br>
-	<h2>
-	Library
-	</h2>
-	<table>
+</div>
+<br>
+<h3>Library</h3><br>
+<div class="table-responsive">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Title</th>
 				<th>Memo</th>
-				<th>Action</th>
+				<th>List of Steps</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @references.each do |pathway| %>
-				<tr>
-					
-					<td><%= pathway.title %></td>
-					<td><%= pathway.memo %></td>
-					<td><%= link_to 'steps', step_index_path(pathway) %></td>
-					
-				</tr>
+			<tr>
+				
+				<td><%= pathway.title %></td>
+				<td><%= pathway.memo %></td>
+				<td><%= link_to 'Steps', step_index_path(pathway) %></td>
+				
+			</tr>
 			<% end %>
 		</tbody>
 	</table>
-<% end %>	
+</div>
+<% end %>

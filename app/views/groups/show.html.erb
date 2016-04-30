@@ -1,24 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @group.active %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @group.status %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @group.memo %>
-</p>
-
+	<h3>Details of Group</h3><hr><br>
+	<strong>Name:</strong>
+	<%= @group.name %><br>
+	<strong>Active:</strong>
+	<%= @group.active %><br>
+	<strong>Status:</strong>
+	<%= @group.status %><br>
+	<strong>Memo:</strong>
+	<%= @group.memo %><br>
+<br>
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

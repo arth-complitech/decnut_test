@@ -1,29 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-<h3>
-	<% if user_signed_in? %>
-		<%= link_to "back", step_index_path(@step.pathway) %>&nbsp;
-		<%= current_user.first_name %>
-		<%= current_user.last_name %>
-	<% else %>
-		<%= link_to "sign_in", new_user_session_path %>
-	<% end %>
-</h3>
-
+<h3>Details Of Step</h3><hr><br>
 <%= form_tag(complete_step_path(@step), method: :post) do %>
-<h2>
+	<strong>Pathway : </strong>
 	<%= @step.pathway.title %><br>
-	<%= @step.title %>
-</h2>
+	<strong>Title : </strong>
+	<%= @step.title %><br>
+
 <%= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
-<h4>
-	<%= @step.subtitle %>
+	<strong>Subtitle : </strong>
+	<%= @step.subtitle %><br>
 </h4>
 
-<%= @step.url_link %><br>
+<%= image_tag @step.url_link.url(:thumb)%><br>
+<strong>Body : </strong>
 <%= @step.body %><br>
-<%= @step.memo %><br>
+<strong>Memo : </strong>
+<%= @step.memo %><br><br>
 	<% if !@assignment.nil? %> 
-		<%= submit_tag "complete step"%>
+		<%= submit_tag "Complete step" , :class => "btn btn-default"%>
 	<% end %>
-<% end %>
+<% end %><br>
+<%=link_to "Back" , step_index_path(@step.pathway)%> 

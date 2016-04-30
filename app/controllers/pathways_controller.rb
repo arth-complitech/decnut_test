@@ -63,6 +63,11 @@ class PathwaysController < ApplicationController
   end
 
   def homepage
+    if current_user.content_admin?
+      redirect_to groups_path
+    elsif current_user.local_admin?
+      redirect_to pathways_path
+    end
     @pathway_ids = current_user.assignments.pluck(:pathway_id) 
     @pathways = Pathway.find(@pathway_ids)
     @references = Pathway.all.where(:pathway_type => "Reference")

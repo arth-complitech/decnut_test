@@ -1,27 +1,35 @@
-<p id="notice"><%= notice %></p>
-<%= form_for(@assignment,url: assign_user_path(@pathway),method: :post) do |f| %>
-  <% if @assignment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+<h3>Assign pathway </h3><hr><br>
+<p id="notice"><%= notice %></p><br>
 
-      <ul>
-      <% @assignment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= bootstrap_form_for(@assignment,url: assign_user_path(@pathway),method: :post) do |f| %>
+<% if @assignment.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+  <ul>
+    <% @assignment.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
-<h2>Assign pathway </h2>
-  <b>
-    Pathway:
+<div class="row">
+  <div class="col-lg-4">
+    <b>Pathway :</b>
     <%= @pathway.title %>
-  </b><br><br>
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.select :user_id ,options_from_collection_for_select(User.user_except_content_admin,'id','fullname',@assignment.user_id) %>
+    <br><br>
+    <div class="field">
+      <%= f.label :user_id %>
+      <%= f.select :user_id ,options_from_collection_for_select(User.user_except_content_admin,'id','fullname',@assignment.user_id), :hide_label => true %>
+    </div>
   </div>
-  <br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4"></div>
+</div>
+
+<br>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>
+
+<br><%= link_to 'Back', pathways_path %>
