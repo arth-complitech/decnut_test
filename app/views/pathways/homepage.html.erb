@@ -22,13 +22,6 @@
 				<% end %>
 			</tr>
 			<% end %>
-			<% if pathway.active == true %>
-			<tr>
-				<td><%= pathway.title %></td>
-				<td><%= pathway.memo %></td>
-				<td><%= link_to 'steps', step_index_path(pathway) %></td>
-			</tr>
-			<% end %>
 			<% end %>
 		</tbody>
 	</table>
@@ -80,13 +73,6 @@
 					<td><%= pathway.memo %></td>
 					<td><%= link_to 'steps', step_index_path(pathway) %></td>
 					
-				</tr>
-			<% end %>
-			<% @pathways.each do |pathway| %>
-				<tr>
-					<td><%= pathway.title %></td>
-					<td><%= pathway.memo %></td>
-					<td><%= link_to 'steps', step_index_path(pathway) %></td>
 				</tr>
 			<% end %>
 		</tbody>

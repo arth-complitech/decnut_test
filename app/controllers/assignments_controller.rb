@@ -28,7 +28,7 @@ class AssignmentsController < ApplicationController
 				# @assignment.destroy
 				redirect_to root_path
 			else
-				render step_index_path
+				redirect_to step_index_path
 			end
 		end
 	end
