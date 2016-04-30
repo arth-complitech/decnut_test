@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   # GET /groups
   # GET /groups.json
   def index
@@ -70,5 +70,11 @@ class GroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
       params.require(:group).permit(:name, :active, :status, :memo)
+    end
+
+    def check_user
+        unless current_user.content_admin?
+          redirect_to root_path, notice: "Unauthorised access"
+        end
     end
 end

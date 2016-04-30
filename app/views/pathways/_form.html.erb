@@ -24,7 +24,10 @@
     <%= f.text_area :memo %>
   </div>
 
-  
+  <div class="field">
+    <%= f.label :pathway_type %><br>
+    <%= f.select :pathway_type, ["Reference", "Assignable"] %>
+  </div>  
   <div class="field">
     <%= f.fields_for :steps do |step| %>
       <%= step.label :title %> <br>

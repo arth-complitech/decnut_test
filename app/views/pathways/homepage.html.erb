@@ -23,7 +23,7 @@ Welcome,
 <h2>
 Assigned Pathways
 </h2>
-<table border="1">
+<table>
 	<thead>
 		<tr>
 			<th>Title</th>
@@ -35,9 +35,11 @@ Assigned Pathways
 		<% @pathways.each do |pathway| %>
 			<% if pathway.active == true %>
 			<tr>
+				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
 				<td><%= link_to 'steps', step_index_path(pathway) %></td>
+				<% end %>
 			</tr>
 			<% end %>
 		<% end %>
@@ -48,7 +50,7 @@ Assigned Pathways
 <h2>
 Completed Pathways
 </h2>
-<table border="1">
+<table>
 	<thead>
 		<tr>
 			<th>Title</th>
@@ -57,12 +59,12 @@ Completed Pathways
 	</thead>
 	<tbody>
 		<% @pathways.each do |pathway| %>
-			<% if pathway.active == false %>
 			<tr>
-				<td><%= pathway.title %></td>
-				<td><%= pathway.memo %></td>
+				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == "completed" %>
+					<td><%= pathway.title %></td>
+					<td><%= pathway.memo %></td>
+				<% end %>
 			</tr>
-			<% end %>
 		<% end %>
 	</tbody>
 </table>
@@ -71,7 +73,7 @@ Completed Pathways
 <h2>
 Library
 </h2>
-<table border="1">
+<table>
 	<thead>
 		<tr>
 			<th>Title</th>
@@ -80,11 +82,13 @@ Library
 		</tr>
 	</thead>
 	<tbody>
-		<% @pathways.each do |pathway| %>
+		<% @references.each do |pathway| %>
 			<tr>
+			
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
 				<td><%= link_to 'steps', step_index_path(pathway) %></td>
+			
 			</tr>
 		<% end %>
 	</tbody>

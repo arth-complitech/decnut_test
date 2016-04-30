@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <%= form_for(@assignment,url: assign_user_path(@pathway),method: :post) do |f| %>
   <% if @assignment.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +18,7 @@
   </b><br><br>
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.select :user_id ,options_from_collection_for_select(User.all,'id','first_name',@assignment.user_id) %>
+    <%= f.select :user_id ,options_from_collection_for_select(User.all,'id','fullname',@assignment.user_id) %>
   </div>
   <br>
   <div class="actions">

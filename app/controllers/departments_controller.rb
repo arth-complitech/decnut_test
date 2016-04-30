@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   # GET /departments
   # GET /departments.json
   def index
@@ -70,5 +70,11 @@ class DepartmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
       params.require(:department).permit(:name, :status, :memo, :group_id)
+    end
+
+    def check_user
+        unless current_user.content_admin?
+          redirect_to root_path, notice: "Unauthorised access"
+        end
     end
 end

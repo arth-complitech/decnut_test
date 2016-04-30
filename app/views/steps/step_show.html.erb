@@ -10,11 +10,12 @@
 	<% end %>
 </h3>
 
+<%= form_tag(complete_step_path(@step), method: :post) do %>
 <h2>
 	<%= @step.pathway.title %><br>
 	<%= @step.title %>
 </h2>
-
+<%= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
 <h4>
 	<%= @step.subtitle %>
 </h4>
@@ -22,5 +23,7 @@
 <%= @step.url_link %><br>
 <%= @step.body %><br>
 <%= @step.memo %><br>
-
-<%= link_to "complete", "#" %>
+	<% if !@assignment.nil? %> 
+		<%= submit_tag "complete step"%>
+	<% end %>
+<% end %>

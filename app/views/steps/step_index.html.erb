@@ -23,12 +23,22 @@
 	</thead>
 	<tbody>
 		<% @steps.each do |step| %>
-			<% if step.active == true %>
 				<tr>
 					<td><%= step.title %></td>
-					<td><%= link_to 'details', step_show_path(step) %></td>
+
+					<% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+						<td>Completed</td>
+					<% else %>
+						<td><%= link_to 'details', step_show_path(step) %></td>
+					<% end %>
 				</tr>
-			<% end %>
 		<% end %>
 	</tbody>
 </table>
+<br>
+<% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
+	<%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
+		<%= hidden_field_tag 'assignment_id', value = @assignment.id %>
+		<%= submit_tag "close this pathway" %>
+	<% end %>
+<% end %>
