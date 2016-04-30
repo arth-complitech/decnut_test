@@ -1,6 +1,6 @@
 class PathwaysController < ApplicationController
   before_action :set_pathway, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_user , only: [:new, :create, :show, :index, :edit, :update, :destroy]
   # GET /pathways
   # GET /pathways.json
   def index
@@ -63,7 +63,10 @@ class PathwaysController < ApplicationController
   end
 
   def homepage
-    @pathways = Pathway.all
+    @pathway_ids = current_user.assignments.pluck(:pathway_id) 
+    @pathways = Pathway.find(@pathway_ids)
+    @references = Pathway.all.where(:pathway_type => "Reference")
+    #@completed_pathway_ids = AssignmentsStep.find_by(:assignment_id => @assignment).assignment.pathway_id
   end
 
   private
@@ -74,6 +77,13 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo, :user_id,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo])
+      params.require(:pathway).permit(:title, :active, :memo, :user_id , :pathway_type,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo])
+    end
+
+    def check_user
+      # raise current_user.content_admin?.inspect
+      # unless current_user.content_admin? and current_user.local_admin?
+      #   redirect_to root_path, notice: "Unauthorised access"
+      # end
     end
 end
