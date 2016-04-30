@@ -1,3 +1,3 @@
 class Group < ActiveRecord::Base
-	has_many :departments
+	has_many :departments, :dependent => :destroy
 end

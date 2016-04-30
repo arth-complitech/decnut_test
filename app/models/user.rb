@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ## Scope
+  scope :user_except_content_admin, -> { where('type != ?', "ContentAdmin") }
+
   #Helper method to check current_user is content_admin , local_admin or user
   def content_admin?
   	self.type=="ContentAdmin" 

@@ -18,7 +18,7 @@
   </b><br><br>
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.select :user_id ,options_from_collection_for_select(User.all,'id','fullname',@assignment.user_id) %>
+    <%= f.select :user_id ,options_from_collection_for_select(User.user_except_content_admin,'id','fullname',@assignment.user_id) %>
   </div>
   <br>
   <div class="actions">
