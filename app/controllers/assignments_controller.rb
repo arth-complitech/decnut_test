@@ -36,4 +36,13 @@ class AssignmentsController < ApplicationController
 	def index
 		@assignments = Assignment.all
 	end
+
+	def destroy
+		@assignment = Assignment.find(params[:id])
+    	@assignment.destroy
+    	respond_to do |format|
+      		format.html { redirect_to assignments_url, notice: 'Assignment was successfully destroyed.' }
+      		format.json { head :no_content }
+    	end
+  	end
 end
