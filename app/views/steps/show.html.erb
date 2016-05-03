@@ -1,49 +1,20 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Pathway:</strong>
-  <%= @step.pathway.try(:title) %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @step.pathway.try(:memo) %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @step.title %>
-</p>
-
-<p>
-  <strong>Subtitle:</strong>
-  <%= @step.subtitle %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @step.body %>
-</p>
-
-<p>
-  <strong>Parent step:</strong>
-  <%= @step.parent_step_id %>
-</p>
-
-<p>
-  <strong>Url link:</strong>
-  <%= @step.url_link %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @step.active %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @step.memo %>
-</p>
-
+<h3>Details of Step</h3><hr><br>
+<strong>Pathway:</strong>
+<%= @step.pathway.try(:title) %><br>
+<strong>Title:</strong>
+<%= @step.title %><br>
+<strong>Subtitle:</strong>
+<%= @step.subtitle %><br>
+<strong>Body:</strong>
+<%= @step.body %><br>
+<strong>Parent step:</strong>
+<%= @step.parent_step_id %><br>
+<strong>Url link:</strong>
+<%= @step.url_link %><br>
+<strong>Active:</strong>
+<%= @step.active %><br>
+<strong>Memo:</strong>
+<%= @step.memo %><br><br>
 <%= link_to 'Edit', edit_step_path(@step) %> |
 <%= link_to 'Back', steps_path %>

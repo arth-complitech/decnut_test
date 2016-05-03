@@ -32,4 +32,8 @@ class AssignmentsController < ApplicationController
 			end
 		end
 	end
+
+	def index
+		@assignments = Assignment.all
+	end
 end

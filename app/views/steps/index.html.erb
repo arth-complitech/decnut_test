@@ -1,28 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Steps</h1>
-
-<table border="1">
-  <thead>
-    <tr>
-      <th>Pathway</th>
-      <th>Memo</th>
-      <th>Title</th>
-      <th>Subtitle</th>
-      <th>Body</th>
-      <th>Parent step</th>
-      <th>Url link</th>
-      <th>Active</th>
-      <th>Memo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @steps.each do |step| %>
+<h3>Listing Steps</h3><br>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pathway</th>
+        <th>Title</th>
+        <th>Subtitle</th>
+        <th>Body</th>
+        <th>Parent step</th>
+        <th>Url link</th>
+        <th>Active</th>
+        <th>Memo</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @steps.each do |step| %>
       <tr>
         <td><%= step.pathway.try(:title) %></td>
-        <td><%= step.pathway.try(:memo) %></td>
         <td><%= step.title %></td>
         <td><%= step.subtitle %></td>
         <td><%= step.body %></td>
@@ -34,12 +30,9 @@
         <td><%= link_to 'Edit', edit_step_path(step) %></td>
         <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Step', new_step_path %>
-<br>
-<h3><%= link_to 'Go to Home Page', root_path %></h3>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Step', new_step_path %>
+</div>

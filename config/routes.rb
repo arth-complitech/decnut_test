@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :departments
   root 'pathways#homepage'
   resources :pathways
-  #resources :steps
+  resources :steps
   resources :users
   get "step_index/:pathway_id", to: "steps#step_index", as: :step_index
   get "assign_user/:pathway_id", to: "assignments#assign_user", as: :assign_user
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "step_show/:step_id", to: "steps#step_show", as: :step_show
   post "add_assignments_steps/:step_id", to: "steps#add_assignments_steps", as: :complete_step
   post "update_assignments/:pathway_id", to: "assignments#update_assignments", as: :complete_pathway
-
+  resources :assignments
 
   # resources :phone_numbers, only: [:new, :create]
   # post 'phone_numbers/verify' => "phone_numbers#verify"
