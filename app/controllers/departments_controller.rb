@@ -4,7 +4,7 @@ class DepartmentsController < ApplicationController
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all
+    @departments = Department.data_from_same_group(current_user.department.group.id)
   end
 
   # GET /departments/1
