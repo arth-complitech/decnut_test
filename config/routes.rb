@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   get "step_show/:step_id", to: "steps#step_show", as: :step_show
   post "add_assignments_steps/:step_id", to: "steps#add_assignments_steps", as: :complete_step
   post "update_assignments/:pathway_id", to: "assignments#update_assignments", as: :complete_pathway
+
+
+  # resources :phone_numbers, only: [:new, :create]
+  # post 'phone_numbers/verify' => "phone_numbers#verify"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

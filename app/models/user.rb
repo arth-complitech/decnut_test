@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   #before_create :set_user_type
   has_many :assignments
-  has_many :pathways
+  #has_many :pathways
   belongs_to :department
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

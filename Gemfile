@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+	source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -11,7 +11,8 @@ gem 'devise'
 gem "nested_form"
 # Use bootstrap-sass to use Bootstrap stylesheets
 gem 'bootstrap-sass'
-	
+# Use twilio-ruby gem to integrate sms feature
+gem 'twilio-ruby'
 # Use bootstrap form to add bootstrap-style forms 
 gem 'bootstrap_form'
 # Use paperclip to upload image 
