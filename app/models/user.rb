@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Scope
-  scope :user_except_content_admin, -> { where('type != ?', "ContentAdmin") }
+  scope :user_except_content_admin, -> (user) { where('type != ? and department_id in (?)', "ContentAdmin", user.department.group.departments.pluck(:id)) }
   scope :users_from_same_group, -> (user) { where('department_id in (?)', user.department.group.departments.pluck(:id))}
   #Helper method to check current_user is content_admin , local_admin or user
   def content_admin?

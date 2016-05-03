@@ -64,17 +64,16 @@ class StepsController < ApplicationController
     @pathway = Pathway.find(params[:pathway_id])
     @steps = @pathway.steps
     @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
-    if @pathway.pathway_type == "Assignable"
-      @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
-      @pathway_steps_count = @pathway.steps.count
-      @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
-    end  
+    #@completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
+    #@pathway_steps_count = @pathway.steps.count
+    #@completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
+      
   end
 
   def step_show
     @step = Step.find(params[:step_id])
-    @pathway = @step.pathway
-    @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
+    #@pathway = @step.pathway
+    #@assignment = current_user.assignments.where(pathway_id: @pathway.id).first
     
   end
 

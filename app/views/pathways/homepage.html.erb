@@ -11,17 +11,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%# @pathways.each do |pathway| %>
-			<%# if pathway.active == true %>
+			<% @pathways.each do |pathway| %>
+			<% if pathway.active == true %>
 			<tr>
-				<%# if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
-				<td><%#= pathway.title %></td>
-				<td><%#= pathway.memo %></td>
-				<td><%#= link_to 'Steps', step_index_path(pathway) %></td>
-				<%# end %>
+				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
+				<td><%= pathway.title %></td>
+				<td><%= pathway.memo %></td>
+				<td><%= link_to 'Steps', step_index_path(pathway) %></td>
+				<% end %>
 			</tr>
-			<%# end %>
-			<%# end %>
+			<% end %>
+			<% end %>
 		</tbody>
 	</table>
 </div>

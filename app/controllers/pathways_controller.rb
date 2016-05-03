@@ -71,7 +71,7 @@ class PathwaysController < ApplicationController
     end
     @pathway_ids = current_user.assignments.pluck(:pathway_id) 
     @pathways = Pathway.find(@pathway_ids)
-    @references = Pathway.all.where(:pathway_type => "Reference")
+    #@references = Pathway.all.where(:pathway_type => "Reference")
     #@completed_pathway_ids = AssignmentsStep.find_by(:assignment_id => @assignment).assignment.pathway_id
   end
 

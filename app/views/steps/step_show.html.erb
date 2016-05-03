@@ -2,7 +2,7 @@
 <h3>Details Of Step</h3><hr><br>
 <%= form_tag(complete_step_path(@step), method: :post) do %>
 	<strong>Pathway : </strong>
-	<%= @step.pathway.title %><br>
+	<%#= @step.pathway.title %><br>
 	<strong>Title : </strong>
 	<%= @step.title %><br>
 
@@ -20,4 +20,4 @@
 		<%= submit_tag "Complete step" , :class => "btn btn-default"%>
 	<% end %>
 <% end %><br>
-<%=link_to "Back" , step_index_path(@step.pathway)%> 
+<%#=link_to "Back" , step_index_path(@step.pathway)%> 
