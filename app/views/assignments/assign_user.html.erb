@@ -21,6 +21,7 @@
       <%= f.label :user_id %>
       <%= f.select :user_id ,options_from_collection_for_select(User.user_except_content_admin,'id','fullname',@assignment.user_id), :hide_label => true %>
     </div>
+    <%= hidden_field_tag 'creator_user_id', value = current_user.id %>
   </div>
   <div class="col-lg-4"></div>
   <div class="col-lg-4"></div>

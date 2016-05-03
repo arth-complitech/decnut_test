@@ -21,6 +21,10 @@
     </div>
   </div>
   <div class="col-lg-4">
+    <div class="field">
+      <%= f.label :group %><br>
+      <%= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@pathway.group_id) , :hide_label => true%>
+    </div>
     <!--
     <div class="field">
       <%#= f.label :pathway_type %><br>

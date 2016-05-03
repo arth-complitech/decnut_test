@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 <h3>Pathway Details</h3><hr><br>
+<strong>Group Name:</strong>
+<%= @pathway.group.try(:name) %><br>
 <strong>Title:</strong>
 <%= @pathway.title %><br>
 <strong>Active:</strong>
 <%= @pathway.active %><br>
 <strong>Memo:</strong>
 <%= @pathway.memo %><br>
-<strong>Pathway Type:</strong>
-<%= @pathway.pathway_type %><hr><br>
+<hr><br>
 <b><h4>List of Steps</h4></b><br>
 <div class="table-responsive">
 	<table class="table table-hover">

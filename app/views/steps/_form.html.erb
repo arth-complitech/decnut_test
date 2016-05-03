@@ -11,10 +11,12 @@
 <% end %>
 <div class="row">
   <div class="col-lg-4">
+    <!--
     <div class="field">
-      <%= f.label :pathway_id %><br>
-      <%= f.select :pathway_id ,options_from_collection_for_select(Pathway.all,'id','title',@step.pathway_id), :hide_label => true %>
+      <%#= f.label :pathway_id %><br>
+      <%#= f.select :pathway_id ,options_from_collection_for_select(Pathway.all,'id','title',@step.pathway_id), :hide_label => true %>
     </div>
+    -->
     <div class="field">
       <%= f.label :title %><br>
       <%= f.text_field :title , :hide_label => true %>

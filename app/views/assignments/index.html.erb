@@ -18,7 +18,7 @@
 				<td><%= assignment.pathway.try(:title) %></td>
 				<td><%= assignment.status %></td>
 				<td><%= assignment.memo %></td>
-				<td><%= assignment.user.try(:fullname) %></td>
+				<td><%= assignment.creator_user_id %></td>
 				<td><%= assignment.user.try(:fullname) %></td>
 				<td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>
