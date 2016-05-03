@@ -7,17 +7,25 @@ Rails.application.routes.draw do
   resources :groups
   resources :departments
   root 'pathways#homepage'
+
   resources :pathways do 
     collection do
         post :sort
     end 
   end
   resources :steps
+
+  resources :pathways do
+    resources :steps
+    get "step_show/:step_id", to: "steps#step_show", as: :step_show
+    get "step_index", to: "steps#step_index", as: :step_index
+  end
+
   resources :users
-  get "step_index/:pathway_id", to: "steps#step_index", as: :step_index
+  
   get "assign_user/:pathway_id", to: "assignments#assign_user", as: :assign_user
   post "assign_user/:pathway_id", to: "assignments#create_assignment"
-  get "step_show/:step_id", to: "steps#step_show", as: :step_show
+  
   post "add_assignments_steps/:step_id", to: "steps#add_assignments_steps", as: :complete_step
   post "update_assignments/:pathway_id", to: "assignments#update_assignments", as: :complete_pathway
   post "duplicate_pathway/:pathway_id", to: "pathways#duplicate_pathway", as: :duplicate_pathway
