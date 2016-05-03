@@ -17,6 +17,8 @@ gem 'twilio-ruby'
 gem 'bootstrap_form'
 # Use paperclip to upload image 
 gem "paperclip"
+# to duplicate records
+gem 'deep_cloneable'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

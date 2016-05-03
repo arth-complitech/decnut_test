@@ -7,6 +7,7 @@ class PathwaysController < ApplicationController
     @pathways = Pathway.all
   end
 
+
   # GET /pathways/1
   # GET /pathways/1.json
   def show
@@ -26,7 +27,7 @@ class PathwaysController < ApplicationController
   # POST /pathways.json
   def create
     @pathway = Pathway.new(pathway_params)
-
+    @pathway.group_id=current_user.department.group.id
     respond_to do |format|
       if @pathway.save
         format.html { redirect_to @pathway, notice: 'Pathway was successfully created.' }
@@ -74,6 +75,16 @@ class PathwaysController < ApplicationController
     #@completed_pathway_ids = AssignmentsStep.find_by(:assignment_id => @assignment).assignment.pathway_id
   end
 
+
+  def duplicate_pathway
+    @pathway=Pathway.find(params[:pathway_id])
+    duplicated_pathway = @pathway.deep_clone include: :steps
+    if duplicated_pathway.save
+      redirect_to edit_pathway_path(duplicated_pathway), notice: "Duplicate Pathway Created."
+    else
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pathway
@@ -82,7 +93,7 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo, :user_id , :pathway_type,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo])
+      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo])
     end
 
     def check_user

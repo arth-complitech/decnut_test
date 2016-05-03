@@ -14,7 +14,7 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<td>Image</td>
+				<td>Order#</td>
 				<th>Title</th>
 				<th>Subtitle</th>
 				<th>Body</th>
@@ -23,9 +23,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @pathway.steps.each do |step| %>
+			<% @pathway.steps.each_with_index do |step, index| %>
 			<tr>
-				<td><%= image_tag step.url_link.url(:thumb)%></td>
+				<td><%= index+1 %></td>
 				<td><%= step.title %></td>
 				<td><%= step.subtitle %></td>
 				<td><%= step.body %></td>
@@ -39,4 +39,5 @@
 </div>
 <br>
 <%= link_to 'Edit', edit_pathway_path(@pathway) %> |
-<%= link_to 'Back', pathways_path %>
+<%= link_to 'Back', pathways_path %> |
+<%= link_to 'Duplicate this pathway',duplicate_pathway_path(@pathway.id), method: :post%>

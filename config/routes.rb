@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "step_show/:step_id", to: "steps#step_show", as: :step_show
   post "add_assignments_steps/:step_id", to: "steps#add_assignments_steps", as: :complete_step
   post "update_assignments/:pathway_id", to: "assignments#update_assignments", as: :complete_pathway
+  post "duplicate_pathway/:pathway_id", to: "pathways#duplicate_pathway", as: :duplicate_pathway
   resources :assignments
 
   # resources :phone_numbers, only: [:new, :create]
