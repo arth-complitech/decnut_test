@@ -1,5 +1,5 @@
 class PathwaysController < ApplicationController
-  before_action :set_pathway, only: [:show, :edit, :update, :destroy]
+  before_action :set_pathway, only: [:show, :edit, :update, :destroy,:sort]
   before_action :check_user , only: [:new, :create, :show, :index, :edit, :update, :destroy]
   # GET /pathways
   # GET /pathways.json
@@ -17,6 +17,7 @@ class PathwaysController < ApplicationController
   def new
     @pathway = Pathway.new
     @pathway.steps.build
+    @pathway.pathways_steps.build
   end
 
   # GET /pathways/1/edit
@@ -44,6 +45,7 @@ class PathwaysController < ApplicationController
   def update
     respond_to do |format|
       if @pathway.update(pathway_params)
+        @pathway
         format.html { redirect_to @pathway, notice: 'Pathway was successfully updated.' }
         format.json { render :show, status: :ok, location: @pathway }
       else
@@ -85,6 +87,15 @@ class PathwaysController < ApplicationController
     end
   end
 
+
+  def sort
+    params[:arrange].each_with_index do |id, index|
+      @pathway.pathways_steps.where(id: id).update_all(display_order: index + 1)
+    end
+    #render nothing: true
+  end 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pathway
@@ -93,7 +104,7 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo])
+      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
     end
 
     def check_user

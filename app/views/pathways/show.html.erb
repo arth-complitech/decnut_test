@@ -11,33 +11,33 @@
 <hr><br>
 <b><h4>List of Steps</h4></b><br>
 <div class="table-responsive">
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<td>Order#</td>
-				<th>Title</th>
-				<th>Subtitle</th>
-				<th>Body</th>
-				<th>Active</th>
-				<th>memo</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @pathway.steps.each_with_index do |step, index| %>
-			<tr>
-				<td><%= index+1 %></td>
-				<td><%= step.title %></td>
-				<td><%= step.subtitle %></td>
-				<td><%= step.body %></td>
-				<td><%= step.active %></td>
-				<td><%= step.memo %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-	<br>
+	<ul id="arrange" style="list-style: none;">
+		<%= render 'step_list', :pathway=>@pathway %>
+ 	</ul>
+ <br>
 </div>
 <br>
 <%= link_to 'Edit', edit_pathway_path(@pathway) %> |
 <%= link_to 'Back', pathways_path %> |
 <%= link_to 'Duplicate this pathway',duplicate_pathway_path(@pathway.id), method: :post%>
+
+
+<script type="text/javascript">
+	$( document ).ready(function() {
+	  console.log( "ready!" );
+
+	  $('#arrange').sortable({
+	  update: function( event, ui ) {
+	    $.ajax({
+	        url: '/pathways/sort',
+	        type: 'post',
+	        data:  $('#arrange').sortable('serialize') + "&id=<%=@pathway.id %>",
+	        dataType: 'script',
+	        complete: function(request){
+	            //$('#arrange').effect('highlight');
+	        }
+	      });
+	    }
+	  });
+	});
+</script>

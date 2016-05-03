@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :groups
   resources :departments
   root 'pathways#homepage'
-  resources :pathways
+  resources :pathways do 
+    collection do
+        post :sort
+    end 
+  end
   resources :steps
   resources :users
   get "step_index/:pathway_id", to: "steps#step_index", as: :step_index
