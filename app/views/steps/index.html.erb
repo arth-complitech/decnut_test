@@ -1,38 +1,34 @@
 <p id="notice"><%= notice %></p>
-<h3>Listing Steps</h3><br>
+<h4><strong>Pathway :</strong>
+<%= @pathway.title %></h4><br>
+<h4>List of Steps</h4><br>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Pathway</th>
         <th>Title</th>
-        <th>Subtitle</th>
-        <th>Body</th>
-        <th>Parent step</th>
-        <th>Url link</th>
-        <th>Active</th>
-        <th>Memo</th>
-        <th colspan="3"></th>
+        <th>Details of Step</th>
       </tr>
     </thead>
     <tbody>
       <% @steps.each do |step| %>
       <tr>
-        <td><%= step.pathway.try(:title) %></td>
         <td><%= step.title %></td>
-        <td><%= step.subtitle %></td>
-        <td><%= step.body %></td>
-        <td><%= step.parent_step_id %></td>
-        <td><%= step.url_link %></td>
-        <td><%= step.active %></td>
-        <td><%= step.memo %></td>
-        <td><%= link_to 'Show', step %></td>
-        <td><%= link_to 'Edit', edit_step_path(step) %></td>
-        <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+        <td>Completed</td>
+        <% else %>
+        <td><%= link_to 'Details', pathway_step_path(params[:pathway_id],step) %></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <br>
-  <%= link_to 'New Step', new_step_path %>
 </div>
+<br>
+<% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
+  <%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
+    <%= hidden_field_tag 'assignment_id', value = @assignment.id %>
+    <%= submit_tag "Close this pathway" , :class=>"btn btn-default"%>
+  <% end %>
+<% end %><br>
+<%=link_to "Back" , root_path %>

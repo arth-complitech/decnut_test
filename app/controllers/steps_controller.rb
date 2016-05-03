@@ -3,12 +3,30 @@ class StepsController < ApplicationController
   # GET /steps
   # GET /steps.json
   def index
-    @steps = Step.all
+    @pathway = Pathway.find(params[:pathway_id])
+    @steps = @pathway.steps
+    @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
+    
+    @assignments = Assignment.all.pluck(:pathway_id).uniq
+    @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
+    @library_pathway_ids = @pathway_all - @assignments
+
+    if @library_pathway_ids.include? params[:pathway_id]    
+      @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
+      @pathway_steps_count = @pathway.steps.count
+      @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
+    end
+      
   end
 
   # GET /steps/1
   # GET /steps/1.json
   def show
+    @pathway = Pathway.find(params[:pathway_id])
+    @step = Step.find(params[:id])
+    #@pathway = @step.pathway
+    @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
+    
   end
 
   # GET /steps/new
@@ -79,12 +97,12 @@ class StepsController < ApplicationController
 
   def add_assignments_steps
     @step = Step.find(params[:step_id])
-    @assignment = @step.assignments_steps.build(assignment_id: params[:assignment_id], step_id: params[:step_id])
-    @pathway = @step.pathway
-    if @assignment.save
-      redirect_to step_index_path(@pathway)
+    @assignment_step = @step.assignments_steps.build(assignment_id: params[:assignment_id], step_id: params[:step_id])
+    @pathway = @assignment_step.assignment.pathway
+    if @assignment_step.save
+      redirect_to pathway_steps_path(@pathway)
     else
-      render step_show_path(@step)
+      render pathway_step_path(@pathway,@step)
     end
   end 
 

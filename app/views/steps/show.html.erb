@@ -1,20 +1,23 @@
 <p id="notice"><%= notice %></p>
-<h3>Details of Step</h3><hr><br>
-<strong>Pathway:</strong>
-<%= @step.pathway.try(:title) %><br>
-<strong>Title:</strong>
-<%= @step.title %><br>
-<strong>Subtitle:</strong>
-<%= @step.subtitle %><br>
-<strong>Body:</strong>
+<h3>Details Of Step</h3><hr><br>
+<%= form_tag(complete_step_path(@step), method: :post) do %>
+	<strong>Pathway : </strong>
+	<%#= @step.pathway.title %><br>
+	<strong>Title : </strong>
+	<%= @step.title %><br>
+
+<%= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
+	<strong>Subtitle : </strong>
+	<%= @step.subtitle %><br>
+</h4>
+
+<%= image_tag @step.url_link.url(:thumb)%><br>
+<strong>Body : </strong>
 <%= @step.body %><br>
-<strong>Parent step:</strong>
-<%= @step.parent_step_id %><br>
-<strong>Url link:</strong>
-<%= @step.url_link %><br>
-<strong>Active:</strong>
-<%= @step.active %><br>
-<strong>Memo:</strong>
+<strong>Memo : </strong>
 <%= @step.memo %><br><br>
-<%= link_to 'Edit', edit_step_path(@step) %> |
-<%= link_to 'Back', steps_path %>
+	<% if !@assignment.nil? %> 
+		<%= submit_tag "Complete step" , :class => "btn btn-default"%>
+	<% end %>
+<% end %><br>
+<%=link_to "Back" , pathway_steps_path(params[:pathway_id])%> 
