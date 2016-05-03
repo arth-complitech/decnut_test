@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
-	before_action :check_user, only: [:index]
+before_action :check_user, only: [:index]
 
  def index
-    @users = User.all
+    @users = User.users_from_same_group(current_user).includes(:department)
  end
+
 
  private
  def check_user

@@ -18,11 +18,12 @@
 				<% end %>
 				
 				<% if current_user.content_admin? %>
-					<li><a href="/assignments">Assignments</a></li>
+					<li><a href="/users">Users</a></li>
 					<li><a href="/groups">Groups</a></li>
 					<li><a href="/departments">Departments</a></li>
 					<li><a href="/pathways">Pathways</a></li>
 					<li><a href="/steps">Steps</a></li>
+					<li><a href="/assignments">Assignments</a></li>
 				<% elsif current_user.local_admin? %>
 					<li><a href="/assignments">Assignments</a></li>
 					<li><a href="/pathways">Pathways</a></li>

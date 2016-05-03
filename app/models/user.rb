@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   ## Scope
   scope :user_except_content_admin, -> { where('type != ?', "ContentAdmin") }
-
+  scope :users_from_same_group, -> (user) { where('department_id in (?)', user.department.group.departments.pluck(:id))}
   #Helper method to check current_user is content_admin , local_admin or user
   def content_admin?
   	self.type=="ContentAdmin" 
