@@ -12,17 +12,17 @@
       </tr>
     </thead>
     <tbody>
-      <% @groups.each do |group| %>
+      <%# @groups.each do |group| %>
       <tr>
-        <td><%= group.name %></td>
-        <td><%= group.active %></td>
-        <td><%= group.status %></td>
-        <td><%= group.memo %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= @groups.name %></td>
+        <td><%= @groups.active %></td>
+        <td><%= @groups.status %></td>
+        <td><%= @groups.memo %></td>
+        <td><%= link_to 'Show', @groups %></td>
+        <td><%= link_to 'Edit', edit_group_path(@groups) %></td>
+        <td><%= link_to 'Destroy', @groups, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% end %>
+      <%# end %>
     </tbody>
   </table>
   <br>
