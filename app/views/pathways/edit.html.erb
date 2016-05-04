@@ -1,6 +1,87 @@
 <h3>Editing Pathway</h3><hr><br>
-
-<%= render 'form' %>
+<%#= render 'form' %>
+<%= bootstrap_nested_form_for(@pathway, html: { multipart: true } ) do |f| %>
+<% if @pathway.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@pathway.errors.count, "error") %> prohibited this pathway from being saved:</h2>
+	<ul>
+		<% @pathway.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :title %><br>
+			<%= f.text_field :title , :hide_label => true%>
+		</div>
+		<div class="field">
+			<%= f.label :memo %><br>
+			<%= f.text_area :memo , :hide_label => true%>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		
+		<div class="field">
+			<%= f.label :active %><br>
+			<%= f.check_box :active, :hide_label => true %>
+		</div>
+	</div>
+	<div class="col-lg-4"></div>
+</div>
+<h4>Step Details</h4><br>
+<div class="field">
+	<%= f.label :steps %><br>
+	<%= select_tag :step_id, options_from_collection_for_select(@steps,'id','title'), class: "form-control" %>
+</div>
+<br>
+<div class="field" id="stepdetails">
+	<%= f.fields_for :steps do |step| %>
+	<div class="row">
+		<div class="col-lg-4">
+			<%= step.label :title %> <br>
+			<%= step.text_field :title , :hide_label => true%><br>
+			<%= step.label :body %> <br>
+			<%= step.text_area :body , :hide_label => true%><br>
+			<%= step.label :url %><br>
+			<%= step.file_field :url_link , :hide_label => true%><br>
+		</div>
+		
+		<div class="col-lg-4">
+			<%= step.label :subtitle %><br>
+			<%= step.text_field :subtitle , :hide_label => true%><br>
+			<%= step.label :memo %> <br>
+			<%= step.text_area :memo , :hide_label => true%><br>
+			<%= step.label :active %>
+			<%= step.check_box :active , :hide_label => true%><br>
+			<%#= f.fields_for :pathways_steps do |pathways_step| %>
+			<%#= pathways_step.text_field :display_order %>
+			<%# end %>
+		</div>
+		<div class="col-lg-4">
+			
+		</div>
+	</div>
+	<%= step.link_to_remove "Remove this step" %>
+	<% end %>
+</div>
+<%= f.link_to_add "Add a step", :steps %>
+<br>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>
 <br>
 <%= link_to 'Show', @pathway %> |
 <%= link_to 'Back', pathways_path %>
+
+
+
+
+<script type="text/javascript">
+$("#step_id").change(function(){
+
+});
+</script>

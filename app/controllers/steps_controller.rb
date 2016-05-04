@@ -11,7 +11,7 @@ class StepsController < ApplicationController
     @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
     @library_pathway_ids = @pathway_all - @assignments
 
-    if @library_pathway_ids.include? params[:pathway_id]    
+    if !@library_pathway_ids.include? params[:pathway_id]    
       @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
       @pathway_steps_count = @pathway.steps.count
       @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count

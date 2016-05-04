@@ -22,6 +22,7 @@ class PathwaysController < ApplicationController
 
   # GET /pathways/1/edit
   def edit
+    @steps = @pathway.steps
   end
 
   # POST /pathways
