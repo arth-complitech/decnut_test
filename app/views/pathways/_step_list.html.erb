@@ -2,11 +2,13 @@
 <li id="arrange_<%= pathway_step.id %>" class="pathways">
 	<%= pathway_step.display_order %>
 	<%= pathway_step.step.title %>
-	<ul>
-		<li> Subtitle : <%= pathway_step.step.subtitle %></li>
-		<li> Body : <%= pathway_step.step.body %></li>
-		<li> Active : <%= pathway_step.step.active %></li>
-		<li> Memo : <%= pathway_step.step.memo %></li>
-	</ul>
+	<div class="ul-width">
+		<ul>
+			<li> Subtitle : <%= pathway_step.step.subtitle %></li>
+			<li> Body : <%= pathway_step.step.body %></li>
+			<li> Active : <%= pathway_step.step.active %></li>
+			<li> Memo : <%= pathway_step.step.memo %></li>
+		</ul>
+	</div>
 </li>
 <% end %>
