@@ -34,38 +34,11 @@
 <h4>Step Details</h4><br>
 <div class="field">
 	<%= f.label :steps %><br>
-	<%= select_tag :step_id, options_from_collection_for_select(@steps,'id','title'), class: "form-control" %>
+	<%= select_tag :step_id, options_from_collection_for_select(@steps,'id','title'), class: "form-control" , :prompt => "--Select Step--" %>
 </div>
 <br>
-<div class="field" id="stepdetails">
-	<%= f.fields_for :steps do |step| %>
-	<div class="row">
-		<div class="col-lg-4">
-			<%= step.label :title %> <br>
-			<%= step.text_field :title , :hide_label => true%><br>
-			<%= step.label :body %> <br>
-			<%= step.text_area :body , :hide_label => true%><br>
-			<%= step.label :url %><br>
-			<%= step.file_field :url_link , :hide_label => true%><br>
-		</div>
-		
-		<div class="col-lg-4">
-			<%= step.label :subtitle %><br>
-			<%= step.text_field :subtitle , :hide_label => true%><br>
-			<%= step.label :memo %> <br>
-			<%= step.text_area :memo , :hide_label => true%><br>
-			<%= step.label :active %>
-			<%= step.check_box :active , :hide_label => true%><br>
-			<%#= f.fields_for :pathways_steps do |pathways_step| %>
-			<%#= pathways_step.text_field :display_order %>
-			<%# end %>
-		</div>
-		<div class="col-lg-4">
-			
-		</div>
-	</div>
-	<%= step.link_to_remove "Remove this step" %>
-	<% end %>
+<div class="field">
+	<%= f.fields_for :steps %>
 </div>
 <%= f.link_to_add "Add a step", :steps %>
 <br>
@@ -78,10 +51,27 @@
 <%= link_to 'Back', pathways_path %>
 
 
-
-
 <script type="text/javascript">
-$("#step_id").change(function(){
+	$("#step_id option").each(function()
+	{
+		var step_id= "#stepdetails_" + $(this).val()
+		$(step_id).hide();
+	});	
 
-});
+	$("#step_id").change(function(){
+		$("#step_id option").each(function()
+		{
+		 	var step_id= "#stepdetails_" + $(this).val()
+			if ($(this).val() == $("#step_id").val() )
+			{
+				$(step_id).show();
+			}
+			else
+			{
+				$(step_id).hide();
+			}	
+
+		});
+	});
+	
 </script>
