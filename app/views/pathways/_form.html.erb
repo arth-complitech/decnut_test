@@ -32,7 +32,7 @@
 <h4>Step Details</h4><br>
 <div class="field">
   <%= f.fields_for :steps do |step| %>
-  <div class="row panel panel-default">
+  <div class="row panel panel-default" style="margin-left: 2px">
     <div class="panel-body">
       <div class="col-lg-4">
         <%= step.label :title %> <br>
@@ -58,7 +58,7 @@
         
       </div>
     </div>
-    <%= step.link_to_remove "Remove this step" %>
+    <%= step.link_to_remove "Remove this step" ,:style=>"margin-left: 20px; margin-top:30px;" %>
     <% end %>
     <%= f.link_to_add "Add a step", :steps %>
   </div>
