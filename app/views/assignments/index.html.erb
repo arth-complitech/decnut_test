@@ -4,22 +4,26 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>Pathway Title</th>
-				<th>status</th>
-				<th>Memo</th>
-				<th>Created by</th>
 				<th>Assigned to</th>
+				<th>Pathway Title</th>
+				<th>Created by</th>
+				<th>Progress</th>
+				<th>Created on</th>
+				<!--<th>status</th>
+				<th>Memo</th>-->
 				<th colspan="3">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @assignments.each do |assignment| %>
 			<tr>
-				<td><%= assignment.pathway.try(:title) %></td>
-				<td><%= assignment.status %></td>
-				<td><%= assignment.memo %></td>
-				<td><%= User.find(assignment.creator_user_id).fullname %></td>
 				<td><%= assignment.user.try(:fullname) %></td>
+				<td><%= assignment.pathway.try(:title) %></td>
+				<td><%= User.find(assignment.creator_user_id).fullname %></td>
+				<td></td>
+				<td><%= assignment.created_at.strftime("%B %d, %Y") %></td>
+				<!--<td><%#= assignment.status %></td>
+				<td><%#= assignment.memo %></td>-->
 				<td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>
 			<% end %>
