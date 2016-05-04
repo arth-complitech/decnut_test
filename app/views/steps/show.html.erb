@@ -17,7 +17,7 @@
 <strong>Memo : </strong>
 <%= @step.memo %><br><br>
 	<% if !@assignment.nil? %> 
-		<%= submit_tag "Complete step" , :class => "btn btn-default"%>
+		<%= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
 	<% end %>
 <% end %><br>
 <%=link_to "Back" , pathway_steps_path(params[:pathway_id])%> 
