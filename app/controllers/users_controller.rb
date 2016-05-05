@@ -9,7 +9,7 @@ before_action :check_user, only: [:index]
 
  private
  def check_user
-        unless current_user.content_admin? and current_user.local_admin?
+        unless current_user.content_admin? or current_user.local_admin?
           redirect_to root_path, notice: "Unauthorised access"
         end
     end
