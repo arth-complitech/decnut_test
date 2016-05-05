@@ -51,10 +51,13 @@ before_action :check_user, only: [:index]
  end
 
  private
+
  # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
     end
+
+
 
  	def check_user
         unless current_user.content_admin? or current_user.local_admin?
