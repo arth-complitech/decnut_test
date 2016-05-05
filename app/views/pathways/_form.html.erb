@@ -31,7 +31,10 @@
 <h4>Step Details</h4><br>
 <div class="field">
   <%= f.fields_for :steps do |step| %>
-  <div class="row panel panel-default" style="margin-left: 2px">
+  <div class="row panel panel-default " style="margin-left: 2px; background-color:#eeeeee;">
+    <!-- <div class="panel-heading">
+      <h3 class="panel-title">New Step</h3>
+    </div> -->
     <div class="panel-body">
       <div class="col-lg-4">
         <%= step.label :title %> <br>
