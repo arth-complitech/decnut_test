@@ -7,14 +7,16 @@ class StepsController < ApplicationController
     @steps = @pathway.steps
     @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
     
-    @assignments = Assignment.all.pluck(:pathway_id).uniq
-    @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
-    @library_pathway_ids = @pathway_all - @assignments
+    if @assignment.present?
+      @assignments = Assignment.all.pluck(:pathway_id).uniq
+      @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
+      @library_pathway_ids = @pathway_all - @assignments
 
-    if !@library_pathway_ids.include? params[:pathway_id]    
-      @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
-      @pathway_steps_count = @pathway.steps.count
-      @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
+      if !@library_pathway_ids.include? params[:pathway_id]    
+        @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
+        @pathway_steps_count = @pathway.steps.count
+        @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
+      end
     end
       
   end
