@@ -19,7 +19,7 @@
 <br>
 <%= link_to 'Edit', edit_pathway_path(@pathway) %> |
 <%= link_to 'Back', pathways_path %> |
-<%= link_to 'Duplicate this pathway',duplicate_pathway_path(@pathway.id), method: :post%>
+<%= link_to 'Duplicate this pathway',duplicate_pathway_path(@pathway.id), method: :post, data: { confirm: 'Are you sure to duplicate this pathway?' } %>
 
 
 <script type="text/javascript">
