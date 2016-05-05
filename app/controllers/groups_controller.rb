@@ -73,7 +73,7 @@ class GroupsController < ApplicationController
     end
 
     def check_user
-        unless current_user.content_admin?
+        unless current_user.content_admin? and current_user.local_admin?
           redirect_to root_path, notice: "Unauthorised access"
         end
     end
