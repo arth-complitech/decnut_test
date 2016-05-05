@@ -7,7 +7,7 @@
 				<th>Assigned to</th>
 				<th>Pathway Title</th>
 				<th>Created by</th>
-				<th>Progress</th>
+				<th title="steps completed out of total steps">Progress</th>
 				<th>Created on</th>
 				<!--<th>status</th>
 				<th>Memo</th>-->
@@ -20,7 +20,7 @@
 				<td><%= assignment.user.try(:fullname) %></td>
 				<td><%= assignment.pathway.try(:title) %></td>
 				<td><%= User.find(assignment.creator_user_id).fullname %></td>
-				<td></td>
+				<td> <%= AssignmentsStep.all.where(:assignment_id => assignment.id).count %> of <%= assignment.pathway.steps.count %> </td>
 				<td><%= assignment.created_at.strftime("%B %d, %Y") %></td>
 				<!--<td><%#= assignment.status %></td>
 				<td><%#= assignment.memo %></td>-->

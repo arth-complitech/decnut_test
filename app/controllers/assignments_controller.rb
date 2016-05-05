@@ -35,6 +35,8 @@ class AssignmentsController < ApplicationController
 
 	def index
 		@assignments = Assignment.all
+		#@pathway_id = Assignment.all.where(:pathway_id => params[:pathway_id],:user_id => current_user.id)
+		#@pathway_ids = @assignments.pluck(:pathway_id)
 	end
 
 	def destroy
