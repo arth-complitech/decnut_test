@@ -37,21 +37,21 @@
     </div> -->
     <div class="panel-body">
       <div class="col-lg-4">
+        <%= step.label :active %>
+        <%= step.check_box :active , :hide_label => true%><br><br>
         <%= step.label :title %> <br>
         <%= step.text_field :title , :hide_label => true%><br>
-        <%= step.label :body %> <br>
-        <%= step.text_area :body , :hide_label => true%><br>
-        <%= step.label :url %><br>
-        <%= step.file_field :url_link , :hide_label => true%><br>
+        <%= step.label :subtitle %><br>
+        <%= step.text_field :subtitle , :hide_label => true%><br>
       </div>
       
       <div class="col-lg-4">
-        <%= step.label :subtitle %><br>
-        <%= step.text_field :subtitle , :hide_label => true%><br>
+        <%= step.label :body %> <br>
+        <%= step.text_area :body , :hide_label => true%><br>
+        <%= step.label :file %><br>
+        <%= step.file_field :url_link , :hide_label => true%><br>
         <%= step.label :memo %> <br>
-        <%= step.text_area :memo , :hide_label => true%><br>
-        <%= step.label :active %>
-        <%= step.check_box :active , :hide_label => true%><br>
+        <%= step.text_field :memo , :hide_label => true%><br>
         <%#= f.fields_for :pathways_steps do |pathways_step| %>
         <%#= pathways_step.text_field :display_order %>
         <%# end %>
