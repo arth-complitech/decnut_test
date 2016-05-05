@@ -1,5 +1,5 @@
 class Assignment < ActiveRecord::Base
-  acts_as_paranoid
+  #acts_as_paranoid
   belongs_to :pathway
   belongs_to :user
   has_many :assignments_steps, :dependent => :destroy
