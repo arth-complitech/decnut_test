@@ -47,4 +47,32 @@ class AssignmentsController < ApplicationController
       		format.json { head :no_content }
     	end
   	end
+
+  	def show
+  		@assignment = Assignment.find(params[:id])
+  	end
+
+  	def edit
+  		@assignment = Assignment.find(params[:id])
+  	end
+
+  	def update
+      @assignment = Assignment.find(params[:id])
+    	respond_to do |format|
+      	if @assignment.update(assignment_params)
+        	format.html { redirect_to @assignment, notice: 'Assignment was successfully updated.' }
+        	format.json { render :show, status: :ok, location: @assignment }
+      	else
+        	format.html { render :edit }
+        	format.json { render json: @assignment.errors, status: :unprocessable_entity }
+      	end
+    	end
+  	end
+
+  	private
+
+  	def assignment_params
+  		params.require(:assignment).permit(:pathway_id, :status, :memo, :user_id, :creator_user_id)
+  	end
+
 end

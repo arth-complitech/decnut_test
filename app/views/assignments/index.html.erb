@@ -24,6 +24,8 @@
 				<td><%= assignment.created_at.strftime("%B %d, %Y") %></td>
 				<!--<td><%#= assignment.status %></td>
 				<td><%#= assignment.memo %></td>-->
+				<td><%= link_to 'Show', assignment %></td>
+				<td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
 				<td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>
 			<% end %>

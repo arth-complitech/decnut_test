@@ -1,0 +1,36 @@
+<h3>Editing of Assigned pathway </h3><hr><br>
+<p id="notice"><%= notice %></p><br>
+
+<%= bootstrap_form_for(@assignment) do |f| %>
+<% if @assignment.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+  <ul>
+    <% @assignment.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="row">
+  <div class="col-lg-4">
+    <b>Pathway :</b>
+    <%= @assignment.pathway.title %>
+    <br><br>
+    <div class="field">
+      <%= f.label :user_id %>
+      <%= f.select :user_id ,options_from_collection_for_select(User.user_except_content_admin(current_user),'id','fullname',@assignment.user_id), :hide_label => true %>
+    </div>
+    <%= hidden_field_tag 'creator_user_id', value = current_user.id %>
+  </div>
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4"></div>
+</div>
+
+<br>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+
+<br><%= link_to 'Back', assignments_path %>

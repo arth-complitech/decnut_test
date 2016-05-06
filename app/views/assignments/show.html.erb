@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<h3>Details of Assignment</h3><hr><br>
+
+<strong>Assigned to:</strong>
+  <%= @assignment.user.try(:fullname) %><br>
+
+  <strong>Pathway Title:</strong>
+  <%= @assignment.pathway.try(:title) %><br>
+
+  <strong>Created by:</strong>
+  <%= @assignment.creator_user_id.try(:fullname) %><br>
+
+  <strong title="steps completed out of total steps">Progress:</strong>
+  <%= AssignmentsStep.all.where(:assignment_id => @assignment.id).count %> of <%= @assignment.pathway.steps.count %><br>
+
+  <strong>Created on:</strong>
+  <%= @assignment.created_at.strftime("%B %d, %Y") %><br>
+<br>
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>
