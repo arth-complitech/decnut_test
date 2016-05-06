@@ -28,7 +28,7 @@
   <div class="col-lg-4">
     <div class="field">
       <%= f.label :type %><br>
-      <%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin"]), :hide_label => true %>
+      <%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin"]), :hide_label => true, :prompt => "--Select user type --" %>
     </div>
   </div>
   <div class="col-lg-4">
