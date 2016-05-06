@@ -3,7 +3,7 @@
 <%= bootstrap_nested_form_for(@pathway, html: { multipart: true } ) do |f| %>
 <% if @pathway.errors.any? %>
 <div id="error_explanation">
-	<h2><%= pluralize(@pathway.errors.count, "error") %> prohibited this pathway from being saved:</h2>
+	<h4><%= pluralize(@pathway.errors.count, "error") %> prohibited this pathway from being saved:</h4>
 	<ul>
 		<% @pathway.errors.full_messages.each do |message| %>
 		<li><%= message %></li>

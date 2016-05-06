@@ -4,7 +4,7 @@
 <%= bootstrap_form_for(@assignment,url: assign_user_path(@pathway),method: :post) do |f| %>
 <% if @assignment.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+  <h4><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h4>
   <ul>
     <% @assignment.errors.full_messages.each do |message| %>
     <li><%= message %></li>
