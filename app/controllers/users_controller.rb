@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :set_department, only: [:show, :edit, :update, :destroy]
-before_action :check_user, only: [:index]
+before_action :set_user, only: [:show, :edit, :update, :destroy]
+before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
 
  def index
     @users = User.users_from_same_group(current_user).includes(:department)
@@ -14,14 +14,15 @@ before_action :check_user, only: [:index]
  end
 
  def edit
+  puts "#{@user.inspect}"
  end
 
  def create
  	 @user = User.new(user_params)
-
+   puts "helllooooo"
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to users_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -32,8 +33,12 @@ before_action :check_user, only: [:index]
  
  def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      puts "helooooooooooo"
+      # raise @user.inspect
+      #raise "===============#{user_params.inspect}"
+      if @user.update_without_password(update_params)
+        #puts "helooooooooooo"
+        format.html { redirect_to user_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -51,15 +56,26 @@ before_action :check_user, only: [:index]
  end
 
  private
-
- # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+    def set_user
+      @user = User.find(params[:id])
     end
 
+ # Never trust parameters from the scary internet, only allow the white list through.
+     def user_params
+        params.require(:user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+     end
 
+    def update_params
+      if @user.type == "LocalAdmin"
+        params.require(:local_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+      elsif @user.type == "ContentAdmin"
+        params.require(:content_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+      else
+        params.require(:local_user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+      end
+    end
 
- 	def check_user
+    def check_user
         unless current_user.content_admin? or current_user.local_admin?
           redirect_to root_path, notice: "Unauthorised access"
         end

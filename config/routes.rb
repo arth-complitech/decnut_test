@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   post "add_assignments_steps/:step_id", to: "steps#add_assignments_steps", as: :complete_step
   post "update_assignments/:pathway_id", to: "assignments#update_assignments", as: :complete_pathway
   post "duplicate_pathway/:pathway_id", to: "pathways#duplicate_pathway", as: :duplicate_pathway
+  post "users/create" , to: "users#create" , as: :add_user
+  patch "users/:user_id" , to: "users#update" , as: :update_user
   resources :assignments
 
   # resources :phone_numbers, only: [:new, :create]

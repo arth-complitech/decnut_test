@@ -72,7 +72,7 @@ class PathwaysController < ApplicationController
     end
     @pathway_ids = current_user.assignments.pluck(:pathway_id) 
     @pathways = Pathway.find(@pathway_ids)
-    @group = current_user.department.group.id
+    #@group = current_user.department.group.id
     @assignments = Assignment.all.pluck(:pathway_id).uniq
     @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
     @library_pathway_ids = @pathway_all - @assignments

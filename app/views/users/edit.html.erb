@@ -1,6 +1,88 @@
-<h1>Editing User</h1><hr><br>
+<h3>Editing User</h3><hr><br>
+<%= bootstrap_form_for([:user, @user],url: update_user_path(@user) , method: :put) do |f| %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+	<ul>
+		<% @user.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :first_name %><br />
+			<%= f.text_field :first_name, autofocus: true , :hide_label => true %>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :last_name %><br />
+			<%= f.text_field :last_name , :hide_label => true%>
+		</div>
+	</div>
+	<div class="col-lg-4"></div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :type %><br>
+			<%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin"], f.object.type), :hide_label => true %>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :mobile_number %><br />
+			<%= f.text_field :mobile_number , :hide_label => true%>
+		</div>
+	</div>
+	<div class="col-lg-4"></div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :department %><br>
+			<%= f.select :department_id ,options_from_collection_for_select(current_user.department.group.departments,'id','name',@user.department_id) , :hide_label => true%>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :title %><br />
+			<%= f.text_field :title , :hide_label => true%>
+		</div>
+	</div>
+	<div class="col-lg-4"></div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.label :email %><br />
+			<%= f.email_field :email, autofocus: true , :hide_label => true%>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="field">
+			<%= f.radio_button :active,true%>
+			<%= f.label :active %>
+			<%= f.radio_button :active,false, :hide_label => true%>
+			<%= f.label :inactive %>
+		</div>
+	</div>
+	<div class="col-lg-4"></div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="actions">
+			<%= f.submit "Update User"%>
+		</div>
+	</div>
+	<div class="col-lg-4"></div>
+	<div class="col-lg-4"></div>
+</div>
 
-<%= render 'form' %>
+<% end %>
 <br>
-<%= link_to 'Show', @user %> |
+<%= link_to 'Show', user_path(@user) %> |
 <%= link_to 'Back', users_path %>
