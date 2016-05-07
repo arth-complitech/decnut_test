@@ -1,4 +1,4 @@
-	source 'https://rubygems.org'
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -19,6 +19,8 @@ gem 'bootstrap_form'
 gem "paperclip"
 # to duplicate records
 gem 'deep_cloneable'
+# font bundled as an asset for the rails asset pipeline
+gem "font-awesome-rails"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

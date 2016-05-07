@@ -1,25 +1,45 @@
-<h2>Log in</h2>
-
-<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, :hide_label => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", :hide_label => true %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me, :hide_label => true %>
+<div class="content-strip">
+    <div class="strip-content">
+        <h4>Login Page</h4>
+        <p>There's an App styled version too!</p>
+        <i class="fa fa-code"></i>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-<br>
-<%= render "users/shared/links" %>
+    <div class="overlay"></div>
+    <!--<img class="preload-image" data-original="images/pictures/3.jpg" alt="img" src="images/pictures/3.jpg" style="display: block;">-->
+    <%= image_tag "pictures/3.jpg", :class => "perload-image", :style => "display: block;" %> 
+</div>
+<div class="content">
+    <div class="decoration">
+        
+    </div>
+    <div class="page-login full-bottom">
+        <a href="#" class="page-login-logo"></a>
+        <%#= link_to "", :class => "page-login-logo" %>
+        <!--<h2>Log in</h2>-->
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="login-input">
+            <i class="fa fa-user"></i>
+            <%#= f.label :email %>
+            <%= f.email_field :email, autofocus: true, :hide_label => true , :onfocus => "if (this.value=='Email') this.value = ''", :onblur => "if (this.value=='') this.value = 'Email'" %>
+        </div>
+        <div class="login-password">
+            <i class="fa fa-lock"></i>
+            <%#= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off", :hide_label => true, 
+            :onfocus => "if (this.value=='password') this.value = ''", :onblur => "if (this.value=='') this.value = 'password'" %>
+        </div>
+        <%# if devise_mapping.rememberable? -%>
+        <!--<div class="field">
+            <%#= f.check_box :remember_me, :hide_label => true %>
+        </div>-->
+        <%# end -%>
+        <%= render "users/shared/links" %>
+        <!--<div class="actions">-->
+            <%= f.submit "Log in", :class => "login-button button button-small button-green button-fullscreen full-bottom" %>
+        <!--</div>-->
+        <% end %>
+    </div>
+    <div class="decoration">
+        
+    </div>
+</div>
