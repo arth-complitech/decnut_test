@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   ## Scope
   scope :user_except_content_admin, -> (user) { where('type != ? and department_id in (?)', "ContentAdmin", user.department.group.departments.pluck(:id)) }
   scope :users_from_same_group, -> (user) { where('department_id in (?)', user.department.group.departments.pluck(:id))}
+
+  #validation
+  # validates :first_name, presence:true
+  # validates :last_name, presence:true
+  # validates :title, presence:true
+  # validates :mobile_number, presence:true , :length=>{:in => 10..13}
+  
   #Helper method to check current_user is content_admin , local_admin or user
   def content_admin?
   	self.type=="ContentAdmin" 

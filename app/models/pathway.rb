@@ -8,4 +8,6 @@ class Pathway < ActiveRecord::Base
 	#belongs_to :user
 	belongs_to :group	
 
+	#validation
+  validates :title, presence:true
 end

@@ -5,4 +5,7 @@ class Department < ActiveRecord::Base
 
   ## Scopes
   scope :data_from_same_group, ->(id) { where('group_id = ?', id) }
+
+  #validation
+  validates :name, presence:true
 end
