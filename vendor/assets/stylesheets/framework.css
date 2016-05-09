@@ -4442,7 +4442,7 @@ calendar*{
 }
 
 .checklist-round-selected{
-    background-image:url(../images/framework/radioc.png);
+    background-image:url(asset-path("framework/radioc.png"));
     text-decoration:line-through;
     color:rgba(0,0,0,0.3);
     -webkit-transition: all 250ms ease;
@@ -4455,14 +4455,14 @@ calendar*{
 /*---Reminders---*/
 
 .reminder-check-square{
-    background-image:url(../images/framework/checkbox.png);
+    background-image:url(asset-path("framework/checkbox.png"));
     background-repeat:no-repeat;
     background-size:16px 18px;
     background-position:10px 40px;
 }
 
 .reminder-check-round{
-    background-image:url(../images/framework/radio.png);
+    background-image:url(asset-path("framework/radio.png"));
     background-repeat:no-repeat;
     background-size:16px 18px;
     background-position:10px 40px;
@@ -4473,11 +4473,11 @@ calendar*{
 }
 
 .reminder-check-square-selected{
-    background-image:url(../images/framework/checkboxc.png);
+    background-image:url(asset-path("framework/checkboxc.png"));
 }
 
 .reminder-check-round-selected{
-    background-image:url(../images/framework/radioc.png);
+    background-image:url(asset-path("framework/radioc.png"));
 }
 
 .reminder-check-square-selected em{opacity:0.3; transition:all 200ms ease;}
