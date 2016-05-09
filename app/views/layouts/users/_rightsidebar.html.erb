@@ -1,4 +1,4 @@
-<div class="sidebar-right sidebar-light" style="width: 250px; transform: translateX(280px);">
+<div class="sidebar-right sidebar-light">
     <div class="sidebar-scroll">
         <div class="sidebar-header">
             <a href="#" class="sidebar-logo"></a>
@@ -62,19 +62,19 @@
             SEND US A MESSAGE
         </div>
         <div class="sidebar-contact border-menu-dark">
-            <div class="sidebar-form contact-form no-bottom" style="width: 210px;">
+            <div class="sidebar-form contact-form no-bottom">
                 <p>
                     Your message is important to us, and we'll get back to you in tops 48 hours
                 </p>
-                <div class="formSuccessMessageWrap" id="formSuccessMessageWrap" style="display: none;">
+                <div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
                     Awesome! We'll get back to you!
                 </div>
                 <form action="php/contact.php" method="post" class="contactForm" id="contactForm">
                     <fieldset>
-                        <div class="formValidationError" id="contactNameFieldError" style="display: none;">Name is required!</div>
-                        <div class="formValidationError" id="contactEmailFieldError" style="display: none;">Mail address required!</div>
-                        <div class="formValidationError" id="contactEmailFieldError2" style="display: none;">Mail address must be valid!</div>
-                        <div class="formValidationError" id="contactMessageTextareaError" style="display: none;">Message field is empty!</div>
+                        <div class="formValidationError" id="contactNameFieldError">Name is required!</div>
+                        <div class="formValidationError" id="contactEmailFieldError">Mail address required!</div>
+                        <div class="formValidationError" id="contactEmailFieldError2">Mail address must be valid!</div>
+                        <div class="formValidationError" id="contactMessageTextareaError">Message field is empty!</div>
                         <div class="formFieldWrap">
                             <input onfocus="if (this.value=='Name') this.value = ''" onblur="if (this.value=='') this.value = 'Name'" type="text" name="contactNameField" value="Name" class="contactField requiredField" id="contactNameField">
                         </div>
