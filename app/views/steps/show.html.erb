@@ -27,11 +27,12 @@
 <%= @step.body %><br>
 <strong>Memo : </strong>
 <%= @step.memo %><br><br>
-<%# if !@assignment.nil? %>
+<% if !@assignment.nil? %>
 <% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
 	<%= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
 <% else %>
 	<%= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
+<% end %>
 <% end %>
 <% end %><br>
 <%=link_to "Back" , pathway_steps_path(params[:pathway_id])%>
