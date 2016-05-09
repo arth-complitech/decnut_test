@@ -21,19 +21,25 @@
         <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
           <em>Completed</em>
         <% else %>
-          <em>Not Completed </em>
+          <% if @assignment.nil? %>
+            <em>Libray Pathway </em>
+          <% else %>
+            <em> Not Completed</em>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
   </div>
-  <div class="decoration"></div>
+  
   <% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
   <%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
   <%= hidden_field_tag 'assignment_id', value = @assignment.id %>
   <%= submit_tag "Close this pathway" , :class=>"button button-fullscreen button-green full-bottom"%>
   <% end %>
   <% end %>
+ 
 </div>
+ <div class="decoration"></div>
 <%=link_to "Back" , root_path %>
 <!--<h4><strong>Pathway :</strong>
 <%= @pathway.title %></h4><br>
