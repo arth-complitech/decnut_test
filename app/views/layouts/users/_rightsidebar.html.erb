@@ -8,9 +8,11 @@
         </div>
         <div class="sidebar-menu">
             <a class="menu-item border-menu-yellow" href="#">
-                <i class="fa fa-facebook"></i>
-                Facebook
+                <%= link_to destroy_user_session_path , method: :delete do %>
+                <i class="fa fa-user"></i>
+                <span>Logout</span>
                 <i class="fa fa-circle"></i>
+                <% end %>
             </a>
             <a class="menu-item border-menu-lime" href="#">
                 <i class="fa fa-twitter"></i>
