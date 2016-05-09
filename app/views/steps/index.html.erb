@@ -15,30 +15,26 @@
 <div class="content">
   <div class="thumb-layout thumb-layout-page">
     <% @steps.each do |step| %>
-    <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
-    <%= image_tag "pictures/1t.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
-    <strong><%= step.title %></strong>
-    <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
-    <em>Completed</em>
-    <% else %>
-    <em>Not Completed </em>
-    <!-- Not Completed --><!-- <strong><%#= link_to 'Details', pathway_step_path(params[:pathway_id],step) %></strong>
-    <% end %> -->
-    <% end %>
-    
+      <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
+        <%= image_tag "pictures/1t.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
+        <strong><%= step.title %></strong>
+        <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+          <em>Completed</em>
+        <% else %>
+          <em>Not Completed </em>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
+  <div class="decoration"></div>
   <% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
   <%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
   <%= hidden_field_tag 'assignment_id', value = @assignment.id %>
   <%= submit_tag "Close this pathway" , :class=>"button button-fullscreen button-green full-bottom"%>
   <% end %>
   <% end %>
-  <br>
-  <%=link_to "Back" , root_path %>
-  <div class="decoration"></div>
-  <a href="#" class="load-more-thumbs button button-fullscreen button-green full-bottom">Load More</a>
 </div>
+<%=link_to "Back" , root_path %>
 <!--<h4><strong>Pathway :</strong>
 <%= @pathway.title %></h4><br>
 <h4>List of Steps</h4><br>-->
