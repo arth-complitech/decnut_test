@@ -2608,7 +2608,7 @@ ul.tabs li.active-tab{
     bottom:0px;
     bottom:0px;
     width:100%;
-    z-index:999999;*/
+    z-index:999999;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
     border-top:solid 1px rgba(0,0,0,0.1);
     background: #eeeeee; /* Old browsers */
@@ -3274,11 +3274,6 @@ ul.tabs li.active-tab{
 
 .calendar{
     margin-bottom:30px;
-    display:block;
-    overflow:hidden;
-}
-
-calendar*{
     display:block;
     overflow:hidden;
 }
