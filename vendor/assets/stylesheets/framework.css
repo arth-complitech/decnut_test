@@ -6263,7 +6263,7 @@ calendar*{
 /*News Article Share*/
 
 .news-article-share a{
-    width:20%;
+    width:100%;
     float:left;
     text-align:center;
     font-size:15px;

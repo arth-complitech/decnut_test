@@ -2,16 +2,86 @@
 	
 </div>
 <p id="notice"><%= notice %></p>
+<%= form_tag(complete_step_path(@step), method: :post) do %>
 <div class="content-strip">
 	<div class="strip-content">
-		<h4>News Post 1</h4>
-		<p>Remember, it's just a template!</p>
+		<h4><%= @pathway.title %></h4>
+		<p><%= @pathway.memo %></p>
 		<i class="fa fa-list"></i>
 	</div>
 	<div class="overlay"></div>
 	<!--<img class="preload-image" data-original="images/pictures/0.jpg" alt="img" src="images/pictures/0.jpg" style="display: block;">-->
 	<%= image_tag "pictures/0.jpg", :class => "preload-image", :style => "display: block;" %>
 </div>
+<div class="content">
+	<div class="decoration"></div>
+</div>
+<div class="content">
+	<h3 class="no-bottom">
+	<%= @step.title %>
+	<%= @step.subtitle %>
+	</h3>
+	<!--<p class="news-article-small-text">
+									Posted by <a href="#">Enabled</a>
+									about <a href="#">40 minutes ago</a>
+									in <a href="#">Mobile News</a>
+	</p>-->
+</div>
+<div class="single-item swiper-container-horizontal">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<!--<img class="responsive-image" src="images/pictures/1.jpg" alt="img">-->
+			<%= image_tag "pictures/1.jpg", :class => "responsive-image", :alt => "img" %>
+		</div>
+		<div class="swiper-slide">
+			<!--<img class="responsive-image" src="images/pictures/2.jpg" alt="img">-->
+			<%= image_tag "pictures/2.jpg", :class => "responsive-image", :alt => "img" %>
+		</div>
+		<div class="swiper-slide">
+			<!--<img class="responsive-image" src="images/pictures/3.jpg" alt="img">-->
+			<%= image_tag "pictures/3.jpg", :class => "responsive-image", :alt => "img" %>
+		</div>
+	</div>
+</div>
+<div class="news-article-share full-bottom">
+	<!--<a href="https://www.facebook.com/sharer/sharer.php?u=your_link_here"><i class="facebook-color fa fa-facebook"></i></a>
+	<a href="https://twitter.com/home?status=your_text_here"><i class="twitter-color fa fa-twitter"></i></a>
+	<a href="https://plus.google.com/share?url=your_link_here"><i class="google-color fa fa-google-plus"></i></a>-->
+	<a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">
+		<i class="whatsapp-color fa">Mark as Complete</i>
+	</a>
+	<!--<a href="mailto:?&subject=Your_subject&body=Your_text_here"><i class="mail-color fa fa-envelope-o"></i></a>-->
+	<div class="clear"></div>
+</div>
+<%= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
+<div class="content">
+	<!--<h4>Some awesome title goes here</h4>-->
+	<p class="half-bottom">
+		<%= @step.body %>
+	</p>
+</div>
+<div class="content">
+	<!--<h5>Add a subtitle maybe?</h5>-->
+	<p class="half-bottom">
+		<%= @step.memo %>
+	</p>
+</div>
+<div class="content">
+	<!--<h5>Add a subtitle maybe?</h5>-->
+	<p class="half-bottom">
+		<%= image_tag @step.url_link.url(:thumb)%>
+	</p>
+</div>
+<% if !@assignment.nil? %>
+<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
+<%= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
+<% else %>
+<%= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
+<% end %>
+<% end %>
+<% end %><br>
+<%=link_to "Back" , pathway_steps_path(params[:pathway_id])%>
+<!--
 <h3>Details Of Step</h3><hr><br>
 <%= form_tag(complete_step_path(@step), method: :post) do %>
 <strong>Pathway : </strong>
@@ -29,10 +99,11 @@
 <%= @step.memo %><br><br>
 <% if !@assignment.nil? %>
 <% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
-	<%= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
+<%= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
 <% else %>
-	<%= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
+<%= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
 <% end %>
 <% end %>
 <% end %><br>
 <%=link_to "Back" , pathway_steps_path(params[:pathway_id])%>
+-->
