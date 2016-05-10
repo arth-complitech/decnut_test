@@ -4,7 +4,7 @@
 <div class="content-strip">
   <div class="strip-content">
     <h4><%= @pathway.title %></h4>
-    <p><%= @pathway.memo %></p>
+    <!-- <p><%= @pathway.memo %></p> -->
     <i class="fa fa-list"></i>
   </div>
   <div class="overlay"></div>
@@ -20,16 +20,17 @@
     <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
         <i class="fa fa-check bg-green-dark activity-item-icon"></i>
         <h5><%= step.title %></h5>
-        <em>Completed</em>
+        <em><%=step.subtitle %></em>
     <% else %>
       <% if @assignment.nil? %>
         <i class="fa fa-check bg-green-dark activity-item-icon"></i>
         <h5><%= step.title %></h5>
-        <em>Libray Pathway </em>
+        <em><%=step.subtitle %></em>
+        <!-- <em>Libray Pathway </em> -->
       <% else %>
         <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color:#77dfa2!important"></i>
         <h5><%= step.title %></h5>
-        <em> Not Completed</em>
+        <em><%=step.subtitle %></em>
       <% end %>
     <% end %>
     <% end %>
