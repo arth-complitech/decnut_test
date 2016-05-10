@@ -65,8 +65,13 @@
 		<%= link_to pathway_steps_path(pathway) do %>
 		<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<!-- <img class="preload-image" data-original="images/pictures/1t.jpg" alt="img" src="images/pictures/1t.jpg" style="display: block;"> -->
-		<strong><%= pathway.title %></strong>
-		<em><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<% if pathway.memo == "" %>
+			<strong><%= pathway.title %></strong>
+			<em><br></em>
+		<% else %>
+			<strong><%= pathway.title %></strong>
+			<em><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<% end %>
 		<br>
 		<% end %>
 		<!-- </a> -->
@@ -85,8 +90,13 @@
 	<div class="thumb-layout">
 		<%= link_to "#" do %>
 		<%= image_tag "pictures/5t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
-		<strong><%= pathway.title %></strong>
-		<em><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<% if pathway.memo == "" %>
+			<strong><%= pathway.title %></strong>
+			<em><br></em>
+		<% else %>
+			<strong><%= pathway.title %></strong>
+			<em><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<% end %>
 		<br>
 		<% end %>
 	</div>
@@ -103,8 +113,13 @@
 		<%= link_to pathway_steps_path(pathway) do %>
 		<%= image_tag "pictures/6t.jpg" ,:class => "preload-image" , :alt=>"img",:style => "display: block;" %>
 		<!-- <img class="preload-image" data-original="images/pictures/6t.jpg" alt="img" src="images/pictures/6t.jpg" style="display: block;"> -->
-		<strong><%= pathway.title %></strong>
-		<em><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<% if pathway.memo == "" %>
+			<strong><%= pathway.title %></strong>
+			<em><br></em>
+		<% else %>
+			<strong><%= pathway.title %></strong>
+			<em><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<% end %>
 		<br>
 		<% end %>
 	</div>
