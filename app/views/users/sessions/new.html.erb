@@ -6,14 +6,16 @@
     </div>
     <div class="overlay"></div>
     <!--<img class="preload-image" data-original="images/pictures/3.jpg" alt="img" src="images/pictures/3.jpg" style="display: block;">-->
-    <%= image_tag "pictures/3.jpg", :class => "perload-image", :style => "display: block;" %> 
+    <%= image_tag "pictures/3.jpg", :class => "perload-image", :style => "display: block;" %>
 </div>
 <div class="content">
     <div class="decoration">
         
     </div>
     <div class="page-login full-bottom">
-        <a href="#" class="page-login-logo"></a>
+        <div class="page-blog-list-by">
+            <img class="preload-image" data-original="https://secure.gravatar.com/avatar/b33f1b2ae5ec688eef5a8d4e45353c3b" alt="img" src="https://secure.gravatar.com/avatar/b33f1b2ae5ec688eef5a8d4e45353c3b" style="display: block;margin-left: 90px;margin-bottom: 20px;">
+        </div>
         <%#= link_to "", :class => "page-login-logo" %>
         <!--<h2>Log in</h2>-->
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -25,7 +27,7 @@
         <div class="login-password">
             <i class="fa fa-lock"></i>
             <%#= f.label :password %>
-            <%= f.password_field :password, autocomplete: "off", :hide_label => true, 
+            <%= f.password_field :password, autocomplete: "off", :hide_label => true,
             :onfocus => "if (this.value=='password') this.value = ''", :onblur => "if (this.value=='') this.value = 'password'" %>
         </div>
         <%# if devise_mapping.rememberable? -%>
@@ -35,7 +37,7 @@
         <%# end -%>
         <%= render "users/shared/links" %>
         <!--<div class="actions">-->
-            <%= f.submit "Log in", :class => "login-button button button-small button-green button-fullscreen full-bottom" %>
+        <%= f.submit "Log in", :class => "login-button button button-small button-green button-fullscreen full-bottom" %>
         <!--</div>-->
         <% end %>
     </div>
