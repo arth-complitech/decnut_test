@@ -1,7 +1,6 @@
 <div class="header-clear">
-  
 </div>
-<p id="notice"><%= notice %></p>
+
 <div class="content-strip">
   <div class="strip-content">
     <h4><%= @pathway.title %></h4>
@@ -13,19 +12,25 @@
   <%= image_tag "pictures/1.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
 </div>
 <div class="content">
+<p id="notice"><%= notice %></p>
   <div class="activity-item one-half-responsive">
     <% @steps.each do |step| %>
     <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
-    <i class="fa fa-check bg-green-dark activity-item-icon"></i>
-    <h5><%= step.title %></h5>
+   
     <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
-    <em>Completed</em>
+        <i class="fa fa-check bg-green-dark activity-item-icon"></i>
+        <h5><%= step.title %></h5>
+        <em>Completed</em>
     <% else %>
-    <% if @assignment.nil? %>
-    <em>Libray Pathway </em>
-    <% else %>
-    <em> Not Completed</em>
-    <% end %>
+      <% if @assignment.nil? %>
+        <i class="fa fa-check bg-green-dark activity-item-icon"></i>
+        <h5><%= step.title %></h5>
+        <em>Libray Pathway </em>
+      <% else %>
+        <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color:#77dfa2!important"></i>
+        <h5><%= step.title %></h5>
+        <em> Not Completed</em>
+      <% end %>
     <% end %>
     <% end %>
     <% end %>
