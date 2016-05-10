@@ -15,19 +15,20 @@
 <div class="content">
   <div class="thumb-layout thumb-layout-page">
     <% @steps.each do |step| %>
-      <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
-        <%= image_tag "pictures/1t.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
-        <strong><%= step.title %></strong>
-        <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
-          <em>Completed</em>
-        <% else %>
-          <% if @assignment.nil? %>
-            <em>Libray Pathway </em>
-          <% else %>
-            <em> Not Completed</em>
-          <% end %>
-        <% end %>
-      <% end %>
+    <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
+    <i class="fa fa-check bg-green-dark activity-item-icon"></i>
+    <%#= image_tag "pictures/1t.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
+    <strong><%= step.title %></strong>
+    <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+    <em>Completed</em>
+    <% else %>
+    <% if @assignment.nil? %>
+    <em>Libray Pathway </em>
+    <% else %>
+    <em> Not Completed</em>
+    <% end %>
+    <% end %>
+    <% end %>
     <% end %>
   </div>
   
@@ -37,10 +38,14 @@
   <%= submit_tag "Close this pathway" , :class=>"button button-fullscreen button-green full-bottom"%>
   <% end %>
   <% end %>
- 
+  <br>
+  <%= link_to  root_path ,:class=>"button button-icon button-green" do %>
+  <i class="fa fa-angle-left"></i>
+  <span>Back</span>
+  <% end %>
 </div>
- <div class="decoration"></div>
-<%=link_to "Back" , root_path %>
+<div class="decoration"></div>
+<%#=link_to "Back" , root_path %>
 <!--<h4><strong>Pathway :</strong>
 <%= @pathway.title %></h4><br>
 <h4>List of Steps</h4><br>-->
