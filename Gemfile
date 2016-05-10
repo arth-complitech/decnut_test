@@ -21,6 +21,8 @@ gem "paperclip"
 gem 'deep_cloneable'
 # font bundled as an asset for the rails asset pipeline
 gem "font-awesome-rails"
+# truncate the html code
+gem "html_truncator", "~>0.2"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
