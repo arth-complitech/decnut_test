@@ -1,12 +1,10 @@
 <div class="header-clear">
-	
 </div>
-<p id="notice"><%= notice %></p>
-<%= form_tag(complete_step_path(@step), method: :post) do %>
+<%= form_tag(complete_step_path(@step), method: :post, id: "complete_step_form") do %>
 <div class="content-strip">
 	<div class="strip-content">
 		<h4><%= @pathway.title %></h4>
-		<p><%= @pathway.memo %></p>
+		<!--<p><%= @pathway.memo %></p>-->
 		<i class="fa fa-list"></i>
 	</div>
 	<div class="overlay"></div>
@@ -17,14 +15,15 @@
 	<div class="decoration"></div>
 </div>
 <div class="content">
+	<p id="notice"><%= notice %></p>
 	<h3 class="no-bottom">
 	<%= @step.title %>
 	<%= @step.subtitle %>
 	</h3>
 	<!--<p class="news-article-small-text">
-																Posted by <a href="#">Enabled</a>
-																about <a href="#">40 minutes ago</a>
-																in <a href="#">Mobile News</a>
+																	Posted by <a href="#">Enabled</a>
+																	about <a href="#">40 minutes ago</a>
+																	in <a href="#">Mobile News</a>
 	</p>-->
 </div>
 <div class="single-item swiper-container-horizontal">
@@ -50,12 +49,16 @@
 	
 	<% if !@assignment.nil? %>
 	<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
-	<a href="#" data-action="share/whatsapp/share">
+	<%#= submit_tag do %>
+	<a href="#">
 	<i class="whatsapp-color fa"> <%= submit_tag "Complete",:disabled => true,:style=>"background-color:#34AF23;" %></i></a>
+	<%# end %>
 	<%#= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
 	<% else %>
-	<a href="#" data-action="share/whatsapp/share">
-	<i class="whatsapp-color fa"> <%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:disabled => true,:style=>"background-color:#34AF23;" %></i></a>
+	<!-- <a href="#" data-action="share/whatsapp/share"> -->
+	<%= link_to "#", :onclick => "$('#complete_step_form').submit();" do %>
+	<i class="whatsapp-color fa"> <%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:disabled => true,:style=>"background-color:#34AF23;" %></i>
+	<% end %>
 	<%#= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
 	<% end %>
 	<% end %>
@@ -102,9 +105,8 @@
 	<div class="gallery square-thumbs no-bottom">
 		<!-- <a href="images/pictures/1.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/1t.jpg" alt="img" src="images/pictures/1t.jpg" style="display: block;"></a> -->
 		<%#= link_to "images/pictures/1.jpg",:class=>"scale-hover show-gallery" , :title=>"Your caption here!" do %>
-		 	<%#= image_tag "pictures/1t.jpg" ,:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;"%>
+		<%#= image_tag "pictures/1t.jpg" ,:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;"%>
 		<%# end %>
-
 		<%= link_to "#{image_tag("pictures/1t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/1.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
 		<%= link_to "#{image_tag("pictures/2t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/2.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
 		<%= link_to "#{image_tag("pictures/3t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/3.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
@@ -113,14 +115,10 @@
 		<%= link_to "#{image_tag("pictures/6t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/6.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
 		<%= link_to "#{image_tag("pictures/7t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/7.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
 		<%= link_to "#{image_tag("pictures/8t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/8.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-	  <%= link_to "#{image_tag("pictures/1t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/1.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
+		<%= link_to "#{image_tag("pictures/1t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/1.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
 		<%= link_to "#{image_tag("pictures/2t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/2.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
 		<%= link_to "#{image_tag("pictures/3t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "pictures/3.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-
-
 		<%= link_to "#{image_tag('pictures/4t.jpg',:class=>'preload-image responsive-image',:alt=>'img', :style=>'display:block;')}".html_safe, "/pictures/4.jpg" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-
-
 		<!-- <a href="images/pictures/2.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/2t.jpg" alt="img" src="images/pictures/2t.jpg" style="display: block;"></a>
 		<a href="images/pictures/3.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/3t.jpg" alt="img" src="images/pictures/3t.jpg" style="display: block;"></a>
 		<a href="images/pictures/4.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/4t.jpg" alt="img" src="images/pictures/4t.jpg" style="display: block;"></a>
@@ -148,12 +146,12 @@
 </div>
 <!--
 <h3>Details Of Step</h3><hr><br>
-<%= form_tag(complete_step_path(@step), method: :post) do %>
+<%#= form_tag(complete_step_path(@step), method: :post) do %>
 <strong>Pathway : </strong>
-<%= @pathway.title %><br>
+<%#= @pathway.title %><br>
 <strong>Title : </strong>
-<%= @step.title %><br>
-<%= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
+<%#= @step.title %><br>
+<%#= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
 <strong>Subtitle : </strong>
 <%= @step.subtitle %><br>
 </h4>
@@ -162,13 +160,13 @@
 <%= @step.body %><br>
 <strong>Memo : </strong>
 <%= @step.memo %><br><br>
-<% if !@assignment.nil? %>
-<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
-<%= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
-<% else %>
-<%= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
-<% end %>
-<% end %>
-<% end %><br>
-<%=link_to "Back" , pathway_steps_path(params[:pathway_id])%>
+<%# if !@assignment.nil? %>
+<%# if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
+<%#= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
+<%# else %>
+<%#= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
+<%# end %>
+<%# end %>
+<%# end %><br>
+<%#=link_to "Back" , pathway_steps_path(params[:pathway_id])%>
 -->
