@@ -19,18 +19,33 @@
    
     <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
         <i class="fa fa-check bg-green-dark activity-item-icon"></i>
-        <h5><%= step.title %></h5>
-        <em><%=step.subtitle %></em>
+        <% if step.subtitle=="" %>
+          <h5><%= step.title %></h5>
+          <em><br></em>
+        <% else %>
+          <h5><%= step.title %></h5>
+          <em><%=step.subtitle %></em>
+        <% end %>
     <% else %>
       <% if @assignment.nil? %>
         <i class="fa fa-check bg-green-dark activity-item-icon"></i>
-        <h5><%= step.title %></h5>
-        <em><%=step.subtitle %></em>
+        <% if step.subtitle=="" %>
+          <h5><%= step.title %></h5>
+          <em><br></em>
+        <% else %>
+          <h5><%= step.title %></h5>
+          <em><%=step.subtitle %></em>
+        <% end %>
         <!-- <em>Libray Pathway </em> -->
       <% else %>
         <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color:#77dfa2!important"></i>
-        <h5><%= step.title %></h5>
-        <em><%=step.subtitle %></em>
+        <% if step.subtitle=="" %>
+          <h5><%= step.title %></h5>
+          <em><br></em>
+        <% else %>
+          <h5><%= step.title %></h5>
+          <em><%=step.subtitle %></em>
+        <% end %>
       <% end %>
     <% end %>
     <% end %>
