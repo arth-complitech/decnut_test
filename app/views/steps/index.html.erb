@@ -13,7 +13,25 @@
   <%= image_tag "pictures/1.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
 </div>
 <div class="content">
-  <div class="thumb-layout thumb-layout-page">
+  <div class="activity-item one-half-responsive">
+    <% @steps.each do |step| %>
+    <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
+    <i class="fa fa-check bg-green-dark activity-item-icon"></i>
+    <h5><%= step.title %></h5>
+    <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+    <em>Completed</em>
+    <% else %>
+    <% if @assignment.nil? %>
+    <em>Libray Pathway </em>
+    <% else %>
+    <em> Not Completed</em>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>
+    
+  </div>
+  <!-- <div class="thumb-layout thumb-layout-page">
     <% @steps.each do |step| %>
     <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
     <i class="fa fa-check bg-green-dark activity-item-icon"></i>
@@ -30,7 +48,7 @@
     <% end %>
     <% end %>
     <% end %>
-  </div>
+  </div> -->
   
   <% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
   <%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
@@ -39,12 +57,13 @@
   <% end %>
   <% end %>
   <br>
-  <%= link_to  root_path ,:class=>"button button-icon button-green" do %>
-  <i class="fa fa-angle-left"></i>
-  <span>Back</span>
+  <div class="decoration"></div>  
+  <%= link_to  root_path , :class=>"page-blog-list-more" ,:style=>"margin-top:-5px;" do %> 
+  <i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;
+    Back
   <% end %>
 </div>
-<div class="decoration"></div>
+<!-- <div class="decoration"></div> -->
 <%#=link_to "Back" , root_path %>
 <!--<h4><strong>Pathway :</strong>
 <%= @pathway.title %></h4><br>
