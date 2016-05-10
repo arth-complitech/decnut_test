@@ -112,7 +112,7 @@
 <% end %>
 
 <!-- <p id="notice"><%= notice %></p>
-<% if current_user.user? or current_user.local_admin? %>
+<%# if current_user.user? or current_user.local_admin? %>
 <h3>Assigned Pathway</h3><br>
 <div class="table-responsive">
 	<table class="table table-hover">
@@ -124,17 +124,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @pathways.each do |pathway| %>
-			<% if pathway.active == true %>
+			<%# @pathways.each do |pathway| %>
+			<%# if pathway.active == true %>
 			<tr>
-				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
+				<%# if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil   %>
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
-				<td><%= link_to 'Steps', pathway_steps_path(pathway) %></td>
-				<% end %>
+				<td><%=# link_to 'Steps', pathway_steps_path(pathway) %></td>
+				<%# end %>
 			</tr>
-			<% end %>
-			<% end %>
+			<%# end %>
+			<%# end %>
 		</tbody>
 	</table>
 </div>
@@ -149,15 +149,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @pathways.each do |pathway| %>
+			<%# @pathways.each do |pathway| %>
 			<tr>
-				<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == "completed" %>
+				<%# if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == "completed" %>
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
-				<% end %>
+				<%# end %>
 			</tr>
 			
-			<% end %>
+			<%# end %>
 		</tbody>
 	</table>
 </div>
@@ -173,14 +173,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @library_pathways.each do |pathway| %>
+			<%# @library_pathways.each do |pathway| %>
 			<tr>
 				<td><%= pathway.title %></td>
 				<td><%= pathway.memo %></td>
-				<td><%= link_to 'Steps', pathway_steps_path(pathway) %></td>
+				<td><%=# link_to 'Steps', pathway_steps_path(pathway) %></td>
 			</tr>
-			<% end %>
+			<%# end %>
 		</tbody>
 	</table>
 </div>
-<% end %> -->
+<%# end %> -->

@@ -38,22 +38,22 @@
     
   </div>
   <!-- <div class="thumb-layout thumb-layout-page">
-    <% @steps.each do |step| %>
-    <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
+    <%# @steps.each do |step| %>
+    <%=# link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
     <i class="fa fa-check bg-green-dark activity-item-icon"></i>
     <%#= image_tag "pictures/1t.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
     <strong><%= step.title %></strong>
-    <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+    <%# if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
     <em>Completed</em>
-    <% else %>
-    <% if @assignment.nil? %>
+    <%# else %>
+    <%# if @assignment.nil? %>
     <em>Libray Pathway </em>
-    <% else %>
+    <%# else %>
     <em> Not Completed</em>
-    <% end %>
-    <% end %>
-    <% end %>
-    <% end %>
+    <%# end %>
+    <%# end %>
+    <%# end %>
+    <%# end %>
   </div> -->
   
   <% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
@@ -83,25 +83,25 @@
       </tr>
     </thead>
     <tbody>
-      <% @steps.each do |step| %>
+      <%# @steps.each do |step| %>
       <tr>
         <td><%= step.title %></td>
-        <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+        <%# if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
         <td>Completed</td>
-        <% else %>
-        <td><%= link_to 'Details', pathway_step_path(params[:pathway_id],step) %></td>
-        <% end %>
+        <%# else %>
+        <td><%=# link_to 'Details', pathway_step_path(params[:pathway_id],step) %></td>
+        <%# end %>
       </tr>
-      <% end %>
+      <%# end %>
     </tbody>
   </table>
 </div>
 <br>
-<% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
-<%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
-<%= hidden_field_tag 'assignment_id', value = @assignment.id %>
-<%= submit_tag "Close this pathway" , :class=>"btn btn-default"%>
-<% end %>
-<% end %>
+<%# if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
+<%#= form_tag(complete_pathway_path(@pathway), method: :post) do %>
+<%#= hidden_field_tag 'assignment_id', value = @assignment.id %>
+<%#= submit_tag "Close this pathway" , :class=>"btn btn-default"%>
+<%# end %>
+<%# end %>
 <br>
 <%=link_to "Back" , root_path %> -->
