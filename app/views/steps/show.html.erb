@@ -57,7 +57,7 @@
 	<% else %>
 	<!-- <a href="#" data-action="share/whatsapp/share"> -->
 	<%= link_to "#", :onclick => "$('#complete_step_form').submit();" do %>
-	<i class="whatsapp-color fa"> <%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:disabled => true,:style=>"background-color:#34AF23;" %></i>
+	<i class="whatsapp-color fa"> <%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:style=>"background-color:#34AF23;" %></i>
 	<% end %>
 	<%#= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
 	<% end %>
@@ -158,7 +158,7 @@
 <strong>Subtitle : </strong>
 <%= @step.subtitle %><br>
 </h4>
-<%= image_tag @step.url_link.url(:thumb)%><br>
+<%#= image_tag @step.url_link.url(:thumb)%><br>
 <strong>Body : </strong>
 <%= @step.body %><br>
 <strong>Memo : </strong>
