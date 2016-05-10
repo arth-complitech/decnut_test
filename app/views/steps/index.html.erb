@@ -37,71 +37,16 @@
     <% end %>
     
   </div>
-  <!-- <div class="thumb-layout thumb-layout-page">
-    <%# @steps.each do |step| %>
-    <%=# link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
-    <i class="fa fa-check bg-green-dark activity-item-icon"></i>
-    <%#= image_tag "pictures/1t.jpg", :class => "preload-image", :alt => "img",:style => "display: block;" %>
-    <strong><%= step.title %></strong>
-    <%# if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
-    <em>Completed</em>
-    <%# else %>
-    <%# if @assignment.nil? %>
-    <em>Libray Pathway </em>
-    <%# else %>
-    <em> Not Completed</em>
-    <%# end %>
-    <%# end %>
-    <%# end %>
-    <%# end %>
-  </div> -->
   
+  <div class="decoration"></div>
   <% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
   <%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
   <%= hidden_field_tag 'assignment_id', value = @assignment.id %>
   <%= submit_tag "Close this pathway" , :class=>"button button-fullscreen button-green full-bottom"%>
   <% end %>
-  <% end %>
-  <br>
-  <div class="decoration"></div>  
+  <% end %>  
   <%= link_to  root_path , :class=>"page-blog-list-more" ,:style=>"margin-top:-5px;" do %> 
   <i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;
     Back
   <% end %>
 </div>
-<!-- <div class="decoration"></div> -->
-<%#=link_to "Back" , root_path %>
-<!--<h4><strong>Pathway :</strong>
-<%= @pathway.title %></h4><br>
-<h4>List of Steps</h4><br>-->
-<!-- <div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Details of Step</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%# @steps.each do |step| %>
-      <tr>
-        <td><%= step.title %></td>
-        <%# if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
-        <td>Completed</td>
-        <%# else %>
-        <td><%=# link_to 'Details', pathway_step_path(params[:pathway_id],step) %></td>
-        <%# end %>
-      </tr>
-      <%# end %>
-    </tbody>
-  </table>
-</div>
-<br>
-<%# if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
-<%#= form_tag(complete_pathway_path(@pathway), method: :post) do %>
-<%#= hidden_field_tag 'assignment_id', value = @assignment.id %>
-<%#= submit_tag "Close this pathway" , :class=>"btn btn-default"%>
-<%# end %>
-<%# end %>
-<br>
-<%=link_to "Back" , root_path %> -->

@@ -147,29 +147,3 @@
 <div class="content">
 	<div class="decoration"></div>
 </div>
-<!--
-<h3>Details Of Step</h3><hr><br>
-<%#= form_tag(complete_step_path(@step), method: :post) do %>
-<strong>Pathway : </strong>
-<%#= @pathway.title %><br>
-<strong>Title : </strong>
-<%#= @step.title %><br>
-<%#= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
-<strong>Subtitle : </strong>
-<%= @step.subtitle %><br>
-</h4>
-<%#= image_tag @step.url_link.url(:thumb)%><br>
-<strong>Body : </strong>
-<%= @step.body %><br>
-<strong>Memo : </strong>
-<%= @step.memo %><br><br>
-<%# if !@assignment.nil? %>
-<%# if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
-<%#= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
-<%# else %>
-<%#= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
-<%# end %>
-<%# end %>
-<%# end %><br>
-<%#=link_to "Back" , pathway_steps_path(params[:pathway_id])%>
--->
