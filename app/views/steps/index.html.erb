@@ -18,7 +18,7 @@
     <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
    
     <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
-        <i class="fa fa-check bg-green-dark activity-item-icon"></i>
+        <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color: #34AF23!important"></i>
         <% if step.subtitle=="" %>
           <h5><%= step.title %></h5>
           <em><br></em>
@@ -28,7 +28,7 @@
         <% end %>
     <% else %>
       <% if @assignment.nil? %>
-        <i class="fa fa-check bg-green-dark activity-item-icon"></i>
+        <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color: #34AF23!important"></i>
         <% if step.subtitle=="" %>
           <h5><%= step.title %></h5>
           <em><br></em>
