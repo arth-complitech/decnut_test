@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/sortable	
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require plugins.js
+//= require custom.js
+//= require jquery-ui/sortable	
 //= require jquery_nested_form
-//= require_tree .
+// require_tree .
+
