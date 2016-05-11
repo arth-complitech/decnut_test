@@ -4,8 +4,8 @@
 <div class="content-strip">
 	<div class="strip-content">
 		<h4><%= @pathway.title %></h4>
-		<!--<p><%= @pathway.memo %></p>-->
-		<i class="fa fa-list"></i>
+		<!--<p><%= @pathway.memo %></p>
+		<i class="fa fa-list"></i>-->
 	</div>
 	<div class="overlay"></div>
 	<!--<img class="preload-image" data-original="images/pictures/0.jpg" alt="img" src="images/pictures/0.jpg" style="display: block;">-->
@@ -16,10 +16,9 @@
 </div>
 <div class="content">
 	<p id="notice"><%= notice %></p>
-	<h4 class="no-bottom">
-	Title  </h4>
+	<!--<h4 class="no-bottom">Title</h4>-->
 	<em><%= @step.title %></em><br>
-	<h4 class="no-bottom">Subtitle </h4>
+	<!--<h4 class="no-bottom">Subtitle</h4>-->
 	<em><%= @step.subtitle %></em>
 	
 	<!--<p class="news-article-small-text">
@@ -28,21 +27,37 @@
 																		in <a href="#">Mobile News</a>
 	</p>-->
 </div>
+<!--
 <div class="single-item swiper-container-horizontal">
 	<div class="swiper-wrapper">
 		<div class="swiper-slide">
-			<!--<img class="responsive-image" src="images/pictures/1.jpg" alt="img">-->
-			<%= image_tag "pictures/1.jpg", :class => "responsive-image", :alt => "img" %>
+			
+			<%#= image_tag "pictures/1.jpg", :class => "responsive-image", :alt => "img" %>
 		</div>
 		<div class="swiper-slide">
-			<!--<img class="responsive-image" src="images/pictures/2.jpg" alt="img">-->
-			<%= image_tag "pictures/2.jpg", :class => "responsive-image", :alt => "img" %>
+			
+			<%#= image_tag "pictures/2.jpg", :class => "responsive-image", :alt => "img" %>
 		</div>
 		<div class="swiper-slide">
-			<!--<img class="responsive-image" src="images/pictures/3.jpg" alt="img">-->
-			<%= image_tag "pictures/3.jpg", :class => "responsive-image", :alt => "img" %>
+			
+			<%#= image_tag "pictures/3.jpg", :class => "responsive-image", :alt => "img" %>
 		</div>
 	</div>
+</div>
+-->
+<div class="content">
+	<!--<h5>Add a subtitle maybe?</h5>
+	<p class="half-bottom">
+		<%#= image_tag @step.url_link.url(:thumb)%>
+	</p>-->
+	
+</div>
+<div class="content">
+	<!--<h4>Some awesome title goes here</h4>
+	<b><em>Body</em></b>-->
+	<p class="half-bottom">
+		<%= @step.body %>
+	</p>
 </div>
 <div class="news-article-share full-bottom">
 	<!--<a href="https://www.facebook.com/sharer/sharer.php?u=your_link_here"><i class="facebook-color fa fa-facebook"></i></a>
@@ -69,25 +84,12 @@
 </div>
 <%= hidden_field_tag 'assignment_id', value = @assignment.id if !@assignment.nil? %>
 <div class="content">
-	<!--<h5>Add a subtitle maybe?</h5>-->
-	<p class="half-bottom">
-		<%= image_tag @step.url_link.url(:thumb)%>
-	</p>
-	
-</div>
-<div class="content">
-	<!--<h4>Some awesome title goes here</h4>-->
-	<b><em>Body</em></b>
-	<p class="half-bottom">
-		<%= @step.body %>
-	</p>
-</div>
-<div class="content">
-	<b><em>Memo</em></b>
-	<!--<h5>Add a subtitle maybe?</h5>-->
+	<!--<b><em>Memo</em></b>
+	<h5>Add a subtitle maybe?</h5>
 	<p class="half-bottom">
 		<%= @step.memo %>
-	</p><br>
+	</p>-->
+	<br>
 	<%=link_to  pathway_steps_path(params[:pathway_id]) ,:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;" do %>
 	<i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;
 	Back
