@@ -20,13 +20,13 @@
 	<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
 	<%#= submit_tag do %>
 	<a href="#">
-	<i class="whatsapp-color fa"> <b><%= submit_tag "Complete",:disabled => true,:style=>"background-color:#34AF23;" %></i></a></b>
+	<i class="whatsapp-color fa"><h5> <b><%= submit_tag "Complete",:disabled => true,:style=>"background-color:#34AF23;" %></i></a></b></h5>
 	<%# end %>
 	<%#= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
 	<% else %>
 	<!-- <a href="#" data-action="share/whatsapp/share"> -->
 	<%= link_to "#", :onclick => "$('#complete_step_form').submit();" do %>
-	<i class="whatsapp-color fa"> <b><%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:style=>"background-color:#34AF23;" %></b></i>
+	<i class="whatsapp-color fa"> <h5><b><%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:style=>"background-color:#34AF23;" %></b></h5></i>
 	<% end %>
 	<%#= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
 	<% end %>
