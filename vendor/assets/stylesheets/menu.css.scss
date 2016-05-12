@@ -15,14 +15,14 @@
 .header-dark .header-icon-2{color:#FFFFFF;}
 .header-dark .header-icon-3{color:#FFFFFF;}
 .header-dark .header-icon-4{color:#FFFFFF;}
-.header-dark .header-logo{background-image:url(asset-path("logo-header.png"));}
+.header-dark .header-logo{background-image:url(asset-path("safeStart-logo.png"));}
 
 .header-light{background-color:#ecf0f1; box-shadow:none!important; }
 .header-light .header-icon-1{color:#1f1f1f;}
 .header-light .header-icon-2{color:#1f1f1f;}
 .header-light .header-icon-3{color:#1f1f1f;}
 .header-light .header-icon-4{color:#1f1f1f;}
-.header-light .header-logo{background-image:url(asset-path("logo-header-dark.png"));}
+.header-light .header-logo{background-image:url(asset-path("safeStart-logo.png"));}
 
 .header-fixed{
     position:fixed;
@@ -61,11 +61,11 @@
 
 /*Footer Styles*/
 .footer-dark{background-color:#0c1117;}
-.footer-dark .footer-logo{background-image:url(asset-path("logo-header.png"));}
+.footer-dark .footer-logo{background-image:url(asset-path("safeStart-logo.png"));}
 .footer-dark .footer-strip{border-top:solid 1px rgba(255,255,255,0.05);}
 
 .footer-light{background-color:#ecf0f1;}
-.footer-light .footer-logo{background-image:url(asset-path("logo-header-dark.png"));}
+.footer-light .footer-logo{background-image:url(asset-path("safeStart-logo.png"));}
 .footer-light .footer-strip{border-top:solid 1px rgba(0,0,0,0.1);}
 
 .footer-logo{
