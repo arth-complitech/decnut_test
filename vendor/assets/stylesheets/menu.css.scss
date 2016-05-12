@@ -235,7 +235,7 @@
 .sidebar-light,
 .sidebar-light .submenu,
 .sidebar-light .submenu .menu-item{background-color:#ecf0f1!important;}
-.sidebar-light .sidebar-logo{background-image:url(asset-path("logo-sidebar-dark.png"));}
+.sidebar-light .sidebar-logo{background-image:url(asset-path("safeStart-logo.png"));}
 .sidebar-light .menu-item{color:#7d8185; background-color:#e7ebec; font-weight:500}
 .sidebar-light .menu-item:hover{color:#000000!important; background-color:rgba(0,0,0,0.05)!important;}
 .sidebar-light .menu-item i:first-child{color:rgba(0,0,0,0.7);}
@@ -253,6 +253,7 @@
 .sidebar-header{
     padding-top:30px;
     padding-bottom:30px;
+    margin-left:30px;
 }
 
 .no-sidebar-border *{
@@ -264,14 +265,14 @@
     background-repeat:no-repeat;
     width:182px;
     height:42px;
-    background-size:182px 42px;
-    margin-left:20px;
+    background-size:140px 25px;
+    margin-left:30px;
 }
 
 .submenu .sidebar-logo{
     margin-left:0px;
     height:90px; /* double the height of your logo image*/
-    background-position:20px;
+    background-position:50px;
     width:100%;
 }
 
