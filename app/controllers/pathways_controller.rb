@@ -32,6 +32,10 @@ class PathwaysController < ApplicationController
     @pathway.group_id=current_user.department.group.id
     respond_to do |format|
       if @pathway.save
+        @pathway.pathways_steps.each_with_index do |pathways_step,index|
+          pathways_step.display_order=index+1
+          pathways_step.save
+        end
         format.html { redirect_to @pathway, notice: 'Pathway was successfully created.' }
         format.json { render :show, status: :created, location: @pathway }
       else
@@ -108,7 +112,7 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
+      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:url_to_youtube,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
     end
 
     def check_user

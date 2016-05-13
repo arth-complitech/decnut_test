@@ -126,7 +126,7 @@ class StepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
-      params.require(:step).permit(:pathway_id, :title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo)
+      params.require(:step).permit(:pathway_id, :title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo , :url_to_youtube)
     end
 
 end
