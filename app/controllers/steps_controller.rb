@@ -6,19 +6,19 @@ class StepsController < ApplicationController
     @pathway = Pathway.find(params[:pathway_id])
     @steps = @pathway.steps
     @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
-    
+
     if @assignment.present?
       @assignments = Assignment.all.pluck(:pathway_id).uniq
       @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
       @library_pathway_ids = @pathway_all - @assignments
 
-      if !@library_pathway_ids.include? params[:pathway_id]    
-        @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
+      if !@library_pathway_ids.include? params[:pathway_id]
+        @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id)
         @pathway_steps_count = @pathway.steps.count
         @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
       end
     end
-      
+
   end
 
   # GET /steps/1
@@ -33,8 +33,8 @@ class StepsController < ApplicationController
       @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
       @library_pathway_ids = @pathway_all - @assignments
 
-      if !@library_pathway_ids.include? params[:pathway_id]    
-        @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
+      if !@library_pathway_ids.include? params[:pathway_id]
+        @completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id)
         @pathway_steps_count = @pathway.steps.count
         @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
       end
@@ -94,29 +94,34 @@ class StepsController < ApplicationController
     @pathway = Pathway.find(params[:pathway_id])
     @steps = @pathway.steps
     @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
-    #@completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id) 
+    #@completed_step_ids = AssignmentsStep.all.where(:assignment_id => @assignment.id).pluck(:step_id)
     #@pathway_steps_count = @pathway.steps.count
     #@completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
-      
+
   end
 
   def step_show
     @step = Step.find(params[:step_id])
     #@pathway = @step.pathway
     #@assignment = current_user.assignments.where(pathway_id: @pathway.id).first
-    
+
   end
 
   def add_assignments_steps
     @step = Step.find(params[:step_id])
     @assignment_step = @step.assignments_steps.build(assignment_id: params[:assignment_id], step_id: params[:step_id])
     @pathway = @assignment_step.assignment.pathway
+    next_step = PathwaysStep.find_by(:pathway_id =>@pathway.id , :display_order => (@step.pathways_steps.find_by(pathway_id: @pathway.id).display_order + 1))
     if @assignment_step.save
-      redirect_to pathway_steps_path(@pathway)
+      if next_step.present?
+        redirect_to pathway_step_path(@pathway,next_step.step)
+      else
+        redirect_to pathway_steps_path(@pathway)
+      end
     else
       render pathway_step_path(@pathway,@step)
     end
-  end 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
