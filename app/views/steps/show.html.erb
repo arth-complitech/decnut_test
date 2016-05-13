@@ -88,18 +88,20 @@
 		Donec varius dui et erat aliquet rutrum. Nunc vitae tincidunt magna.
 		In vitae efficitur enim. -->
 	</p>
+	<% if @step.url_to_youtube != "" %>
 	<div class="one-half-responsive1 width45">
-		<h3>YouTube Video</h3>
+		<!-- <h3>YouTube Video</h3>
 		<p>
 			It's just a copy and a paste of an embed code, and our code
 			will do everything for you, make it responsive, and it's
 			compatible with everything!
-		</p>
+		</p> -->
 		<div class="responsive-video full-bottom">
 			<!-- <iframe src="https://www.youtube.com/embed/c9MnSeYYtYY"></iframe> -->
 			<%= embed(@step.url_to_youtube) %>
 		</div>
 	</div>
+	<% end %>
 	<div class="decoration hide-if-responsive"></div>
 </div>
 <% end %>
