@@ -14,37 +14,37 @@
 <div class="content">
 <p id="notice"><%= notice %></p>
   <div class="activity-item one-half-responsive">
-    <% @steps.each do |step| %>
-    <%= link_to pathway_step_path(params[:pathway_id],step) ,:style=>"display: block;" do%>
+    <% @pathways_steps.each do |pathways_step| %>
+    <%= link_to pathway_step_path(params[:pathway_id],pathways_step.step) ,:style=>"display: block;" do%>
    
-    <% if @completed_step_ids.present? and @completed_step_ids.include? step.id %>
+    <% if @completed_step_ids.present? and @completed_step_ids.include? pathways_step.step.id %>
         <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color: #34AF23!important"></i>
-        <% if step.subtitle=="" %>
-          <h5><%= step.title %></h5>
+        <% if pathways_step.step.subtitle=="" %>
+          <h5><%= pathways_step.step.title %></h5>
           <em><br></em>
         <% else %>
-          <h5><%= step.title %></h5>
-          <em><%=step.subtitle %></em>
+          <h5><%=pathways_step.step.title %></h5>
+          <em><%=pathways_step.step.subtitle %></em>
         <% end %>
     <% else %>
       <% if @assignment.nil? %>
         <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color: #34AF23!important"></i>
-        <% if step.subtitle=="" %>
-          <h5><%= step.title %></h5>
+        <% if pathways_step.step.subtitle=="" %>
+          <h5><%= pathways_step.step.title %></h5>
           <em><br></em>
         <% else %>
-          <h5><%= step.title %></h5>
-          <em><%=step.subtitle %></em>
+          <h5><%= pathways_step.step.title %></h5>
+          <em><%= pathways_step.step.subtitle %></em>
         <% end %>
         <!-- <em>Libray Pathway </em> -->
       <% else %>
         <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color:#99e58f!important"></i>
-        <% if step.subtitle=="" %>
-          <h5><%= step.title %></h5>
+        <% if pathways_step.step.subtitle=="" %>
+          <h5><%= pathways_step.step.title %></h5>
           <em><br></em>
         <% else %>
-          <h5><%= step.title %></h5>
-          <em><%=step.subtitle %></em>
+          <h5><%= pathways_step.step.title %></h5>
+          <em><%= pathways_step.step.subtitle %></em>
         <% end %>
       <% end %>
     <% end %>

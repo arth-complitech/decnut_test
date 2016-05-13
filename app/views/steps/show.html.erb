@@ -67,12 +67,12 @@
 	</div>
 </div>
 -->
-<div class="content">
-	<!--<h5>Add a subtitle maybe?</h5>
+<!--<div class="content">
+	<h5>Add a subtitle maybe?</h5>
 	<p class="half-bottom">
 		<%#= image_tag @step.url_link.url(:thumb)%>
-	</p>-->
-</div>
+	</p>
+</div>-->
 <div class="content">
 	<!--<h4>Some awesome title goes here</h4>
 	<b><em>Body</em></b>-->
@@ -88,7 +88,7 @@
 		Donec varius dui et erat aliquet rutrum. Nunc vitae tincidunt magna.
 		In vitae efficitur enim. -->
 	</p>
-	<div class="one-half-responsive">
+	<div class="one-half-responsive1 width45">
 		<h3>YouTube Video</h3>
 		<p>
 			It's just a copy and a paste of an embed code, and our code
@@ -96,7 +96,8 @@
 			compatible with everything!
 		</p>
 		<div class="responsive-video full-bottom">
-			<iframe src="https://www.youtube.com/embed/c9MnSeYYtYY"></iframe>
+			<!-- <iframe src="https://www.youtube.com/embed/c9MnSeYYtYY"></iframe> -->
+			<%= embed(@step.url_to_youtube) %>
 		</div>
 	</div>
 	<div class="decoration hide-if-responsive"></div>
