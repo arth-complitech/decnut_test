@@ -8,45 +8,56 @@
 		<p class="swiper-slide swiper-slide-next" style="width: 706px;">We're using the latest code techniques! <a href="#">Read More</a></p>
 	</div>
 </div>
+
+<div class="content-strip">
+	<div class="strip-content">
+		<h4><%= current_user.department.group.name %></h4>
+		<!-- <p></p>
+		<i class="fa fa-list"></i>-->
+	</div>
+	<div class="overlay"></div>
+	<!--<img class="preload-image" data-original="images/pictures/1.jpg" alt="img">-->
+	<img class="preload-image" alt="img" style="display: block;" src="/assets/pictures/1-1fc1cb57b0ec6ba51840393feac923480f6c1b8f773d84dd352f2631f69542f3.jpg">
+</div>
 <!--
 <div class="news-slider half-bottom swiper-container-horizontal" style="margin-bottom:0px!important;">
-						<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-												<div class="swiper-slide swiper-slide-active" style="width: 746px;">
-																		<a href="#" class="news-slider-item">
-																								<%#= image_tag "pictures/1.jpg" , :class => "responsive-image" , :alt=>"img" %>
-																								<h3>Android 20 is absolutely awesome! You need to see it yourself!</h3>
-																		</a>
-												</div>
-												<div class="swiper-slide swiper-slide-next" style="width: 746px;">
-																		<a href="#" class="news-slider-item">
-																								<%#= image_tag "pictures/2.jpg" , :class => "responsive-image" , :alt=>"img" %>
-																								<h3>iPhone renamed to ApplePhone and the Apple watch is now iWatch?!</h3>
-																		</a>
-												</div>
-												<div class="swiper-slide" style="width: 746px;">
-																		<a href="#" class="news-slider-item">
-																								<%#= image_tag "pictures/3.jpg" , :class => "responsive-image" , :alt=>"img" %>
-																								<h3>The best device of the year is here, what's your device of choice?</h3>
-																		</a>
-												</div>
-						</div>
+							<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+														<div class="swiper-slide swiper-slide-active" style="width: 746px;">
+																					<a href="#" class="news-slider-item">
+																												<%#= image_tag "pictures/1.jpg" , :class => "responsive-image" , :alt=>"img" %>
+																												<h3>Android 20 is absolutely awesome! You need to see it yourself!</h3>
+																					</a>
+														</div>
+														<div class="swiper-slide swiper-slide-next" style="width: 746px;">
+																					<a href="#" class="news-slider-item">
+																												<%#= image_tag "pictures/2.jpg" , :class => "responsive-image" , :alt=>"img" %>
+																												<h3>iPhone renamed to ApplePhone and the Apple watch is now iWatch?!</h3>
+																					</a>
+														</div>
+														<div class="swiper-slide" style="width: 746px;">
+																					<a href="#" class="news-slider-item">
+																												<%#= image_tag "pictures/3.jpg" , :class => "responsive-image" , :alt=>"img" %>
+																												<h3>The best device of the year is here, what's your device of choice?</h3>
+																					</a>
+														</div>
+							</div>
 </div>
 <div class="content-fullscreen badge-news">
-						<h2>FULL CSS3 SUPPORT NOW AVAILABLE ON ALL MOBILE DEVICES! AWESOME!</h2>
-						<div class="badge-image">
-												<em class="bg-red-dark">BREAKING NEWS</em>
-												<%#= image_tag "pictures/2.jpg" ,:class => "preload-image responsive-image" , :alt=>"img" ,:style => "display: block;"%>
-												<p>
-																		It’s official, new operating systems and mobile devices now
-																		all support full CSS3 Support. So most of the effects that
-																		needed jQuery we can now accomplish using CSS3 Transitions.
-																		Faster, smoother, better, and much lighter on CPU’s.
-												</p>
-												<a href="#" class="badge-read">Continue Reading</a>
-												<a href="#" class="badge-share show-share-bottom color-white"><i class="fa fa-share"></i></a>
-												<a href="#" class="badge-favorite color-red-dark"><i class="fa fa-heart"></i></a>
-												<div class="clear"></div>
-						</div>
+							<h2>FULL CSS3 SUPPORT NOW AVAILABLE ON ALL MOBILE DEVICES! AWESOME!</h2>
+							<div class="badge-image">
+														<em class="bg-red-dark">BREAKING NEWS</em>
+														<%#= image_tag "pictures/2.jpg" ,:class => "preload-image responsive-image" , :alt=>"img" ,:style => "display: block;"%>
+														<p>
+																					It’s official, new operating systems and mobile devices now
+																					all support full CSS3 Support. So most of the effects that
+																					needed jQuery we can now accomplish using CSS3 Transitions.
+																					Faster, smoother, better, and much lighter on CPU’s.
+														</p>
+														<a href="#" class="badge-read">Continue Reading</a>
+														<a href="#" class="badge-share show-share-bottom color-white"><i class="fa fa-share"></i></a>
+														<a href="#" class="badge-favorite color-red-dark"><i class="fa fa-heart"></i></a>
+														<div class="clear"></div>
+							</div>
 </div>
 -->
 <% if current_user.user? or current_user.local_admin? %>
