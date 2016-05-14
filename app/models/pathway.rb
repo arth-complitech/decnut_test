@@ -10,4 +10,9 @@ class Pathway < ActiveRecord::Base
 
 	#validation
   validates :title, presence:true
+
+
+  def get_max_display_order
+  	self.pathways_steps.maximum(:display_order)
+  end 
 end

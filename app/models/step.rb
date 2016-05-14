@@ -11,5 +11,5 @@ class Step < ActiveRecord::Base
   accepts_nested_attributes_for :pathways_steps, :allow_destroy => true
 
   #validation
-  validates :title, presence:true
+  #validates :title, presence:true
 end

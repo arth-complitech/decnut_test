@@ -32,6 +32,10 @@ class PathwaysController < ApplicationController
     @pathway.group_id=current_user.department.group.id
     respond_to do |format|
       if @pathway.save
+        @pathway.pathways_steps.each_with_index do |pathways_step,index|
+          pathways_step.display_order=index+1
+          pathways_step.save
+        end
         format.html { redirect_to @pathway, notice: 'Pathway was successfully created.' }
         format.json { render :show, status: :created, location: @pathway }
       else
@@ -46,7 +50,13 @@ class PathwaysController < ApplicationController
   def update
     respond_to do |format|
       if @pathway.update(pathway_params)
-        @pathway
+        @pathway.pathways_steps.each do |pathways_step|
+          if pathways_step.display_order.nil?  
+            max_display_order = @pathway.get_max_display_order
+            pathways_step.display_order= max_display_order.present? ? max_display_order + 1  : 1 
+            pathways_step.save
+          end
+        end
         format.html { redirect_to @pathway, notice: 'Pathway was successfully updated.' }
         format.json { render :show, status: :ok, location: @pathway }
       else
@@ -86,6 +96,10 @@ class PathwaysController < ApplicationController
     @pathway=Pathway.find(params[:pathway_id])
     duplicated_pathway = @pathway.deep_clone include: :steps
     if duplicated_pathway.save
+       duplicated_pathway.pathways_steps.each_with_index do |pathways_step,index|
+          pathways_step.display_order=index+1
+          pathways_step.save
+        end
       redirect_to edit_pathway_path(duplicated_pathway), notice: "Duplicate Pathway Created."
     else
     end
@@ -108,7 +122,7 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
+      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:url_to_youtube,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
     end
 
     def check_user

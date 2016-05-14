@@ -8,13 +8,15 @@
 				<%= f.text_field :title , :hide_label => true%><br>
 				<%= f.label :subtitle %><br>
 				<%= f.text_field :subtitle , :hide_label => true%><br>
+				<%= f.label :url_to_youtube%>
+				<%= f.text_field :url_to_youtube , :hide_label => true%><br>
 			</div>
 			
 			<div class="col-lg-4">
 				<%= f.label :body %> <br>
 				<%= f.text_area :body , :hide_label => true%><br>
-				<%= f.label :file %><br>
-				<%= f.file_field :url_link , :hide_label => true%><br>
+				<%#= f.label :file %><br>
+				<%#= f.file_field :url_link , :hide_label => true%><br>
 				<%= f.label :memo %> <br>
 				<%= f.text_field :memo , :hide_label => true%><br>
 				

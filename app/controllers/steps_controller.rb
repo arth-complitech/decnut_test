@@ -3,8 +3,8 @@ class StepsController < ApplicationController
   # GET /steps
   # GET /steps.json
   def index
-    @pathway = Pathway.find(params[:pathway_id])
-    @steps = @pathway.steps
+    @pathway = Pathway.includes(:pathways_steps,:steps).find(params[:pathway_id])
+    @pathways_steps = @pathway.pathways_steps.order(:display_order)
     @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
 
     if @assignment.present?
@@ -131,7 +131,7 @@ class StepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
-      params.require(:step).permit(:pathway_id, :title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo)
+      params.require(:step).permit(:pathway_id, :title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo , :url_to_youtube)
     end
 
 end

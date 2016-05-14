@@ -924,6 +924,12 @@ label{
     
     .one-half-responsive{width:100%;}
     .one-third-responsive{width:100%;} 
+
+    .width45 {width:100%!important;}
+}
+
+.width45 {
+    width:45%;
 }
 
 @media(min-width:767px){
@@ -8547,7 +8553,11 @@ html, body {
 .sidebar-right.sidebar-light .border-menu-light{    border-right:solid 5px rgba(0,0,0,0.2);}
 
 
-
+.one-half-responsive-new{
+        width:45%;
+        float:left;
+        margin-right:10%;
+    }
 
 
 
