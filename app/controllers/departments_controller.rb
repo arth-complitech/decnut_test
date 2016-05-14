@@ -4,7 +4,12 @@ class DepartmentsController < ApplicationController
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.data_from_same_group(current_user.department.group.id)
+     if current_user.super_admin?
+      puts"=============superadmin============="
+      @departments=Department.all
+     else
+      @departments = Department.data_from_same_group(current_user.department.group.id)
+     end 
   end
 
   # GET /departments/1
@@ -73,7 +78,7 @@ class DepartmentsController < ApplicationController
     end
 
     def check_user
-        unless current_user.content_admin? or current_user.local_admin?
+        unless current_user.super_admin? or current_user.content_admin? or current_user.local_admin?
           redirect_to root_path, notice: "Unauthorised access"
         end
     end

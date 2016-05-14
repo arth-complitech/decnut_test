@@ -6,7 +6,12 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.find(current_user.department.group.id)
+    if current_user.super_admin?
+      puts"=============superadmin============="
+      @groups=Group.all
+    else
+      @groups = Group.where(id: current_user.department.group.id)
+    end
   end
 
   # GET /groups/1
@@ -75,7 +80,7 @@ class GroupsController < ApplicationController
     end
 
     def check_user
-        unless current_user.content_admin? or current_user.local_admin?
+        unless current_user.super_admin? or current_user.content_admin? or current_user.local_admin?
           redirect_to root_path, notice: "Unauthorised access"
         end
     end

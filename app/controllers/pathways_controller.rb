@@ -77,7 +77,7 @@ class PathwaysController < ApplicationController
   end
 
   def homepage
-    if current_user.content_admin?
+    if current_user.content_admin? or current_user.super_admin?
       redirect_to groups_path
     end
     @pathway_ids = current_user.assignments.pluck(:pathway_id) 

@@ -66,7 +66,9 @@ before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, 
      end
 
     def update_params
-      if @user.type == "LocalAdmin"
+      if @user.type == "SuperAdmin"
+        params.require(:super_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+      elsif @user.type == "LocalAdmin"
         params.require(:local_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
       elsif @user.type == "ContentAdmin"
         params.require(:content_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
@@ -76,7 +78,7 @@ before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, 
     end
 
     def check_user
-        unless current_user.content_admin? or current_user.local_admin?
+        unless current_user.super_admin? or current_user.content_admin? or current_user.local_admin?
           redirect_to root_path, notice: "Unauthorised access"
         end
     end

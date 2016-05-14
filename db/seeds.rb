@@ -19,7 +19,9 @@ puts "=====================+Departments Created=============="
 LocalUser.create!(email: "marriottlocaluser@yopmail.com", password: "12345678", password_confirmation: "12345678", first_name: "Local", last_name: "User", department_id: marriott_newyork.id, title: "Mr.", mobile_number: "9687047348")
 LocalAdmin.create!(email: "marriottlocaladmin@yopmail.com", password: "12345678", password_confirmation: "12345678", first_name: "Local", last_name: "Admin", department_id: marriott_newyork.id, title: "Mr.", mobile_number: "9687047348")
 ContentAdmin.create!(email: "marriottcontentadmin@yopmail.com", password: "12345678", password_confirmation: "12345678", first_name: "Content", last_name: "Admin", department_id: marriott_newyork.id, title: "Mr.", mobile_number: "9687047348")
+SuperAdmin.create!(email: "doug@decnut.com", password: "12345678", password_confirmation: "12345678", first_name: "Super", last_name: "Admin", department_id: marriott_newyork.id, title: "Mr.", mobile_number: "9687047348")
 
+SuperAdmin.create!(email: "douglas@decnut.com", password: "12345678", password_confirmation: "12345678", first_name: "Super", last_name: "Admin", department_id:  hyatt_newyork.id, title: "Mr.", mobile_number: "9687047348")
 LocalUser.create!(email: "hyattlocaluser@yopmail.com", password: "12345678", password_confirmation: "12345678", first_name: "Local", last_name: "User", department_id: hyatt_newyork.id, title: "Mr.", mobile_number: "9687047348")
 LocalAdmin.create!(email: "hyattlocaladmin@yopmail.com", password: "12345678", password_confirmation: "12345678", first_name: "Local", last_name: "Admin", department_id: hyatt_newyork.id, title: "Mr.", mobile_number: "9687047348")
 ContentAdmin.create!(email: "hyattcontentadmin@yopmail.com", password: "12345678", password_confirmation: "12345678", first_name: "Content", last_name: "Admin", department_id: hyatt_newyork.id, title: "Mr.", mobile_number: "9687047348")

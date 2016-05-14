@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Scope
-  scope :user_except_content_admin, -> (user) { where('type != ? and department_id in (?)', "ContentAdmin", user.department.group.departments.pluck(:id)) }
+  scope :user_except_content_admin, -> (user) { where('type NOT IN (?) and department_id in (?)', ["ContentAdmin","SuperAdmin"], user.department.group.departments.pluck(:id)) }
   scope :users_from_same_group, -> (user) { where('department_id in (?)', user.department.group.departments.pluck(:id))}
 
   #validation
@@ -18,7 +18,10 @@ class User < ActiveRecord::Base
   # validates :title, presence:true
   # validates :mobile_number, presence:true , :length=>{:in => 10..13}
   
-  #Helper method to check current_user is content_admin , local_admin or user
+  #Helper method to check current_user is super_admin, content_admin , local_admin or user
+  def super_admin?
+    self.type=="SuperAdmin"
+  end
   def content_admin?
   	self.type=="ContentAdmin" 
   end
