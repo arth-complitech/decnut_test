@@ -6,7 +6,7 @@ before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, 
   if current_user.local_admin? or current_user.content_admin?
     @users = User.users_from_same_group(current_user).includes(:department)
   else
-    @users = User.all
+    @users = User.user_except_super_admin(current_user)
   end
 #    @departments = Department.where("group_id = ?", Group.first.id)
  #   @groups = Group.all

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   ## Scope
   scope :user_except_content_admin, -> (user) { where('type NOT IN (?) and department_id in (?)', ["ContentAdmin","SuperAdmin"], user.department.group.departments.pluck(:id)) }
   scope :users_from_same_group, -> (user) { where('department_id in (?)', user.department.group.departments.pluck(:id))}
-
+  scope :user_except_super_admin, -> (user) { where('type NOT IN (?)', ["SuperAdmin"]) }
   #validation
   # validates :first_name, presence:true
   # validates :last_name, presence:true
