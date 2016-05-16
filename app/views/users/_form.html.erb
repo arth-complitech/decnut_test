@@ -42,13 +42,16 @@
 <div class="row">
   <div class="col-lg-4">
     <div class="field">
-      <%= f.label :department %><br>
-      <%= f.select :department_id ,options_from_collection_for_select(current_user.department.group.departments,'id','name',@user.department_id) , :hide_label => true%>
+      <%= label_tag :group %><br>
+      <%= select_tag "groups" ,options_from_collection_for_select(Group.all,'id','name') , :hide_label => true , :class => "form-control", id: 'groups_select' %>
+      <%#= select_tag "group_id", options_for_select(@groups.collect { |group|
+    [group.name, group.id] }, 1), {}, { id: 'groups_select' } %>
+
     </div>
   </div>
   <div class="col-lg-4">
     <div class="field">
-      <%= f.label :title %><br />
+      <%= f.label :title %><br>
       <%= f.text_field :title , :hide_label => true%>
     </div>
   </div>
@@ -57,8 +60,11 @@
 <div class="row">
   <div class="col-lg-4">
     <div class="field">
-      <%#= f.label :group %><br />
-      <%#= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@user.group_id) , :hide_label => true%>
+      <%#= f.label :department %>
+      <%#= f.select :department_id ,options_from_collection_for_select(current_user.department.group.departments,'id','name',@user.department_id) , :hide_label => true, id: 'departments_select' %>
+      <%= f.select :department_id, options_for_select(@departments.collect { |department|
+    [department.name, department.id] }, 0), {}, { id: 'departments_select' } %>
+
     </div>
   </div>
   <div class="col-lg-4">

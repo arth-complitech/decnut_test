@@ -5,7 +5,13 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
       }
   resources :groups
-  resources :departments
+  resources :departments do 
+ 
+      collection do  
+        get "all_deps"
+      end 
+  end 
+
   root 'pathways#homepage'
 
   resources :pathways do 
@@ -32,7 +38,7 @@ Rails.application.routes.draw do
   post "users/create" , to: "users#create" , as: :add_user
   patch "users/:user_id" , to: "users#update" , as: :update_user
   resources :assignments
-
+  get "users/update_departments", to:"users#update_departments"
   # resources :phone_numbers, only: [:new, :create]
   # post 'phone_numbers/verify' => "phone_numbers#verify"
 

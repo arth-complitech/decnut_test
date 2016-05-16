@@ -12,6 +12,21 @@ class DepartmentsController < ApplicationController
      end 
   end
 
+
+
+
+ def all_deps
+
+    @departments = Department.where("group_id = ? ",params[:group_id])
+    puts "=====departments====="
+    respond_to do |format|
+        format.js
+    end
+  end
+
+
+
+
   # GET /departments/1
   # GET /departments/1.json
   def show

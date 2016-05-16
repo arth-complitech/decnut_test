@@ -3,14 +3,20 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
 
  def index
-    @users = User.users_from_same_group(current_user).includes(:department)
+  @users = User.all
+    #@users = User.users_from_same_group(current_user).includes(:department)
+#    @departments = Department.where("group_id = ?", Group.first.id)
+ #   @groups = Group.all
  end
 
  def show
+    #@department = Department.find_by("id = ?", params[:user][:department_id])
  end
 
  def new
- 	@user=User.new
+ 	@departments = Department.where("group_id = ?", Group.first.id)
+  @groups = Group.all
+  @user=User.new
  end
 
  def edit
