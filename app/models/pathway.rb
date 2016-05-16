@@ -12,7 +12,7 @@ class Pathway < ActiveRecord::Base
   	validates :title, presence:true
 
   	#scope
-  	scope :pathways_from_same_group, -> (user) { where('group_id in (?)', user.department.group.pathways.pluck(:id))}
+  	scope :pathways_from_same_group, -> (user) { where('id in (?)', user.department.group.pathways.pluck(:id))}
 
   def get_max_display_order
   	self.pathways_steps.maximum(:display_order)
