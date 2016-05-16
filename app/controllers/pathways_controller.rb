@@ -35,7 +35,11 @@ class PathwaysController < ApplicationController
   # POST /pathways.json
   def create
     @pathway = Pathway.new(pathway_params)
-    @pathway.group_id=current_user.department.group.id
+    if current_user.super_admin?
+      @pathway.group_id = params[:pathway][:group_id]
+    else
+      @pathway.group_id=current_user.department.group.id
+    end
     respond_to do |format|
       if @pathway.save
         @pathway.pathways_steps.each_with_index do |pathways_step,index|
