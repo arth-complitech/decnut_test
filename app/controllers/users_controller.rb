@@ -3,8 +3,11 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
 
  def index
-  @users = User.all
-    #@users = User.users_from_same_group(current_user).includes(:department)
+  if current_user.local_admin? or current_user.content_admin?
+    @users = User.users_from_same_group(current_user).includes(:department)
+  else
+    @users = User.all
+  end
 #    @departments = Department.where("group_id = ?", Group.first.id)
  #   @groups = Group.all
  end

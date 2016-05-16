@@ -4,7 +4,11 @@ class PathwaysController < ApplicationController
   # GET /pathways
   # GET /pathways.json
   def index
-    @pathways = Pathway.all
+    if current_user.content_admin? or current_user.local_admin?
+      @pathways = Pathway.pathways_from_same_group(current_user)
+    else  
+      @pathways = Pathway.all
+    end
   end
 
 
