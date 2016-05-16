@@ -29,7 +29,7 @@
 	<div class="col-lg-4">
 		<div class="field">
 			<%= f.label :type %><br>
-			<%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin"], f.object.type), :hide_label => true %>
+			<%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin","SuperAdmin"], f.object.type), :hide_label => true %>
 		</div>
 	</div>
 	<div class="col-lg-4">
@@ -43,8 +43,8 @@
 <div class="row">
 	<div class="col-lg-4">
 		<div class="field">
-			<%= f.label :department %><br>
-			<%= f.select :department_id ,options_from_collection_for_select(current_user.department.group.departments,'id','name',@user.department_id) , :hide_label => true%>
+			<%= label_tag :group %><br>
+			<%= select_tag "groups" ,options_from_collection_for_select(Group.all,'id','name') , :hide_label => true , :class => "form-control", id: 'groups_select' %>
 		</div>
 	</div>
 	<div class="col-lg-4">
@@ -58,10 +58,21 @@
 <div class="row">
 	<div class="col-lg-4">
 		<div class="field">
+			<!-- <%#= f.label :department %><br> -->
+			<%= f.select :department_id, options_for_select(@departments.collect { |department|
+			[department.name, department.id] }, 0), {}, { id: 'departments_select' } %>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="field">
 			<%= f.label :email %><br />
 			<%= f.email_field :email, autofocus: true , :hide_label => true%>
 		</div>
 	</div>
+	<div class="col-lg-4"></div>
+</div>
+<div class="row">
+	
 	<div class="col-lg-4">
 		<div class="field">
 			<%= f.radio_button :active,true%>
@@ -81,7 +92,6 @@
 	<div class="col-lg-4"></div>
 	<div class="col-lg-4"></div>
 </div>
-
 <% end %>
 <br>
 <%= link_to 'Show', user_path(@user) %> |

@@ -23,6 +23,8 @@ before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, 
  end
 
  def edit
+  @departments = Department.where("group_id = ?", Group.first.id)
+  @groups = Group.all
   puts "#{@user.inspect}"
  end
 
