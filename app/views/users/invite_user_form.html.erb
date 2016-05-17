@@ -1,0 +1,29 @@
+<%= bootstrap_form_for(@user,url: add_user_path , method: :post) do |f| %>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="field">
+				<%= f.label :first_name %><br>
+      			<%= f.text_field :first_name, autofocus: true , :hide_label => true %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="field">
+				<%= f.label :mobile_number %><br>
+      			<%= f.text_field :mobile_number, :hide_label => true %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="field">
+				<%= label_tag :group %><br>
+      			<%= select_tag "groups" ,options_from_collection_for_select(Group.all,'id','name') , :hide_label => true , :class => "form-control" %>
+			</div>
+		</div>
+	</div>
+	<div class="actions">
+  		<%= f.submit %>
+	</div>
+<% end %>
