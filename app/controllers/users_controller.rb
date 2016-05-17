@@ -73,18 +73,18 @@ before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, 
 
  # Never trust parameters from the scary internet, only allow the white list through.
      def user_params
-        params.require(:user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+        params.require(:user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password,:group_id)
      end
 
     def update_params
       if @user.type == "SuperAdmin"
-        params.require(:super_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+        params.require(:super_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password,:group_id)
       elsif @user.type == "LocalAdmin"
-        params.require(:local_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+        params.require(:local_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password,:group_id)
       elsif @user.type == "ContentAdmin"
-        params.require(:content_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+        params.require(:content_admin).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password,:group_id)
       else
-        params.require(:local_user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password)
+        params.require(:local_user).permit(:first_name, :last_name, :title,:mobile_number,:active,:status,:memo,:type,:department_id,:email,:password,:group_id)
       end
     end
 
