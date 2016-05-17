@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   patch "users/:user_id" , to: "users#update" , as: :update_user
   resources :assignments
   get "users/update_departments", to:"users#update_departments"
+
+  get "twilio/new_invite_user" , to: "twilio#new_invite_user", as: :invite_new_user
+  post "twilio/invite_user", to: "twilio#invite_user", as: :invite_user
   # resources :phone_numbers, only: [:new, :create]
   # post 'phone_numbers/verify' => "phone_numbers#verify"
 

@@ -41,4 +41,19 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  #setting up twilio client
+
+  def twilio_client
+    Twilio::REST::Client.new('AC5616cdf701fdd599c7628dcfeb38d455',
+      'e00a4484a7decab08f1538feec1fe2fe')
+  end
+
+  def send_invitation
+    twilio_client.messages.create(
+      to: mobile_number,
+      from: '+1 215-274-0881',
+      body: "Welcome #{first_name}. Please register here:  http://decnutapp.herokuapp.com and use code #{registration_code}."
+    )
+  end
+
 end
