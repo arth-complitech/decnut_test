@@ -4,6 +4,7 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
+				<th>Group</th>
 				<th>Assigned to</th>
 				<th>Pathway Title</th>
 				<th>Created by</th>
@@ -17,9 +18,10 @@
 		<tbody>
 			<% @assignments.each do |assignment| %>
 			<tr>
-				<td><%= assignment.user.try(:fullname) %></td>
+				<td><%= assignment.user.department.group.try(:name) %></td>
+				<td><%= assignment.user.try(:email) %></td>
 				<td><%= assignment.pathway.try(:title) %></td>
-				<td><%= User.find(assignment.creator_user_id).fullname %></td>
+				<td><%= User.find(assignment.creator_user_id).email %></td>
 				<td> <%= AssignmentsStep.all.where(:assignment_id => assignment.id).count %> of <%= assignment.pathway.steps.count %> </td>
 				<td><%= assignment.created_at.strftime("%B %d, %Y") %></td>
 				<!--<td><%#= assignment.status %></td>
