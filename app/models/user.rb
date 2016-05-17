@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #callbacks
+  after_create :set_group
+
+  attr_accessor :registration_code
   ## Scope
   scope :user_except_content_admin, -> (user) { where('type NOT IN (?) and department_id in (?)', ["ContentAdmin","SuperAdmin"], user.department.group.departments.pluck(:id)) }
   scope :users_from_same_group, -> (user) { where('department_id in (?)', user.department.group.departments.pluck(:id))}
@@ -41,19 +45,13 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
-  #setting up twilio client
-
-  def twilio_client
-    Twilio::REST::Client.new('AC5616cdf701fdd599c7628dcfeb38d455',
-      'e00a4484a7decab08f1538feec1fe2fe')
+  #setting group after creating user
+  def set_group
+    puts"==================Set Group=====#{self.registration_code}===="
+    @registration_code=self.registration_code
+    @group_id=Group.where(:registration_code => @registration_code).first.id
+    self.group_id = @group_id
+    # self.type="LocalUser"
+    self.save
   end
-
-  def send_invitation
-    twilio_client.messages.create(
-      to: mobile_number,
-      from: '+1 215-274-0881',
-      body: "Welcome #{first_name}. Please register here:  http://decnutapp.herokuapp.com and use code #{registration_code}."
-    )
-  end
-
 end

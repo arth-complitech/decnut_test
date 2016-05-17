@@ -42,7 +42,8 @@
     <div class="col-lg-4">
       <div class="field">
         <%= label_tag('registration_code',nil,style: "margin-left:0px;")%>
-        <%= text_field_tag("registration_code",nil ,class: "form-control")%>
+        <%#= text_field_tag("registration_code",nil ,class: "form-control")%>
+        <%= f.text_field :registration_code, autofocus: true , :hide_label => true%>
       </div>
     </div>
     <div class="col-lg-4"></div>
@@ -61,6 +62,7 @@
       <div class="field">
         <%= f.label :password_confirmation ,:style=>"margin-left:0px"%>(Enter same password again)<br>
         <%= f.password_field :password_confirmation, autocomplete: "off", :hide_label => true %>
+        <%= f.hidden_field :type, value: "LocalUser" %>
       </div>
     </div>
     <div class="col-lg-4"></div>

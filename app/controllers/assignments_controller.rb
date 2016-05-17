@@ -36,7 +36,7 @@ class AssignmentsController < ApplicationController
 	def index
      if current_user.content_admin? or current_user.local_admin?
       puts "========content/local admin========"
-      @department_ids = Group.find(current_user.department.group.id).departments.pluck(:id)
+      @department_ids = Group.find(current_user.group.id).departments.pluck(:id)
       @users = User.where(:department_id => @department_ids)
       @user_ids = @users.pluck(:id)
       @assignments = Assignment.all.where(:user_id => @user_ids)
