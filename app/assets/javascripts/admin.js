@@ -15,6 +15,6 @@
 //= require bootstrap-sprockets
 //= require jquery-ui/sortable	
 //= require jquery_nested_form
-//= require group 
+// require group 
 //= require_self
 // require_tree .

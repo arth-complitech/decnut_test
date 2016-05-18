@@ -28,7 +28,7 @@
   <div class="col-lg-4">
     <div class="field">
       <%= f.label :type %><br>
-      <%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin" ,"SuperAdmin"]), :hide_label => true, :prompt => "--Select user type --" %>
+      <%= f.select :type ,options_for_select(["LocalUser", "ContentAdmin","LocalAdmin" ,"SuperAdmin"]), :hide_label => true, :prompt => "-- Select user type --" %>
     </div>
   </div>
   <div class="col-lg-4">
@@ -43,7 +43,7 @@
   <div class="col-lg-4">
     <div class="field">
       <%= f.label :group %><br>
-      <%= f.select :group_id, options_from_collection_for_select(Group.all,'id','name') , :hide_label => true , :class => "form-control" %>
+      <%= f.select :group_id, options_from_collection_for_select(Group.all,'id','name',@user.group_id) , :hide_label => true, :prompt => "-- Select group --" %>
       <%#= select_tag "group_id" ,options_from_collection_for_select(Group.all,'id','name') , :hide_label => true , :class => "form-control", id: 'groups_select'%>
       <%#= select_tag "group_id", options_for_select(@groups.collect { |group|
       [group.name, group.id] }, 1), {}, { id: 'groups_select' } %>

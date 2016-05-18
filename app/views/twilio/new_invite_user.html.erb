@@ -21,7 +21,7 @@
 	<div class="col-lg-9">
 		<div class="field">
 			<%= label_tag :group %><br>
-			<%= select_tag "group_id" ,options_from_collection_for_select(Group.all,'id','name') , :class => "form-control" %><br><br>
+			<%= select_tag "group_id" ,options_from_collection_for_select(Group.all,'id','name') , :class => "form-control", :prompt => "-- Select group --" %><br><br>
 		</div>
 	</div>
 </div>

@@ -43,8 +43,8 @@
 <div class="row">
 	<div class="col-lg-4">
 		<div class="field">
-			<%= label_tag :group %><br>
-			<%= f.select :group_id, options_from_collection_for_select(Group.all,'id','name') , :hide_label => true , :class => "form-control", :id => 'groups_select' %>
+			<%= f.label :group_id %><br>
+			<%= f.select :group_id, options_from_collection_for_select(Group.all,'id','name',@user.group_id) , :hide_label => true %>
 		</div>
 	</div>
 	<div class="col-lg-4">
