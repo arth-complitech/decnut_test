@@ -18,7 +18,7 @@
 		<tbody>
 			<% @assignments.each do |assignment| %>
 			<tr>
-				<td><%= assignment.user.department.group.try(:name) %></td>
+				<td><%= assignment.user.group.try(:name) %></td>
 				<td><%= assignment.user.try(:email) %></td>
 				<td><%= assignment.pathway.try(:title) %></td>
 				<td><%= User.find(assignment.creator_user_id).email %></td>

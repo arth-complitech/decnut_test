@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :assignments
   #has_many :pathways
   belongs_to :department
+  belongs_to :group
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,8 +14,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :registration_code
   ## Scope
-  scope :user_except_content_admin, -> (user) { where('type NOT IN (?) and department_id in (?)', ["ContentAdmin","SuperAdmin"], user.department.group.departments.pluck(:id)) }
-  scope :users_from_same_group, -> (user) { where('department_id in (?)', user.department.group.departments.pluck(:id))}
+  scope :user_except_content_admin, -> (user) { where('type NOT IN (?) and department_id in (?)', ["ContentAdmin","SuperAdmin"], user.group.departments.pluck(:id)) }
+  scope :users_from_same_group, -> (user) { where('department_id in (?)', user.group.departments.pluck(:id))}
   scope :user_except_super_admin, -> (user) { where('type NOT IN (?)', ["SuperAdmin"]) }
   #validation
   # validates :first_name, presence:true

@@ -38,7 +38,7 @@ class PathwaysController < ApplicationController
     if current_user.super_admin?
       @pathway.group_id = params[:pathway][:group_id]
     else
-      @pathway.group_id=current_user.department.group.id
+      @pathway.group_id=current_user.group_id
     end
     respond_to do |format|
       if @pathway.save
@@ -92,7 +92,7 @@ class PathwaysController < ApplicationController
     end
     @pathway_ids = current_user.assignments.pluck(:pathway_id) 
     @pathways = Pathway.find(@pathway_ids)
-    @group = current_user.department.group.id
+    @group = current_user.group_id
     @assignments = Assignment.all.pluck(:pathway_id).uniq
     @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
     @library_pathway_ids = @pathway_all - @assignments

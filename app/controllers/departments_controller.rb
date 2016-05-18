@@ -8,7 +8,7 @@ class DepartmentsController < ApplicationController
       puts"=============superadmin============="
       @departments=Department.all
      else
-      @departments = Department.data_from_same_group(current_user.group.id)
+      @departments = Department.data_from_same_group(current_user.group_id)
      end 
   end
 

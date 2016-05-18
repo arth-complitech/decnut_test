@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
       puts"=============superadmin============="
       @groups=Group.all
     else
-      @groups = Group.where(id: current_user.department.group.id)
+      @groups = Group.where(id: current_user.group_id)
     end
   end
 
