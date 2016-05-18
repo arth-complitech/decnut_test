@@ -18,8 +18,9 @@ class User < ActiveRecord::Base
   scope :users_from_same_group, -> (user) { where('department_id in (?)', user.group.departments.pluck(:id))}
   scope :user_except_super_admin, -> (user) { where('type NOT IN (?)', ["SuperAdmin"]) }
   #validation
-  # validates :first_name, presence:true
-  # validates :last_name, presence:true
+  validates :first_name, presence:true
+  validates :last_name, presence:true
+  validates :registration_code, presence:true
   # validates :title, presence:true
   # validates :mobile_number, presence:true , :length=>{:in => 10..13}
   
