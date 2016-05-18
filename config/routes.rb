@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   resources :assignments
   get "users/update_departments", to:"users#update_departments"
 
-  get "twilio/new_invite_user" , to: "twilio#new_invite_user", as: :invite_new_user
+  match "invite_user" => "twilio#new_invite_user", :via => :get, as: :invite_new_user
   post "twilio/invite_user", to: "twilio#invite_user", as: :invite_user
   # resources :phone_numbers, only: [:new, :create]
   # post 'phone_numbers/verify' => "phone_numbers#verify"
