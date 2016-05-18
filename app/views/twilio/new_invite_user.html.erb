@@ -1,30 +1,37 @@
 <%= notice %><br>
-<%= bootstrap_form_tag(url: invite_user_path, method: :post)do %>
-	<div class="row">
-		<div class="col-lg-4">
-			<div class="field">
-				<%= label_tag :first_name %><br>
-      			<%= text_field_tag :first_name %>
-			</div>
+<h3> Invite User </h3><br>
+<%= bootstrap_form_tag(url: invite_user_path, method: :post) do %>
+<div class="row">
+	<div class="col-lg-9">
+		<div class="field">
+			<%= label_tag :first_name %><br>
+			<%= text_field_tag(:first_name,nil, :class => "form-control")%><br>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-lg-4">
-			<div class="field">
-				<%= label_tag :mobile_number %><br>
-      			<%= text_field_tag :mobile_number %>
-			</div>
+</div>
+<div class="row">
+	<div class="col-lg-9">
+		<div class="field">
+			<%= label_tag :mobile_number %><br>
+			<%= text_field_tag(:mobile_number,nil, :class => "form-control") %><br>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-lg-4">
-			<div class="field">
-				<%= label_tag :group %><br>
-      			<%= select_tag "group_id" ,options_from_collection_for_select(Group.all,'id','name') , :class => "form-control" %>
-			</div>
+</div>
+<div class="row">
+	<div class="col-lg-9">
+		<div class="field">
+			<%= label_tag :group %><br>
+			<%= select_tag "group_id" ,options_from_collection_for_select(Group.all,'id','name') , :class => "form-control" %><br><br>
 		</div>
 	</div>
-	<div class="actions">
-  		<%= submit_tag "Invite User" %>
+</div>
+<div class="row">
+	<div class="col-lg-9">
+		<div class="actions">
+			<%= submit_tag "Invite User" ,:class => "btn btn-default" %>
+		</div>
 	</div>
+	<div class="col-lg-3"></div>
+</div>
+
 <% end %>

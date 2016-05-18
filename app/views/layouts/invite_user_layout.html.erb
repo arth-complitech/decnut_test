@@ -2,15 +2,23 @@
 <html>
 	<head>
 		<title>Decnut</title>
-		<%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag 'invite_user', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'invite_user', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
+		<div class="row"></div><br><br>
 		<div class="container">
-			<div class="jumbotron" style="background-color: #f5f5f5">
-				<%= yield %>
+			<div class="row">
+				<div class="col-lg-3"></div>
+				<div class="col-lg-5">
+					<div class="jumbotron" style="background-color: #f5f5f5">
+						<%= yield %>
+					</div>
+				</div>
+				<div class="col-lg-4"></div>
 			</div>
+			
 		</div>
 	</body>
 </html>

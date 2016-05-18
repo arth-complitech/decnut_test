@@ -1,7 +1,8 @@
 class TwilioController < ApplicationController
+  layout "invite_user_layout"
  #Inviting user for registration(twilio)
  def new_invite_user
-  render :layout => false
+  #render :layout => false
   puts "========new_invite_user==========="
   #@invited_user = User.new
  end
