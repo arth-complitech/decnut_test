@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #callbacks
-  after_create :set_group
+  #after_create :set_group
 
   attr_accessor :registration_code
   ## Scope

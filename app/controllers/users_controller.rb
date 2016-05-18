@@ -30,7 +30,8 @@ before_action :check_user, only: [:new, :create, :show, :index, :edit, :update, 
 
  def create
  	 @user = User.new(user_params)
-   puts "helllooooo"
+   #@group_id = params[:group_id]
+   #@group = Group.where(:id => @group_id).first
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_path, notice: 'User was successfully created.' }
