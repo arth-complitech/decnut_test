@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   #before_create :set_user_type
-  has_many :assignments
+  has_many :assignments, :dependent => :destroy
   #has_many :pathways
   belongs_to :department
   belongs_to :group
