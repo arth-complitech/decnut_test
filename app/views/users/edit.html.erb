@@ -58,16 +58,12 @@
 <div class="row">
 	<div class="col-lg-4">
 		<div class="field">
-			<!-- <%#= f.label :department %><br> -->
-			<%= f.select :department_id, options_for_select(@departments.collect { |department|
-			[department.name, department.id] }, 0), {}, { id: 'departments_select' } %>
-		</div>
-	</div>
-	<div class="col-lg-4">
-		<div class="field">
 			<%= f.label :email %><br />
 			<%= f.email_field :email, autofocus: true , :hide_label => true%>
 		</div>
+	</div>
+	<div class="col-lg-4">
+		
 	</div>
 	<div class="col-lg-4"></div>
 </div>
@@ -75,10 +71,16 @@
 	
 	<div class="col-lg-4">
 		<div class="field">
-			<%= f.radio_button :active,true%>
-			<%= f.label :active %>
-			<%= f.radio_button :active,false, :hide_label => true%>
-			<%= f.label :inactive %>
+			<div class="row">
+				<div class="col-lg-2">
+					<%= f.radio_button :active,true%>
+					<%= f.label :active %>
+				</div>
+				<div class="col-lg-2">
+					<%= f.radio_button :active,false, :hide_label => true%>
+					<%= f.label :inactive %>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-lg-4"></div>
@@ -86,7 +88,7 @@
 <div class="row">
 	<div class="col-lg-4">
 		<div class="actions">
-			<%= f.submit "Update User"%>
+			<br><%= f.submit "Update User"%>
 		</div>
 	</div>
 	<div class="col-lg-4"></div>
