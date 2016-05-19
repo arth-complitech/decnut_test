@@ -60,6 +60,11 @@ class PathwaysController < ApplicationController
   def update
     respond_to do |format|
       if @pathway.update(pathway_params)
+         if current_user.super_admin?
+          @pathway.group_id = params[:pathway][:group_id]
+        else
+          @pathway.group_id=current_user.group_id
+        end
         @pathway.pathways_steps.each do |pathways_step|
           if pathways_step.display_order.nil?  
             max_display_order = @pathway.get_max_display_order
@@ -106,6 +111,11 @@ class PathwaysController < ApplicationController
     @pathway=Pathway.find(params[:pathway_id])
     duplicated_pathway = @pathway.deep_clone include: :steps
     if duplicated_pathway.save
+       if current_user.super_admin?
+          duplicated_pathway.group_id = params[:pathway][:group_id]
+       else
+          duplicate_pathway.group_id=current_user.group_id
+      end
        duplicated_pathway.pathways_steps.each_with_index do |pathways_step,index|
           pathways_step.display_order=index+1
           pathways_step.save

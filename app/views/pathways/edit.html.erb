@@ -20,7 +20,13 @@
 		<div class="field">
 			<%= f.label :memo %><br>
 			<%= f.text_area :memo , :hide_label => true%>
-
+			<% if current_user.content_admin? or current_user.local_admin? %>
+			<%else%>
+			<div class="field">
+				<%= f.label :group %><br>
+				<%= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@pathway.group_id) , :hide_label => true  %>
+			</div>
+			<% end%>
 		</div>
 		<div class="field">
 			<%= f.label :active %><br>
@@ -45,7 +51,6 @@
 <div class="field">
 	<%= f.fields_for :steps %>
 </div>
-
 <%= f.link_to_add "Add a step", :steps %>
 <br><br>
 <div class="actions">
