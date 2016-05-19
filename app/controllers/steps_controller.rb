@@ -26,6 +26,25 @@ class StepsController < ApplicationController
   def show
     @pathway = Pathway.find(params[:pathway_id])
     @step = Step.find(params[:id])
+    @step_ids = []
+    step_ids = @pathway.pathways_steps.pluck(:step_id)
+    @next_id = 0
+    @prev_id = -1
+    flag = false 
+    logger.warn("=======#{step_ids.inspect}")
+    step_ids.each do  |x|
+      if flag == true 
+        @next_id  = x 
+        break  
+      end 
+      if x == params[:id].to_i 
+          flag = true 
+      else 
+        @prev_id = x 
+      end 
+
+    end 
+
     #@pathway = @step.pathway
     @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
     if @assignment.present?

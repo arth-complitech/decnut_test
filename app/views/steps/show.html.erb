@@ -4,8 +4,6 @@
 <div class="content-strip" style="margin-bottom: 0px!important">
 	<div class="strip-content">
 		<h4><%= @pathway.title %></h4>
-		<!--<p><%= @pathway.memo %></p>
-		<i class="fa fa-list"></i>-->
 	</div>
 	<div class="overlay">
 	</div>
@@ -13,9 +11,6 @@
 	<%= image_tag "pictures/0.jpg", :class => "preload-image", :style => "display: block;" %>
 </div>
 <div class="news-article-share full-bottom">
-	<!--<a href="https://www.facebook.com/sharer/sharer.php?u=your_link_here"><i class="facebook-color fa fa-facebook"></i></a>
-	<a href="https://twitter.com/home?status=your_text_here"><i class="twitter-color fa fa-twitter"></i></a>
-	<a href="https://plus.google.com/share?url=your_link_here"><i class="google-color fa fa-google-plus"></i></a>-->
 	<% if !@assignment.nil? %>
 	<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
 	<%#= submit_tag do %>
@@ -31,48 +26,38 @@
 	<%#= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
 	<% end %>
 	<% end %>
-	<!--<a href="mailto:?&subject=Your_subject&body=Your_text_here"><i class="mail-color fa fa-envelope-o"></i></a>-->
 	<div class="clear"></div>
 </div>
+<div class="content">
+		<% if @prev_id == -1 %>
+			<%=link_to  pathway_steps_path(params[:pathway_id]) ,:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+				 <i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;Back
+			<% end %> 
+		<% else %> 
+			<%=link_to  pathway_step_path(params[:pathway_id],@prev_id) ,:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+			<i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;Back
+			<% end %>
+		<% end %>
+	
+		<% if @next_id != 0%>
+		<%= link_to pathway_step_path(params[:pathway_id],@next_id),:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;float:right;top:0px;" do %>
+			<i class="fa fa-arrow-right" style="float:right; margin-top:inherit;"></i>Next&nbsp;&nbsp;
+		
+		<% end %> 
+	<% end %>
+		
+</div>
+
 <!--<div class="content">
-	<div class="decoration"></div>
+												<div class="decoration"></div>
 </div>-->
 <div class="content">
-	<p id="notice"><%= notice %></p>
+	<p id="notice"><%= notice %></p><br>
 	<!--<h4 class="no-bottom">Title</h4>-->
 	<h5><b><%= @step.title %></b></h5>
 	<!--<h4 class="no-bottom">Subtitle</h4>-->
 	<%= @step.subtitle %>
-	<!--<p class="news-article-small-text">
-		Posted by <a href="#">Enabled</a>
-			about <a href="#">40 minutes ago</a>
-				in <a href="#">Mobile News</a>
-	</p>-->
 </div>
-<!--
-<div class="single-item swiper-container-horizontal">
-	<div class="swiper-wrapper">
-		<div class="swiper-slide">
-			
-			<%#= image_tag "pictures/1.jpg", :class => "responsive-image", :alt => "img" %>
-		</div>
-		<div class="swiper-slide">
-			
-			<%#= image_tag "pictures/2.jpg", :class => "responsive-image", :alt => "img" %>
-		</div>
-		<div class="swiper-slide">
-			
-			<%#= image_tag "pictures/3.jpg", :class => "responsive-image", :alt => "img" %>
-		</div>
-	</div>
-</div>
--->
-<!--<div class="content">
-	<h5>Add a subtitle maybe?</h5>
-	<p class="half-bottom">
-		<%#= image_tag @step.url_link.url(:thumb)%>
-	</p>
-</div>-->
 <div class="content">
 	<!--<h4>Some awesome title goes here</h4>
 	<b><em>Body</em></b>-->
@@ -84,18 +69,9 @@
 	<!-- <div class="decoration"></div> -->
 	<p class="dropcaps-1 one-half-responsive" style="width: 100%;">
 		<%= @step.body %>
-		<!-- Also we have dropcaps ipsum dolor sit amet, consectetur adipiscing elit.
-		Donec varius dui et erat aliquet rutrum. Nunc vitae tincidunt magna.
-		In vitae efficitur enim. -->
 	</p>
 	<% if @step.url_to_youtube != nil %>
 	<div class="one-half-responsive1 width45">
-		<!-- <h3>YouTube Video</h3>
-		<p>
-			It's just a copy and a paste of an embed code, and our code
-			will do everything for you, make it responsive, and it's
-			compatible with everything!
-		</p> -->
 		<div class="responsive-video full-bottom">
 			<!-- <iframe src="https://www.youtube.com/embed/c9MnSeYYtYY"></iframe> -->
 			<%= embed(@step.url_to_youtube) %>
@@ -105,62 +81,3 @@
 	<div class="decoration hide-if-responsive"></div>
 </div>
 <% end %>
-<div class="content">
-	<!--<b><em>Memo</em></b>
-	<h5>Add a subtitle maybe?</h5>
-	<p class="half-bottom">
-		<%= @step.memo %>
-	</p>-->
-	<br>
-	<%=link_to  pathway_steps_path(params[:pathway_id]) ,:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;" do %>
-	<i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;
-	Back
-	<% end %>
-</div>
-<!-- <div class="content">
-	<h5>Maybe a gallery in here as well?</h5>
-	<p>
-		You can also add galleries, without a problem, easy as pie, to show your news content elements even better and even easier.
-	</p>
-	<div class="gallery square-thumbs no-bottom"> -->
-		<!-- <a href="images/pictures/1.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/1t.jpg" alt="img" src="images/pictures/1t.jpg" style="display: block;"></a> -->
-		<%#= link_to "images/pictures/1.jpg",:class=>"scale-hover show-gallery" , :title=>"Your caption here!" do %>
-		<%#= image_tag "pictures/1t.jpg" ,:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;"%>
-		<%# end %>
-		<%#= link_to "#{image_tag("pictures/1t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/2t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/3t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/4t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/5t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/6t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/7t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/8t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/1t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/2t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag("pictures/3t.jpg",:class=>"preload-image responsive-image",:alt=>"img", :style=>"display:block;")}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<%#= link_to "#{image_tag('pictures/4t.jpg',:class=>'preload-image responsive-image',:alt=>'img', :style=>'display:block;')}".html_safe, "#" ,:class=>"scale-hover show-gallery",:title=>"Your caption here!"  %>
-		<!-- <a href="images/pictures/2.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/2t.jpg" alt="img" src="images/pictures/2t.jpg" style="display: block;"></a>
-		<a href="images/pictures/3.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/3t.jpg" alt="img" src="images/pictures/3t.jpg" style="display: block;"></a>
-		<a href="images/pictures/4.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/4t.jpg" alt="img" src="images/pictures/4t.jpg" style="display: block;"></a>
-		<a href="images/pictures/5.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/5t.jpg" alt="img" src="images/pictures/5t.jpg" style="display: block;"></a>
-		<a href="images/pictures/6.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/6t.jpg" alt="img" src="images/pictures/6t.jpg" style="display: block;"></a>
-		<a href="images/pictures/7.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/7t.jpg" alt="img" src="images/pictures/7t.jpg" style="display: block;"></a>
-		<a href="images/pictures/8.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/8t.jpg" alt="img" src="images/pictures/8t.jpg" style="display: block;"></a>
-		<a href="images/pictures/1.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/9t.jpg" alt="img" src="images/pictures/9t.jpg" style="display: block;"></a>
-		<a href="images/pictures/2.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/2t.jpg" alt="img" src="images/pictures/2t.jpg" style="display: block;"></a>
-		<a href="images/pictures/3.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/3t.jpg" alt="img" src="images/pictures/3t.jpg" style="display: block;"></a>
-		<a href="images/pictures/4.jpg" class="scale-hover show-gallery" title="Your caption here!"><img class="preload-image responsive-image" data-original="images/pictures/4t.jpg" alt="img" src="images/pictures/4t.jpg" style="display: block;"></a> -->
-	<!-- </div>
-	<p>
-		And after all these features, lets' give you even more great news, really, a lot more great news!
-	</p> -->
-	<!-- <div class="decoration"></div>
-	<h4>You can use any feature from our pages!</h4>
-	<p>
-		Yes, you got that right! You can add any element from any page inside the news! And we included all the pages
-		inside for your delight, this is not just a news template. It's a full blown template with a news extension added to it!
-	</p> -->
-<!-- </div> -->
-<!--<div class="content">
-	<div class="decoration"></div>
-</div>-->
