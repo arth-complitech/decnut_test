@@ -11,10 +11,12 @@ class AssignmentsController < ApplicationController
 	 user = User.find(params[:assignment][:user_id])
 	 @assignment = @pathway.assignments.build(user_id: params[:assignment][:user_id], creator_user_id: params[:creator_user_id])
 	  respond_to do |format|
+      unless Assignment.where(:pathway_id => params[:pathway_id], :user_id => params[:assignment][:user_id], :status => nil).present?
       	if @assignment.save
         	format.html { redirect_to assignments_url, notice: 'Assignment was successfully created.' }
-        else
-        	format.html { redirect_to assign_user_path(params[:pathway_id]), notice: 'This pathway is already assigned to ' << user.fullname }
+        end
+      else
+        format.html { redirect_to assign_user_path(params[:pathway_id]), notice: 'This pathway is already assigned to ' << user.email }
      	end
      end
 	end
