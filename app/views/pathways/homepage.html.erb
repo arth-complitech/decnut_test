@@ -30,7 +30,7 @@
 		<em><br></em>
 		<% else %>
 		<strong align="left"><%= pathway.title %></strong>
-		<em align="left"><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<em align="left"><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
 		<% end %>
 		<br>
 		<% end %>
@@ -53,7 +53,7 @@
 		<em><br></em>
 		<% else %>
 		<strong><%= pathway.title %></strong>
-		<em><%= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+		<em><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
 		<% end %>
 		<br>
 		<% end %>
