@@ -13,6 +13,8 @@
   <strong>Type:</strong>
   <%= @user.type %><br>
 
+  <strong>Group:</strong>
+  <%= @user.group.try(:name) %><br>
   <!-- <strong>Department:</strong> -->
   <!-- <%#= @user.department.try(:name) %><br> -->
 

@@ -5,8 +5,8 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Active</th>
-        <th>Status</th>
+        <!--<th>Active</th>
+        <th>Status</th>-->
         <th>Code</th>
         <th>Memo</th>
         <th colspan="3">Actions</th>
@@ -16,8 +16,8 @@
       <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.active %></td>
-        <td><%= group.status %></td>
+        <!--<td><%#= group.active %></td>
+        <td><%#= group.status %></td>-->
         <td><%= group.registration_code %></td>
         <td><%= group.memo %></td>
         <td><%= link_to 'Show', group %></td>

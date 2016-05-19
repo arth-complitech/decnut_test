@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th>Title</th>
-        <th>Active</th>
+        <!--<th>Active</th>-->
         <th>Memo</th>
         <th>Group</th>
         <th>Create Assignment</th>
@@ -16,7 +16,7 @@
       <% @pathways.each do |pathway| %>
       <tr>
         <td><%= pathway.title %></td>
-        <td><%= pathway.active %></td>
+        <!--<td><%#= pathway.active %></td>-->
         <td><%= pathway.memo %></td>
         <td><%= pathway.group.try(:name) %></td>
         <td>
