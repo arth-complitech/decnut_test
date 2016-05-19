@@ -58,13 +58,13 @@ class PathwaysController < ApplicationController
   # PATCH/PUT /pathways/1
   # PATCH/PUT /pathways/1.json
   def update
+    if current_user.super_admin?
+      @pathway.group_id = params[:pathway][:group_id]
+    else
+      @pathway.group_id=current_user.group_id
+    end
     respond_to do |format|
       if @pathway.update(pathway_params)
-         if current_user.super_admin?
-          @pathway.group_id = params[:pathway][:group_id]
-        else
-          @pathway.group_id=current_user.group_id
-        end
         @pathway.pathways_steps.each do |pathways_step|
           if pathways_step.display_order.nil?  
             max_display_order = @pathway.get_max_display_order
@@ -111,11 +111,6 @@ class PathwaysController < ApplicationController
     @pathway=Pathway.find(params[:pathway_id])
     duplicated_pathway = @pathway.deep_clone include: :steps
     if duplicated_pathway.save
-       if current_user.super_admin?
-          duplicated_pathway.group_id = params[:pathway][:group_id]
-       else
-          duplicate_pathway.group_id=current_user.group_id
-      end
        duplicated_pathway.pathways_steps.each_with_index do |pathways_step,index|
           pathways_step.display_order=index+1
           pathways_step.save
@@ -142,7 +137,7 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo ,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:url_to_youtube,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
+      params.require(:pathway).permit(:title, :active, :memo, :group_id,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:url_to_youtube,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
     end
 
     def check_user
