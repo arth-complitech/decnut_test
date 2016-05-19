@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require jquery-ui/sortable	
 //= require jquery_nested_form
+//= require ckeditor/init
 // require group 
 //= require_self
 // require_tree .

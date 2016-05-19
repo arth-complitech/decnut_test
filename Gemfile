@@ -25,6 +25,8 @@ gem "font-awesome-rails"
 gem "html_truncator", "~>0.2"
 # for assets precompile
 gem 'rails_12factor', group: :production
+# for text editor
+gem 'ckeditor'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

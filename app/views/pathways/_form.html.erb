@@ -17,7 +17,7 @@
     </div>
     <div class="field">
       <%= f.label :memo %><br>
-      <%= f.text_area :memo , :hide_label => true%>
+      <%= f.text_area :memo, :hide_label => true %>
     </div>
     <% if current_user.content_admin? or current_user.local_admin? %>
 
@@ -51,17 +51,18 @@
         <%= step.text_field :title , :hide_label => true%><br>
         <%= step.label :subtitle %><br>
         <%= step.text_field :subtitle , :hide_label => true%><br>
+        <%= step.label :memo %> <br>
+        <%= step.text_field :memo , :hide_label => true%><br>
         <%= step.label :url_to_youtube%>
         <%= step.text_field :url_to_youtube , :hide_label => true%><br>
+        <%= step.label :file %><br>
+        <%= step.file_field :url_link , :hide_label => true%>
       </div>
       
       <div class="col-lg-4">
         <%= step.label :body %> <br>
-        <%= step.text_area :body , :hide_label => true%><br>
-        <%= step.label :file %><br>
-        <%= step.file_field :url_link , :hide_label => true%><br>
-        <%= step.label :memo %> <br>
-        <%= step.text_field :memo , :hide_label => true%><br>
+        <%= step.cktext_area  :body, :ckeditor=>{:toolbar=>"mini"} %>
+        
         <%#= f.fields_for :pathways_steps do |pathways_step| %>
         <%#= pathways_step.text_field :display_order %>
         <%# end %>

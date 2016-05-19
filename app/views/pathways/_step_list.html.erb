@@ -5,7 +5,7 @@
 	<div class="ul-width">
 		<ul>
 			<li> Subtitle : <%= pathway_step.step.subtitle %></li>
-			<li> Body : <%= pathway_step.step.body %></li>
+			<li> Body : <%= raw(pathway_step.step.body) %></li>
 			<!--<li> Active : <%#= pathway_step.step.active %></li>-->
 			<li> Memo : <%= pathway_step.step.memo %></li>
 			<li> Youtube Url : <%= pathway_step.step.url_to_youtube %></li>
