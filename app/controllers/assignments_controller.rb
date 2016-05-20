@@ -30,7 +30,7 @@ class AssignmentsController < ApplicationController
 				# @assignment.destroy
 				redirect_to root_path
 			else
-				redirect_to step_index_path
+				redirect_to pathway_steps_path
 			end
 		end
 	end

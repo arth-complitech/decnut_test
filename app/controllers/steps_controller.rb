@@ -5,7 +5,8 @@ class StepsController < ApplicationController
   def index
     @pathway = Pathway.includes(:pathways_steps,:steps).find(params[:pathway_id])
     @pathways_steps = @pathway.pathways_steps.order(:display_order)
-    @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
+    #@assignment = current_user.assignments.where(pathway_id: @pathway.id).first
+    @assignment = current_user.assignments.where(pathway_id: @pathway.id, status: nil).first
 
     if @assignment.present?
       @assignments = Assignment.all.pluck(:pathway_id).uniq
@@ -46,7 +47,7 @@ class StepsController < ApplicationController
     end 
 
     #@pathway = @step.pathway
-    @assignment = current_user.assignments.where(pathway_id: @pathway.id).first
+    @assignment = current_user.assignments.where(pathway_id: @pathway.id, status: nil).first
     if @assignment.present?
       @assignments = Assignment.all.pluck(:pathway_id).uniq
       @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
