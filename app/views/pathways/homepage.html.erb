@@ -22,7 +22,7 @@
 	<% @pathways.each do |pathway| %>
 	<% if pathway.active == true %>
 	<%# if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil %>
-	<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id, status: nil) %>
+	<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id, status: nil).first %>
 	<div class="thumb-layout">
 		<%= link_to pathway_steps_path(pathway) do %>
 		<% if pathway.memo == "" %>

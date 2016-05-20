@@ -8,7 +8,7 @@
   <%= @assignment.pathway.try(:title) %><br>
 
   <strong>Created by:</strong>
-  <%= @assignment.creator_user_id.try(:fullname) %><br>
+  <%= User.find(@assignment.creator_user_id).email %><br>
 
   <strong title="steps completed out of total steps">Progress:</strong>
   <%= AssignmentsStep.all.where(:assignment_id => @assignment.id).count %> of <%= @assignment.pathway.steps.count %><br>
