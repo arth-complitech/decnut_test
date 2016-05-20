@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  include MixPanel
 # before_action :configure_sign_in_params, only: [:create]
   # GET /resource/sign_in
   # def new
@@ -6,9 +7,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    mix_panel_sign_in(current_user,"Sign In Page")
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
