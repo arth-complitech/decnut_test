@@ -1,3 +1,11 @@
+<style type="text/css">
+	.coloryel::before {
+		color: #ffff00;
+	}
+	.bocolyel::before {
+		color:#000000;
+	}
+</style>
 <div class="header-clear"></div>
 <div class="content-strip" style="background-color: white;padding-top:10px;padding-bottom:10px;">
 	<div class="strip-content text-center">
@@ -49,10 +57,32 @@
 	<div class="thumb-layout">
 		<%= link_to pathway_steps_path(pathway) do %>
 		<% if pathway.memo == "" %>
-		<strong><%= pathway.title %></strong>
+		<strong style="float:left;"><%= pathway.title %></strong>
+		<strong style="float:right;">
+		<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
+		<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
+		<i class="fa fa-star-o bocolyel" aria-hidden="true"></i>
+		<% end %>
+		<%- else -%>
+		<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
+		<i class="fa fa-star coloryel" aria-hidden="true"></i>
+		<% end %>
+		<%- end -%>
+		</strong>
 		<em><br></em>
 		<% else %>
-		<strong><%= pathway.title %></strong>
+		<strong style="float:left;"><%= pathway.title %></strong>
+		<strong style="float:right;">
+		<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
+		<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
+		<i class="fa fa-star-o bocolyel" aria-hidden="true"></i>
+		<% end %>
+		<%- else -%>
+		<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
+		<i class="fa fa-star coloryel" aria-hidden="true"></i>
+		<% end %>
+		<%- end -%>
+		</strong>
 		<em><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
 		<% end %>
 		<br>

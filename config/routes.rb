@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   match "invite_user" => "twilio#new_invite_user", :via => :get, as: :invite_new_user
   post "twilio/invite_user", to: "twilio#invite_user", as: :invite_user
+  resources :favorite_pathways, only: [:create, :destroy]
   # resources :phone_numbers, only: [:new, :create]
   # post 'phone_numbers/verify' => "phone_numbers#verify"
 
