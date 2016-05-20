@@ -1,4 +1,5 @@
 class StepsController < ApplicationController
+  include MixPanel
   before_action :set_step, only: [:show, :edit, :update, :destroy]
   # GET /steps
   # GET /steps.json
@@ -19,7 +20,7 @@ class StepsController < ApplicationController
         @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
       end
     end
-
+     mix_panel_view_steps_index(current_user,"Steps of Pathway")
   end
 
   # GET /steps/1
