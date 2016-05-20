@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-
+  include MixPanel
 	def assign_user
 		@users=User.all.where(:type=>["LocalUser","LocalAdmin"])
 		@pathway=Pathway.find(params[:pathway_id])
@@ -33,6 +33,7 @@ class AssignmentsController < ApplicationController
 				redirect_to pathway_steps_path
 			end
 		end
+    mix_panel_completed_pathway(current_user,"Completed Pathways")    
 	end
 
 	def index
