@@ -38,7 +38,7 @@ module MixPanel
 	  	tracker = Mixpanel::Tracker.new(Rails.application.secrets.mix_panel_token)
 
 			# Send an update to User1's profile
-      	# tracker.track(user.email, event)
+      	 tracker.track(user.email, event)
 
       	# tracker.people.set(user.email, {
 			    # '$first_name' => user.first_name,
