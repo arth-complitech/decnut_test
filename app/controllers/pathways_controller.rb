@@ -103,6 +103,10 @@ class PathwaysController < ApplicationController
     @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
     @library_pathway_ids = @pathway_all - @assignments
     @library_pathways = Pathway.find(@library_pathway_ids)
+    @favorite_pathway_ids = current_user.favorite_pathways.pluck(:id)
+    @favorite_pathways = Pathway.find(@favorite_pathway_ids)
+    @unfavorite_pathway_ids = @library_pathway_ids - @favorite_pathway_ids
+    @unfavorite_pathways = Pathway.find(@unfavorite_pathway_ids)
     #@references = Pathway.all.where(:pathway_type => "Reference")
     #@completed_pathway_ids = AssignmentsStep.find_by(:assignment_id => @assignment).assignment.pathway_id
     mix_panel_view_home_page(current_user,"View Home Page of User")
