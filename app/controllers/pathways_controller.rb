@@ -104,6 +104,7 @@ class PathwaysController < ApplicationController
     @library_pathways = Pathway.find(@library_pathway_ids)
     #@references = Pathway.all.where(:pathway_type => "Reference")
     #@completed_pathway_ids = AssignmentsStep.find_by(:assignment_id => @assignment).assignment.pathway_id
+    mix_panel_view_home_page(current_user,"View Home Page of User")
   end
 
 

@@ -27,6 +27,8 @@ gem "html_truncator", "~>0.2"
 gem 'rails_12factor', group: :production
 # for text editor
 gem 'ckeditor'
+#Tracking your tasks
+ gem 'mixpanel-ruby'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
