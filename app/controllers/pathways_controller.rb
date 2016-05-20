@@ -1,4 +1,5 @@
 class PathwaysController < ApplicationController
+  include MixPanel
   before_action :set_pathway, only: [:show, :edit, :update, :destroy,:sort]
   before_action :check_user , only: [:new, :create, :show, :index, :edit, :update, :destroy]
   # GET /pathways
