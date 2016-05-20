@@ -10,7 +10,26 @@
 	<!--<img class="preload-image" data-original="images/pictures/0.jpg" alt="img" src="images/pictures/0.jpg" style="display: block;">-->
 	<%= image_tag "pictures/0.jpg", :class => "preload-image", :style => "display: block;" %>
 </div>
-<div class="news-article-share full-bottom">
+<div class="content" style="margin-bottom:0px;width:100%;height:40px;padding-left:10px;padding-right:10px;">
+		<% if @prev_id == -1 %>
+			<%=link_to  pathway_steps_path(params[:pathway_id]),:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+				 <i class="fa fa-arrow-left page-blog-list-more" style="float:left; margin-top:inherit;"></i>
+			<% end %> 
+		<% else %> 
+			<%=link_to  pathway_step_path(params[:pathway_id],@prev_id) ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+			<i class="fa fa-arrow-left page-blog-list-more" style="float:left; margin-top:inherit;"></i>
+			<% end %>
+		<% end %>
+	
+		<% if @next_id != 0%>
+		<%= link_to pathway_step_path(params[:pathway_id],@next_id) ,:style=>"margin-top:-5px;float:right;top:30px;" do %>
+			<i class="fa fa-arrow-right page-blog-list-more" style="float:right; margin-top:inherit;"></i>
+		
+		<% end %> 
+	<% end %>
+</div>
+
+<div class="news-article-share full-bottom" style="margin-bottom: 0px !important;">
 	<% if !@assignment.nil? %>
 	<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
 	<%#= submit_tag do %>
@@ -28,34 +47,8 @@
 	<% end %>
 	<div class="clear"></div>
 </div>
-<div class="content">
-		<% if @prev_id == -1 %>
-			<%=link_to  pathway_steps_path(params[:pathway_id]) ,:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
-				 <i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;Back
-			<% end %> 
-		<% else %> 
-			<%=link_to  pathway_step_path(params[:pathway_id],@prev_id) ,:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
-			<i class="fa fa-arrow-left" style="float:left; margin-top:inherit;"></i>&nbsp;&nbsp;Back
-			<% end %>
-		<% end %>
-	
-		<% if @next_id != 0%>
-		<%= link_to pathway_step_path(params[:pathway_id],@next_id),:class=>"page-blog-list-more" ,:style=>"margin-top:-5px;float:right;top:0px;" do %>
-			<i class="fa fa-arrow-right" style="float:right; margin-top:inherit;"></i>Next&nbsp;&nbsp;
-		
-		<% end %> 
-	<% end %>
-		
-</div>
-
-<!--<div class="content">
-												<div class="decoration"></div>
-</div>-->
-<div class="content">
-	<p id="notice"><%= notice %></p><br>
-	<!--<h4 class="no-bottom">Title</h4>-->
+<div class="content" style="margin-top:20px;">
 	<h5><b><%= @step.title %></b></h5>
-	<!--<h4 class="no-bottom">Subtitle</h4>-->
 	<%= @step.subtitle %>
 </div>
 <div class="content">
@@ -68,7 +61,8 @@
 <div class="content">
 	<!-- <div class="decoration"></div> -->
 	<p class="dropcaps-1 one-half-responsive" style="width: 100%;">
-		<%= @step.body %>
+		<%= raw(@step.body) %>
+		<%#= @step.body %>
 	</p>
 	<% if @step.url_to_youtube != nil %>
 	<div class="one-half-responsive1 width45">
