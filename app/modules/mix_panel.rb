@@ -40,3 +40,4 @@ module MixPanel
   end
 
 end
+end
