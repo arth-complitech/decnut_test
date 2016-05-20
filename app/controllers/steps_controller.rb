@@ -60,6 +60,7 @@ class StepsController < ApplicationController
         @completed_steps_count = AssignmentsStep.where(:assignment_id => @assignment.id).count
       end
     end
+   mix_panel_view_step_details(current_user,"View Details of Step")    
   end
 
   # GET /steps/new
