@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    mix_panel_sign_up("","Sign Up")
     @user=LocalUser.new
     super
   end
