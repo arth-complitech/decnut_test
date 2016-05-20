@@ -3,7 +3,7 @@ class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
   # GET /resource/sign_in
   def new
-    mix_panel_sign_in(current_user,"Sign In Page")
+    mix_panel_sign_in("","Sign In Page")
     super
   end
 
