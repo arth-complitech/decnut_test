@@ -143,6 +143,7 @@ class StepsController < ApplicationController
     else
       render pathway_step_path(@pathway,@step)
     end
+    mix_panel_view_completed_steps(current_user,"Steps Marked As Complete")    
   end
 
   private
