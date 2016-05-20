@@ -29,12 +29,12 @@ class StepsController < ApplicationController
     @pathway = Pathway.find(params[:pathway_id])
     @step = Step.find(params[:id])
     @step_ids = []
-    step_ids = @pathway.pathways_steps.pluck(:step_id)
+    step_ids = @pathway.pathways_steps.order(:display_order).pluck(:step_id)
     @next_id = 0
     @prev_id = -1
     flag = false 
     logger.warn("=======#{step_ids.inspect}")
-    step_ids.each do  |x|
+    step_ids.each do |x|
       if flag == true 
         @next_id  = x 
         break  
@@ -43,6 +43,7 @@ class StepsController < ApplicationController
           flag = true 
       else 
         @prev_id = x 
+        flag = false
       end 
 
     end 
