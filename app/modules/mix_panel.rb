@@ -34,10 +34,10 @@ module MixPanel
 	      })
 	  end	
 
-  def self.included(receiver)
+  	def self.included(receiver)
     receiver.extend         ClassMethods
     receiver.send :include, InstanceMethods
-  end
-
-end
+  	end
+	end
+	end
 end
