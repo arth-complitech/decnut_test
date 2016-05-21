@@ -34,6 +34,7 @@
 	<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id, status: nil).first %>
 	<div class="thumb-layout">
 		<%= link_to pathway_steps_path(pathway) do %>
+		 <%= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
 		<strong align="left"><%= pathway.title %></strong>
 		<em><br></em>
@@ -59,9 +60,10 @@
 	<div class="thumb-layout">
 	<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) do %>
+			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 			<% if pathway.memo == "" %>
-				<strong style="float:left;"><%= pathway.title %></strong>
-				<strong style="float:right;">
+				<strong style="float:left;width:60px;"><%= pathway.title %></strong>
+				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
 						<i class="fa fa-star-o bocolyel" aria-hidden="true"></i>
@@ -72,10 +74,10 @@
 					<% end %>
 				<%- end -%>
 				</strong>
-				<em><br></em>
+				<br>
 			<% else %>
 				<strong style="float:left;"><%= pathway.title %></strong>
-				<strong style="float:right;">
+				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
 						<i class="fa fa-star-o bocolyel" aria-hidden="true"></i>
@@ -86,7 +88,7 @@
 					<% end %>
 				<%- end -%>
 				</strong>
-				<em><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+				<br>
 			<% end %>
 		<br>
 		<% end %>
@@ -98,9 +100,10 @@
 	<div class="thumb-layout">
 	<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) do %>
+			 <%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 			<% if pathway.memo == "" %>
-				<strong style="float:left;"><%= pathway.title %></strong>
-				<strong style="float:right;">
+				<strong><%= pathway.title %></strong>
+				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
 						<i class="fa fa-star-o bocolyel" aria-hidden="true"></i>
@@ -111,10 +114,10 @@
 					<% end %>
 				<%- end -%>
 				</strong>
-				<em><br></em>
+				<br>
 			<% else %>
 				<strong style="float:left;"><%= pathway.title %></strong>
-				<strong style="float:right;">
+				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
 						<i class="fa fa-star-o bocolyel" aria-hidden="true"></i>
@@ -125,7 +128,7 @@
 					<% end %>
 				<%- end -%>
 				</strong>
-				<em><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+				<br>
 			<% end %>
 		<br>
 		<% end %>
