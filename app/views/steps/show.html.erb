@@ -73,7 +73,7 @@
 		<%= raw(@step.body) %>
 		<%#= @step.body %>
 	</p>
-	<% if @step.url_to_youtube == "" %>
+	<% if @step.url_to_youtube == "" or @step.url_to_youtube == nil %>
 	<div class="one-half-responsive1 width45">
 		<!--<div class="responsive-video full-bottom">
 		</div>-->

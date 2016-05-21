@@ -145,7 +145,7 @@
 
 	<% @completed_pathways.each do |pathway| %>
 	<div class="thumb-layout">
-		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
+		<%# if .include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
