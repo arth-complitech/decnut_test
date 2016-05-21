@@ -63,6 +63,7 @@
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 			<% if pathway.memo == "" %>
 				<strong style="float:left;"><%= pathway.title %></strong>
+				<em><br></em>
 				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
@@ -77,6 +78,7 @@
 				<br>
 			<% else %>
 				<strong style="float:left;"><%= pathway.title %></strong>
+				<em><br></em>
 				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
@@ -103,6 +105,7 @@
 			 <%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 			<% if pathway.memo == "" %>
 				<strong><%= pathway.title %></strong>
+				<em><br></em>
 				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
@@ -117,6 +120,7 @@
 				<br>
 			<% else %>
 				<strong style="float:left;"><%= pathway.title %></strong>
+				<em><br></em>
 				<strong style="float:right;padding-left:260px;top:0px;">
 				<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 					<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
