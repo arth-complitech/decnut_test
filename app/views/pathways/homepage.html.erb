@@ -14,7 +14,7 @@
 	<a href="#" class="header-icon-4 open-right-sidebar"><i class="fa fa-envelope-o"></i></a>
 </div>
 <div class="header-clear"></div>
- <div class="content-strip" style="background-color: white;padding-top:0px;padding-bottom:0px;margin-bottom:30px;">
+<div class="content-strip" style="background-color: white;padding-top:0px;padding-bottom:0px;margin-bottom:30px;">
 </div>
 <div class="text-slider content-fullscreen swiper-container-horizontal">
 	<div class="swiper-wrapper" style="transform: translate3d(-2118px, 0px, 0px); transition-duration: 0ms;">
@@ -37,15 +37,15 @@
 	<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id, status: nil).first %>
 	<div class="thumb-layout">
 		<%= link_to pathway_steps_path(pathway) do %>
-		<%= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
-		<% if pathway.memo == "" %>
-		<strong align="left"><%= pathway.title %></strong>
-		<em><br></em>
-		<% else %>
-		<strong align="left"><%= pathway.title %></strong>
-		<em align="left"><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
-		<% end %>
-		<br>
+			<%= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
+			<% if pathway.memo == "" %>
+				<strong align="left"><%= pathway.title %></strong>
+				<em><br></em>
+			<% else %>
+				<strong align="left"><%= pathway.title %></strong>
+				<em align="left"><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+			<% end %>
+			<br>
 		<% end %>
 		<!-- </a> -->
 	</div>
@@ -63,18 +63,10 @@
 	<div class="thumb-layout">
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) do %>
-		
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
-
-		
-
 		<% if pathway.memo == "" %>
-		
-		
-
 			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
 			<em></em>
-		
 			<span style="float:right;top:0px;">
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 			<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
@@ -86,70 +78,113 @@
 			<% end %>
 			<%- end -%>
 			</span>
-		
-		<br>
+			<br>
 		<% else %>
-		<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
-		<em></em>
-		<span style="float:right;top:0px;">
-		<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
-		<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-		<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
-		<% end %>
-		<%- else -%>
-		<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-		<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
-		<% end %>
-		<%- end -%>
-		</span>
-		<br>
+			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
+			<em></em>
+			<span style="float:right;top:0px;">
+			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
+				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- else -%>
+				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- end -%>
+			</span>
+			<br>
 		<% end %>
 		<br>
 		<% end %>
 		<%# end %>
 	</div>
 	<% end %>
+
 	<% @unfavorite_pathways.each do |pathway| %>
 	<div class="thumb-layout">
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) do %>
-		<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
+			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
-		<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
-		<em></em>
-		<span style="float:right;top:0px;">
-		<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
-		<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-		<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
-		<% end %>
-		<%- else -%>
-		<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-		<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
-		<% end %>
-		<%- end -%>
-		</span>
-		<br>
+			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
+			<em></em>
+			<span style="float:right;top:0px;">
+			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
+				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- else -%>
+				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- end -%>
+			</span>
+			<br>
 		<% else %>
-		<strong style="float:left;" class="responsive_width"><%= pathway.title %></strong>
-		<em></em>
-		<span style="float:right;top:0px;">
-		<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
-		<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-		<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
-		<% end %>
-		<%- else -%>
-		<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-		<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
-		<% end %>
-		<%- end -%>
-		</span>
-		<br>
+			<strong style="float:left;" class="responsive_width"><%= pathway.title %></strong>
+			<em></em>
+			<span style="float:right;top:0px;">
+			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
+				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- else -%>
+				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- end -%>
+			</span>
+			<br>
 		<% end %>
 		<br>
 		<% end %>
 		<%# end %>
 	</div>
 	<% end %>
+
+	<% @completed_pathways.each do |pathway| %>
+	<div class="thumb-layout">
+		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
+		<%= link_to pathway_steps_path(pathway) do %>
+			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
+		<% if pathway.memo == "" %>
+			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
+			<em></em>
+			<span style="float:right;top:0px;">
+			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
+				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- else -%>
+				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- end -%>
+			</span>
+			<br>
+		<% else %>
+			<strong style="float:left;" class="responsive_width"><%= pathway.title %></strong>
+			<em></em>
+			<span style="float:right;top:0px;">
+			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
+				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- else -%>
+				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+				<% end %>
+			<%- end -%>
+			</span>
+			<br>
+		<% end %>
+		<br>
+		<% end %>
+		<%# end %>
+	</div>
+	<% end %>
+
 	<div class="decoration"></div>
 	<!-- <a href="#" class="button button-center button-blue button-fullscreen">More news</a> -->
 </div>
