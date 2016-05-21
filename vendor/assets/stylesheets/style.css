@@ -114,7 +114,6 @@
     overflow:hidden;
     padding-top:35px;
     padding-bottom:30px;
-    margin-bottom:30px;
 }
 
 @media(min-width:768px){
@@ -173,7 +172,7 @@
     left:0px;
     right:0px;
     z-index:1;
-    background-color:rgba(0,0,0,0.7);
+    background-color:#179DBA;
 }
 
 .content-strip img{
