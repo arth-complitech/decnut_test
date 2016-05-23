@@ -39,11 +39,11 @@
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 			<% if pathway.memo == "" %>
-				<h5 style="float:left;margin-top:60px;"><%= pathway.title %></h5>
+				<h5 style="float:left;margin-top:60px;" class="responsive_width"><%= pathway.title %></h5>
 				<em><br></em>
 			<% else %>
-				<h5 style="float:left;margin-top:60px;"><%= pathway.title %></h5>
-				<em align="left"><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+				<h5 style="float:left;margin-top:60px;" class="responsive_width"><%= pathway.title %></h5>
+				<em align="left"><br><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
 			<% end %>
 			<br>
 		<% end %>
@@ -53,7 +53,7 @@
 	<% end %>
 	<% end %>
 </div>
-<div class="content">
+<div class="content" style="margin-top:30px;">
 	<div class="decoration"></div>
 	<div class="heading-badge border-green-dark" style="border-color:#2980b9!important;">
 		<h3 class="bg-green-dark" style="width:200px;background-color: #2980b9!important; ">Library Pathways</h3>
