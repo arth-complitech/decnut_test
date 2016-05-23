@@ -39,10 +39,10 @@
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 			<% if pathway.memo == "" %>
-				<strong align="left"><%= pathway.title %></strong>
+				<h5 align="left"><%= pathway.title %></h5>
 				<em><br></em>
 			<% else %>
-				<strong align="left"><%= pathway.title %></strong>
+				<h5 align="left"><%= pathway.title %></h5>
 				<em align="left"><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
 			<% end %>
 			<br>
@@ -65,7 +65,7 @@
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
-			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
+			<h5 style="float:left" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
 			<span style="float:right;top:0px;">
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
@@ -80,7 +80,7 @@
 			</span>
 			<br>
 		<% else %>
-			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
+			<h5 style="float:left" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
 			<span style="float:right;top:0px;">
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
@@ -107,7 +107,7 @@
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
-			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
+			<h5 style="float:left" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
 			<span style="float:right;top:0px;">
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
@@ -122,7 +122,7 @@
 			</span>
 			<br>
 		<% else %>
-			<strong style="float:left;" class="responsive_width"><%= pathway.title %></strong>
+			<h5 style="float:left;" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
 			<span style="float:right;top:0px;">
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
@@ -149,7 +149,7 @@
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
-			<strong style="float:left" class="responsive_width"><%= pathway.title %></strong>
+			<h5 style="float:left" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
 			<span style="float:right;top:0px;">
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
@@ -164,7 +164,7 @@
 			</span>
 			<br>
 		<% else %>
-			<strong style="float:left;" class="responsive_width"><%= pathway.title %></strong>
+			<h5 style="float:left;" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
 			<span style="float:right;top:0px;">
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
