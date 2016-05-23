@@ -12,8 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    resource.set_group
+    if params[:user][:registration_code] == ""
+      redirect_to new_user_registration_path, :notice => "please enter registration code"
+    else
+      super
+      resource.set_group
+    end
   end
 
   # GET /resource/edit
