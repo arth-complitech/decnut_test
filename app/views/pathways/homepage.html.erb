@@ -63,7 +63,7 @@
 	<%# @library_pathways.each do |pathway| %>
 	<% @favorite_pathways.each_with_index do |pathway,index| %>
 	<div class="thumb-layout">
-		<% if index > 0 %>
+		<% if @assigned_pathways.nil? %>
 			<div class="decoration"></div>
 		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
@@ -108,7 +108,7 @@
 
 	<% @unfavorite_pathways.each_with_index do |pathway,index| %>
 	<div class="thumb-layout">
-		<% if index > 0 %>
+		<% if @favorite_pathways.nil? %>
 			<div class="decoration"></div>
 		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
@@ -153,7 +153,7 @@
 
 	<% @completed_pathways.each_with_index do |pathway,index| %>
 	<div class="thumb-layout">
-		<% if index > 0 %>
+		<% if @favorite_pathways.nil? and !@unfavorite_pathways.nil? %>
 			<div class="decoration"></div>
 		<% end %>
 		<% if !@favorite_pathway_ids.include? pathway.id  %>
