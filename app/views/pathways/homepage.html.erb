@@ -31,11 +31,14 @@
 	<div class="heading-badge border-green-dark">
 		<h3 class="bg-green-dark" style="width:200px">Assigned Pathways</h3>
 	</div>
-	<% @pathways.each do |pathway| %>
+	<% @assigned_pathways.each_with_index do |pathway,index| %>
 	<% if pathway.active == true %>
 	<%# if Assignment.where(pathway_id: pathway.id, user_id: current_user.id).first.status == nil %>
-	<% if Assignment.where(pathway_id: pathway.id, user_id: current_user.id, status: nil).first %>
+	<%# if Assignment.where(pathway_id: pathway.id, user_id: current_user.id, status: nil).first %>
 	<div class="thumb-layout">
+		<% if index > 0 %>
+			<div class="decoration"></div>
+		<% end %>
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 			<% if pathway.memo == "" %>
@@ -47,10 +50,9 @@
 			<% end %>
 			<br>
 		<% end %>
-			<div class="decoration"></div>
 		<!-- </a> -->
 	</div>
-	<% end %>
+	<%# end %>
 	<% end %>
 	<% end %>
 </div>
@@ -59,8 +61,11 @@
 		<h3 class="bg-green-dark" style="width:200px;background-color: #2980b9!important; ">Library Pathways</h3>
 	</div>
 	<%# @library_pathways.each do |pathway| %>
-	<% @favorite_pathways.each do |pathway| %>
+	<% @favorite_pathways.each_with_index do |pathway,index| %>
 	<div class="thumb-layout">
+		<% if index > 0 %>
+			<div class="decoration"></div>
+		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
@@ -79,7 +84,6 @@
 			<%- end -%>
 			</span>
 			<br>
-			<div class="decoration"></div>
 		<% else %>
 			<h5 style="float:left;margin-top:60px;" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
@@ -95,15 +99,18 @@
 			<%- end -%>
 			</span>
 			<br>
-			<div class="decoration"></div>
 		<% end %>
 		<% end %>
+		<br>
 		<%# end %>
 	</div>
 	<% end %>
 
-	<% @unfavorite_pathways.each do |pathway| %>
+	<% @unfavorite_pathways.each_with_index do |pathway,index| %>
 	<div class="thumb-layout">
+		<% if index > 0 %>
+			<div class="decoration"></div>
+		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
@@ -122,7 +129,6 @@
 			<%- end -%>
 			</span>
 			<br>
-			<div class="decoration"></div>
 		<% else %>
 			<h5 style="float:left;margin-top:60px;" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
@@ -138,15 +144,18 @@
 			<%- end -%>
 			</span>
 			<br>
-			<div class="decoration"></div>
 		<% end %>
 		<% end %>
+		<br>
 		<%# end %>
 	</div>
 	<% end %>
 
-	<% @completed_pathways.each do |pathway| %>
+	<% @completed_pathways.each_with_index do |pathway,index| %>
 	<div class="thumb-layout">
+		<% if index > 0 %>
+			<div class="decoration"></div>
+		<% end %>
 		<% if !@favorite_pathway_ids.include? pathway.id  %>
 		<%= link_to pathway_steps_path(pathway) do %>
 			<%= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
@@ -165,7 +174,6 @@
 			<%- end -%>
 			</span>
 			<br>
-			<div class="decoration"></div>
 		<% else %>
 			<h5 style="float:left;margin-top:60px;" class="responsive_width"><%= pathway.title %></h5>
 			<em></em>
@@ -181,14 +189,14 @@
 			<%- end -%>
 			</span>
 			<br>
-			<div class="decoration"></div>
 		<% end %>
 		<% end %>
+		<br>
 		<% end %>
 	</div>
 	<% end %>
-
 	<!-- <div class="decoration"></div> -->
 	<!-- <a href="#" class="button button-center button-blue button-fullscreen">More news</a> -->
 </div>
+<br><br>
 <% end %>

@@ -109,6 +109,8 @@ class PathwaysController < ApplicationController
     @unfavorite_pathways = Pathway.find(@unfavorite_pathway_ids)
     @completed_pathway_ids = Assignment.all.where(user_id: current_user.id, status: "completed").pluck(:pathway_id)
     @completed_pathways = Pathway.find(@completed_pathway_ids)
+    @assigned_pathway_ids = Assignment.all.where(:status => nil, :user_id => current_user.id).pluck(:pathway_id)
+    @assigned_pathways = Pathway.find(@assigned_pathway_ids)
     #@references = Pathway.all.where(:pathway_type => "Reference")
     #@completed_pathway_ids = AssignmentsStep.find_by(:assignment_id => @assignment).assignment.pathway_id
     mix_panel_view_home_page(current_user,"View Home Page of User")
