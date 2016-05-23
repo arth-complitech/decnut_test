@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   #validation
   validates :first_name, presence:true
   validates :last_name, presence:true
-  validates :registration_code, presence:true
+  # validates :registration_code, presence:true
   # validates :title, presence:true
   # validates :mobile_number, presence:true , :length=>{:in => 10..13}
   
