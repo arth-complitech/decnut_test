@@ -146,6 +146,13 @@ class PathwaysController < ApplicationController
     #render nothing: true
   end 
 
+  def step_sort
+    params[:arrange].each_with_index do |id, index|
+      @pathway.pathways_steps.where(id: id).update_all(display_order: index + 1)
+    end
+    #render nothing: true
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pathway
