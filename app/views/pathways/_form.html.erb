@@ -27,6 +27,10 @@
         <%= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@pathway.group_id) , :hide_label => true  %>
       </div>
     <% end%>
+    <div class="field">
+      <%= f.label :font %><br>
+      <%= f.text_field :font, :hide_label => true %>
+    </div>
     <!--<div class="field">
       <%#= f.label :active %><br>
       <%#= f.check_box :active, :hide_label => true %>

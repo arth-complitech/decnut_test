@@ -146,7 +146,7 @@ class PathwaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathway_params
-      params.require(:pathway).permit(:title, :active, :memo, :group_id,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:url_to_youtube,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
+      params.require(:pathway).permit(:title, :active, :memo, :group_id,:font,:steps_attributes => [:id,:_destroy,:title, :subtitle, :body, :parent_step_id, :url_link, :active, :memo,:url_to_youtube,:pathways_steps_attributes => [:id,:_destroy,:display_order]])
     end
 
     def check_user
