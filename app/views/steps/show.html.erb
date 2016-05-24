@@ -1,3 +1,21 @@
+<style type="text/css">
+
+  .content-strip .strip-content-cus {
+    position: relative;
+    z-index: 3;
+  }
+
+  .content-strip .strip-content-cus i {
+    position: absolute;
+    right: 	0px;
+    height: 100px;
+    top: -55px;
+    width: 25px;
+    color: rgba(255,255,255,0.9);
+    line-height: 93px;
+    font-size: 20px;
+  }
+</style>
 <div class="header-fixed header-light">
 	<a href="#" class="header-icon-1 open-left-sidebar"><i class="fa fa-navicon"></i></a>
 	<h4 style="color:black;margin-top:20px;" class="text-center"><%= current_user.group.try(:name) %></h4>
@@ -8,7 +26,26 @@
 </div>
 <%= form_tag(complete_step_path(@step), method: :post, id: "complete_step_form") do %>
 <div class="content-strip" style="padding-top:10px;padding-bottom:10px;bottom:0px;">
-	<div class="strip-content text-center">
+	<div class="strip-content-cus text-center">
+		<%=link_to  pathway_steps_path(params[:pathway_id]),:style=>"margin-top:inherit; top:19px; padding-right:10px; float:left;" do %>
+			<i class="fa fa-angle-double-left" aria-hidden="true" style="font-size:1.5em; left:0px;"></i>
+		<% end %>
+	
+		<% if @prev_id == -1 %>
+			<%=link_to  pathway_steps_path(params[:pathway_id]),:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+				<i class="fa fa-arrow-left page-blog-list-more" style="float:left; margin-top:inherit; left:30px;"></i>
+			<% end %>
+		<% else %>
+			<%=link_to  pathway_step_path(params[:pathway_id],@prev_id) ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+				<i class="fa fa-arrow-left page-blog-list-more" style="float:left; margin-top:inherit; left:30px;"></i>
+			<% end %>
+		<% end %>
+	
+		<% if @next_id != 0%>
+			<%= link_to pathway_step_path(params[:pathway_id],@next_id) ,:style=>"margin-top:-5px;float:right;top:30px;" do %>
+				<i class="fa fa-arrow-right page-blog-list-more" style="float:right; margin-top:inherit; right:10px;"></i>
+			<% end %>
+		<% end %>
 		<h5 style="color:white;font-size:18px"><%= @pathway.title %></h5>
 	</div>
 	<div class="overlay">
@@ -16,28 +53,30 @@
 	<!--<img class="preload-image" data-original="images/pictures/0.jpg" alt="img" src="images/pictures/0.jpg" style="display: block;">-->
 	<%#= image_tag "pictures/0.jpg", :class => "preload-image", :style => "display: none;color:#2980b9" %>
 </div>
+<!--
 <div class="content" style="top:0px;margin-bottom:0px;width:100%;height:40px;padding-left:10px;padding-right:10px;">
-	<%=link_to  pathway_steps_path(params[:pathway_id]),:style=>"margin-top:-5px;top:19px;padding-right:10px; float:left;" do %>
+	<%#=link_to  pathway_steps_path(params[:pathway_id]),:style=>"margin-top:-5px;top:19px;padding-right:10px; float:left;" do %>
 	<i class="fa fa-angle-double-left" aria-hidden="true" style="font-size:1.5em;"></i>
-	<% end %>
+	<%# end %>
 	
-	<% if @prev_id == -1 %>
-	<%=link_to  pathway_steps_path(params[:pathway_id]),:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+	<%# if @prev_id == -1 %>
+	<%#=link_to  pathway_steps_path(params[:pathway_id]),:style=>"margin-top:-5px;width:150px;top:25px;" do %>
 	<i class="fa fa-arrow-left page-blog-list-more" style="float:left; margin-top:inherit;"></i>
-	<% end %>
-	<% else %>
-	<%=link_to  pathway_step_path(params[:pathway_id],@prev_id) ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
+	<%# end %>
+	<%# else %>
+	<%#=link_to  pathway_step_path(params[:pathway_id],@prev_id) ,:style=>"margin-top:-5px;width:150px;top:25px;" do %>
 	<i class="fa fa-arrow-left page-blog-list-more" style="float:left; margin-top:inherit;"></i>
-	<% end %>
-	<% end %>
+	<%# end %>
+	<%# end %>
 	
-	<% if @next_id != 0%>
-	<%= link_to pathway_step_path(params[:pathway_id],@next_id) ,:style=>"margin-top:-5px;float:right;top:30px;" do %>
+	<%# if @next_id != 0%>
+	<%#= link_to pathway_step_path(params[:pathway_id],@next_id) ,:style=>"margin-top:-5px;float:right;top:30px;" do %>
 	<i class="fa fa-arrow-right page-blog-list-more" style="float:right; margin-top:inherit;"></i>
 	
-	<% end %>
-	<% end %>
+	<%# end %>
+	<%# end %>
 </div>
+-->
 <div class="news-article-share full-bottom" style="margin-bottom: 0px !important;">
 	<% if !@assignment.nil? %>
 	<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
