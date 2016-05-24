@@ -42,7 +42,10 @@
 <div class="content">
     <p id="notice"><%= notice %></p>
     <div class="activity-item one-half-responsive">
-        <% @pathways_steps.each do |pathways_step| %>
+        <% @pathways_steps.each_with_index do |pathways_step,index| %>
+          <% if index > 0 %>
+            <div class="decoration"></div>
+          <% end %>
         <%= link_to pathway_step_path(params[:pathway_id],pathways_step.step) ,:style=>"display: block;color:black!important;" do%>
             <% if @completed_step_ids.present? and @completed_step_ids.include? pathways_step.step.id %>
                  <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
