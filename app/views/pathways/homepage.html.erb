@@ -40,7 +40,11 @@
 			<div class="decoration"></div>
 		<% end %>
 		<%= link_to pathway_steps_path(pathway) ,:style =>"margin-bottom:30px;" do %>
-			 <i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% if pathway.font == nil %>
+				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% else %>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% end %>
 			<%#= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 
 			<% if pathway.memo == "" %>
@@ -68,7 +72,11 @@
 		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) , :style =>"width: auto;" do %>
-			 <i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% if pathway.font == nil %>
+				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% else %>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% end %>
 			<%#= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
 			<h5><%= pathway.title %></h5>
@@ -114,7 +122,11 @@
 		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) , :style =>"width: auto;" do %>
-			 <i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% if pathway.font == nil %>
+				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% else %>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% end %>
 			<%#= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
 			<h5><%= pathway.title %></h5>
@@ -160,7 +172,11 @@
 		<% end %>
 		<% if !@favorite_pathway_ids.include? pathway.id  %>
 		<%= link_to pathway_steps_path(pathway)  , :style =>"width: auto;" do %>
-			 <i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% if pathway.font == nil %>
+				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% else %>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			<% end %>
 			<%#= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
 			<h5><%= pathway.title %></h5>
