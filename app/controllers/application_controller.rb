@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user! , except: [:new_invite_user,:invite_user]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :check_user
   layout :set_layout
  
   #Setting different layout for different user
@@ -11,6 +12,12 @@ class ApplicationController < ActionController::Base
   def set_layout
     if user_signed_in?
       current_user.user? ? "application" : "admin"
+    end
+  end
+
+  def check_user
+    if current_user.content_admin? or current_user.super_admin?
+      redirect_to groups_path
     end
   end
 
