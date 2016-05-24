@@ -82,7 +82,7 @@
         <% end %>
         <% end %>
     </div>
-   <div class="decoration"></div>
+    <!--<div class="decoration"></div>-->
     <% if @completed_step_ids.present? and (@pathway_steps_count == @completed_steps_count) %>
     <%= form_tag(complete_pathway_path(@pathway), method: :post) do %>
     <%= hidden_field_tag 'assignment_id', value = @assignment.id %>
