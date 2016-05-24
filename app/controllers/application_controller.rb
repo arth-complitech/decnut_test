@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user! , except: [:new_invite_user,:invite_user]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :check_user
+  # before_action :check_user
   layout :set_layout
  
   #Setting different layout for different user
