@@ -100,19 +100,27 @@ class PathwaysController < ApplicationController
     @pathways = Pathway.find(@pathway_ids)
     @group = current_user.group_id
     @assignments = Assignment.all.pluck(:pathway_id).uniq
-    @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
+
+    # @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
+    @pathway_all = current_user.group.pathways.pluck(:id)
+
     @library_pathway_ids = @pathway_all - @assignments
     @library_pathways = Pathway.find(@library_pathway_ids)
-    @favorite_pathway_ids = current_user.favorite_pathways.pluck(:id)
-    @favorite_pathways = Pathway.find(@favorite_pathway_ids)
-    @unfavorite_pathway_ids = @library_pathway_ids - @favorite_pathway_ids
+
+    #@favorite_pathway_ids = current_user.favorite_pathways.pluck(:id)
+    @favorite_pathways = current_user.favorite_pathways #Pathway.find(@favorite_pathway_ids)
+    
+    @unfavorite_pathway_ids = !@favorite_pathways.nil? ? @library_pathway_ids - @favorite_pathways.pluck(:id) : @library_pathway_ids
     @unfavorite_pathways = Pathway.find(@unfavorite_pathway_ids)
-    @completed_pathway_ids = Assignment.all.where(user_id: current_user.id, status: "completed").pluck(:pathway_id)
+    
+    # @completed_pathway_ids = Assignment.all.where(user_id: current_user.id, status: "completed").pluck(:pathway_id)
+    @completed_pathway_ids = current_user.assignments.where(:status => "completed").pluck(:pathway_id)
     @completed_pathways = Pathway.find(@completed_pathway_ids)
-    @assigned_pathway_ids = Assignment.all.where(:status => nil, :user_id => current_user.id).pluck(:pathway_id)
+
+    # @assigned_pathway_ids = Assignment.all.where(:status => nil, :user_id => current_user.id).pluck(:pathway_id)
+    @assigned_pathway_ids = current_user.assignments.where(:status => nil).pluck(:pathway_id)
     @assigned_pathways = Pathway.find(@assigned_pathway_ids)
-    #@references = Pathway.all.where(:pathway_type => "Reference")
-    #@completed_pathway_ids = AssignmentsStep.find_by(:assignment_id => @assignment).assignment.pathway_id
+    
     mix_panel_view_home_page(current_user,"View Home Page of User")
   end
 

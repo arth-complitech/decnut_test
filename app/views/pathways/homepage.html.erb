@@ -103,12 +103,19 @@
 		<% end %>
 	</div>
 	<% end %>
-
 	<% @unfavorite_pathways.each_with_index do |pathway,index| %>
 	<div class="activity-item one-half-responsive"  style="position: relative;">
-		<% if index > 0 %>
+		<% if not @favorite_pathways.present? %>
+			<% if index > 0 %>
+				<%# if !@favorite_pathways.nil? %>
+					<div class="decoration" style="margin-top:30px;"></div>
+				<%# end %>
+			<% end %>
+		<% else %>
 			<div class="decoration" style="margin-top:30px;"></div>
 		<% end %>
+			
+		
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) , :style =>"width: auto;" do %>
 			<% if pathway.font == nil %>
@@ -145,13 +152,12 @@
 		<%# end %>
 	</div>
 	<% end %>
-
 	<% @completed_pathways.each_with_index do |pathway,index| %>
 	<div class="activity-item one-half-responsive"  style="position: relative;">
-		<% if index > 0 %>
+		<%# if index > 0 %>
 			<div class="decoration" style="margin-top:30px;"></div>
-		<% end %>
-		<% if !@favorite_pathway_ids.include? pathway.id  %>
+		<%# end %>
+		<% if not @favorite_pathways.pluck(:id).include? pathway.id  %>
 		<%= link_to pathway_steps_path(pathway)  , :style =>"width: auto;" do %>
 			<% if pathway.font == nil %>
 				<i class="fa fa-angle-right activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
