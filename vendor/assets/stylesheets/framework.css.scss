@@ -385,7 +385,7 @@ textarea{
 .facebook-color{    background-color:#3b5998;    color:#FFFFFF;}
 .twitter-color{     background-color:#4099ff;    color:#FFFFFF;}
 .google-color{      background-color:#d34836;    color:#FFFFFF;}
-.whatsapp-color{    background-color:#34AF23;    color:#FFFFFF;}
+.whatsapp-color{    background-color:#FFFFFF;    color:#008000;}
 .pinterest-color{   background-color:#C92228;    color:#FFFFFF;}
 .sms-color{         background-color:#27ae60;    color:#FFFFFF;}
 .mail-color{        background-color:#3498db;    color:#FFFFFF;}
@@ -6273,10 +6273,10 @@ ul.tabs li.active-tab{
 /*News Article Share*/
 
 .news-article-share a{
-    width:100%;
+    width:50%;
     float:left;
     text-align:center;
-    font-size:15px;
+    font-size:16px;
 }
 
 .news-article-share a i{

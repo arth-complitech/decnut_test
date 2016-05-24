@@ -81,14 +81,14 @@
 	<% if !@assignment.nil? %>
 	<% if @completed_step_ids.present? and @completed_step_ids.include? @step.id %>
 	<%#= submit_tag do %>
-	<a href="#">
-	<i class="whatsapp-color fa"> <b><%= submit_tag "Complete",:disabled => true,:style=>"background-color:#34AF23;" %></i></a></b>
+	<a href="#" style="border-radius: 30px; border: 3px solid; border-color: green;">
+	<i class="whatsapp-color fa" style="border-radius: 20px; background-color: white; color: green;"> <b><%= submit_tag "Completed",:disabled => true,:style => "background-color: white;" %></i></a></b>
 	<%# end %>
 	<%#= submit_tag "Complete step"  , :disabled => true ,:class => "btn btn-default"%>
 	<% else %>
 	<!-- <a href="#" data-action="share/whatsapp/share"> -->
-	<%= link_to "#", :onclick => "$('#complete_step_form').submit();" do %>
-	<i class="whatsapp-color fa"> <b><%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:style=>"background-color:#34AF23;" %></b></i>
+	<%= link_to "#", :onclick => "$('#complete_step_form').submit();", :style => "border-radius: 30px; border: 3px solid; border-color: green;" do %>
+	<i class="whatsapp-color fa" style="border-radius: 20px; background-color: white; color: green;"> <b><%= submit_tag "Mark as Complete",data: { disable_with: "Submiting..." },:style=>"background-color: white;" %></b></i>
 	<% end %>
 	<%#= submit_tag "Complete step"  , data: { disable_with: "Submiting..." },:class => "btn btn-default"%>
 	<% end %>
