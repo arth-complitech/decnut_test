@@ -41,18 +41,17 @@
 		<% end %>
 		<%= link_to pathway_steps_path(pathway) ,:style =>"margin-bottom:30px;" do %>
 			<% if pathway.font == nil %>
-				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+				<i class="fa fa-angle-right activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
 			<% else %>
-			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
 			<% end %>
 			<%#= image_tag "pictures/2t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 
 			<% if pathway.memo == "" %>
-				<h5><%= pathway.title %></h5>
-				<em><br></em>
+				<h5 style="padding-top:10px"><%= pathway.title %></h5>
 			<% else %>
-				<h5><%= pathway.title %></h5>
-				<em align="left"><br><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em>
+				<h5 style="padding-top: 10px;"><%= pathway.title %></h5>
+				<!-- <em align="left"><br><%#= HTML_Truncator.truncate(pathway.memo, 20) %></em> -->
 			<% end %>
 		<% end %>
 	</div>
@@ -68,96 +67,78 @@
 	<% @favorite_pathways.each_with_index do |pathway,index| %>
 	<div class="activity-item one-half-responsive" style="position: relative;">
 		<% if index > 0 %>
-			<div class="decoration"></div>
+			<div class="decoration" style="margin-top:30px;"></div>
 		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) , :style =>"width: auto;" do %>
 			<% if pathway.font == nil %>
-				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+				<i class="fa fa-angle-right activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
 			<% else %>
-			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
 			<% end %>
 			<%#= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
-			<h5><%= pathway.title %></h5>
-			<em></em>
-			<span style="float:right;top:0px;">
+			<h5 style="padding-top: 10px;"><%= pathway.title %></h5>
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 			<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post , :style =>"width: auto;" do %>
-			<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+			<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 			<% end %>
 			<%- else -%>
 			<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-			<i class="fa fa-star coloryel pull-right" aria-hidden="true" ></i>
+			<i class="fa fa-star coloryel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 			<% end %>
 			<%- end -%>
-			</span>
-			<br>
 		<% else %>
-			<h5><%= pathway.title %></h5>
-			<em></em>
-			<span style="float:right;top:0px;">
+			<h5 style="padding-top: 10px;"><%= pathway.title %></h5>
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- else -%>
 				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- end -%>
-			</span>
-			<br>
 		<% end %>
 		<% end %>
-		<br>
-		<%# end %>
 	</div>
 	<% end %>
 
 	<% @unfavorite_pathways.each_with_index do |pathway,index| %>
 	<div class="activity-item one-half-responsive"  style="position: relative;">
 		<% if index > 0 %>
-			<div class="decoration"></div>
+			<div class="decoration" style="margin-top:30px;"></div>
 		<% end %>
 		<%# if current_user.favorite_pathways.pluck(:id).include? pathway.id %>
 		<%= link_to pathway_steps_path(pathway) , :style =>"width: auto;" do %>
 			<% if pathway.font == nil %>
-				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+				<i class="fa fa-angle-right activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
 			<% else %>
-			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
 			<% end %>
 			<%#= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
-			<h5><%= pathway.title %></h5>
-			<em></em>
-			<span style="float:right;top:0px;">
+			<h5 style="padding-top: 10px;"><%= pathway.title %></h5>
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- else -%>
 				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- end -%>
-			</span>
-			<br>
 		<% else %>
-			<h5><%= pathway.title %></h5>
-			<em></em>
-			<span style="float:right;top:0px;">
+			<h5 style="padding-top: 10px;"><%= pathway.title %></h5>
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- else -%>
 				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- end -%>
-			</span>
-			<br>
 		<% end %>
 		<% end %>
 		<br>
@@ -168,54 +149,44 @@
 	<% @completed_pathways.each_with_index do |pathway,index| %>
 	<div class="activity-item one-half-responsive"  style="position: relative;">
 		<% if index > 0 %>
-			<div class="decoration"></div>
+			<div class="decoration" style="margin-top:30px;"></div>
 		<% end %>
 		<% if !@favorite_pathway_ids.include? pathway.id  %>
 		<%= link_to pathway_steps_path(pathway)  , :style =>"width: auto;" do %>
 			<% if pathway.font == nil %>
-				<i class="fa fa-angle-right activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+				<i class="fa fa-angle-right activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
 			<% else %>
-			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
+			 	<i class="fa fa-<%=pathway.font%> activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"	></i>
 			<% end %>
 			<%#= image_tag "pictures/1t.jpg" ,:class => "preload-image" , :alt=>"img" ,:style => "display: block;"%>
 		<% if pathway.memo == "" %>
-			<h5><%= pathway.title %></h5>
-			<em></em>
-			<span style="float:right;top:0px;">
+			<h5 style="padding-top: 10px;"><%= pathway.title %></h5>
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"  style="margin-top:-20px;"></i>
 				<% end %>
 			<%- else -%>
 				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- end -%>
-			</span>
-			<br>
 		<% else %>
-			<h5><%= pathway.title %></h5>
-			<em></em>
-			<span style="float:right;top:0px;">
+			<h5 style="padding-top: 10px;"><%= pathway.title %></h5>
 			<%- unless current_user.favorite_pathways.exists?(id: pathway.id) -%>
 				<%= link_to favorite_pathways_path(pathway_id: pathway.id), method: :post do %>
-					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star-o bocolyel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- else -%>
 				<%= link_to favorite_pathway_path(pathway.id), method: :delete do %>
-					<i class="fa fa-star coloryel pull-right" aria-hidden="true"></i>
+					<i class="fa fa-star coloryel pull-right" aria-hidden="true" style="margin-top:-20px;"></i>
 				<% end %>
 			<%- end -%>
-			</span>
-			<br>
 		<% end %>
 		<% end %>
-		<br>
 		<% end %>
 	</div>
 	<% end %>
 	<!-- <div class="decoration"></div> -->
 	<!-- <a href="#" class="button button-center button-blue button-fullscreen">More news</a> -->
 </div>
-<br><br>
 <% end %>
