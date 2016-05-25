@@ -152,12 +152,14 @@
 	</div>
 	<% end %>
 	<% @completed_pathways.each_with_index do |pathway,index| %>
+	<% puts "=====================================IN======" %>
+	<% if not @favorite_pathways.pluck(:id).include? pathway.id  %>
 	<div class="decoration" style="margin-bottom: 10px !important;"></div>
 	<div class="activity-item one-half-responsive"  style="position: relative;">
 		<%# if index > 0 %>
 			
 		<%# end %>
-		<% if not @favorite_pathways.pluck(:id).include? pathway.id  %>
+		
 			<div class="fixed-step-height">
 			<%= link_to pathway_steps_path(pathway), :class => "fixed-step-height", :style => "float: left;"  do %>
 				<% if pathway.font == nil %>
@@ -191,10 +193,10 @@
 				<% end %>
 			<% end %>
 			</div>
-		<% end %>
+		
 	</div>
 	<% end %>
-	<!-- <div class="decoration"></div> -->
-	<!-- <a href="#" class="button button-center button-blue button-fullscreen">More news</a> -->
+	<% end %>
 </div>
+<br />
 <% end %>
