@@ -45,34 +45,22 @@
           <% if index > 0 %>
             <div class="decoration" style="margin-bottom:10px!important;"></div>
           <% end %>
-          <%= link_to pathway_step_path(params[:pathway_id],pathways_step.step) ,:style=>"display: block;color:black!important;" do %>
+          <%= link_to pathway_step_path(params[:pathway_id],pathways_step.step) , class: "fixed-step-height" do %>
                 <% if @completed_step_ids.present? and @completed_step_ids.include? pathways_step.step.id %>
                      <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
-                    <% if pathways_step.step.subtitle=="" %>
-                        <h5><%= pathways_step.step.title %></h5>
-                    <% else %>
-                        <h5><%=pathways_step.step.title %></h5>
+                    <h5 class="padding-top-15"><%=pathways_step.step.title %></h5>
                         <!-- <div class="step_list_subtitle"><%=pathways_step.step.subtitle %></div> -->
-                   <% end %>
                 <% else %>
                     <% if @assignment.nil? %>
-                        <div class="pull-right">
+                        <div class="padding-top-12 pull-right">
                             <i class="fa fa-angle-right" style="color:#777777!important;position:inherit;padding-left:0px; font-size:1.5em;"></i>
                         </div>
-                        <% if pathways_step.step.subtitle=="" %>
-                            <h5 style="padding-left:0px;"><%= pathways_step.step.title %></h5>
-                        <% else %>
-                            <h5 style="padding-left:0px;width:250px;"><%= pathways_step.step.title %></h5>
+                        <h5 class="padding-top-15 padding-left-0"><%= pathways_step.step.title %></h5>
                             <!-- <div class="step_list_subtitle" ><%= pathways_step.step.subtitle %></div> -->
-                        <% end %>
                     <% else %>
                         <i class="fa fa-check activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
-                        <% if pathways_step.step.subtitle=="" %>
-                            <h5><%= pathways_step.step.title %></h5>
-                        <% else %>
-                          <h5><%= pathways_step.step.title %></h5>
-                          <!-- <div class="step_list_subtitle" ><%= pathways_step.step.subtitle %></div> -->
-                        <% end %>
+                        <h5 class="padding-top-15"><%= pathways_step.step.title %></h5>
+                        
                     <% end %>
                 <% end %>
           <% end %>
