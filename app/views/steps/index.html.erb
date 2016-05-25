@@ -47,16 +47,12 @@
           <% end %>
           <%= link_to pathway_step_path(params[:pathway_id],pathways_step.step) ,:style=>"display: block;color:black!important;" do %>
                 <% if @completed_step_ids.present? and @completed_step_ids.include? pathways_step.step.id %>
-
                      <i class="fa fa-check bg-green-dark activity-item-icon" style="background-color: #37C597!important;border-color:#37C597"></i>
                     <% if pathways_step.step.subtitle=="" %>
                         <h5><%= pathways_step.step.title %></h5>
-                  
                     <% else %>
-
                         <h5><%=pathways_step.step.title %></h5>
-                        
-                        <div class="step_list_subtitle"><%=pathways_step.step.subtitle %></div>
+                        <!-- <div class="step_list_subtitle"><%=pathways_step.step.subtitle %></div> -->
                    <% end %>
                 <% else %>
                     <% if @assignment.nil? %>
@@ -67,7 +63,7 @@
                             <h5 style="padding-left:0px;"><%= pathways_step.step.title %></h5>
                         <% else %>
                             <h5 style="padding-left:0px;width:250px;"><%= pathways_step.step.title %></h5>
-                            <div class="step_list_subtitle" ><%= pathways_step.step.subtitle %></div>
+                            <!-- <div class="step_list_subtitle" ><%= pathways_step.step.subtitle %></div> -->
                         <% end %>
                     <% else %>
                         <i class="fa fa-check activity-item-icon" style="color:#B9BCC0!important;border:1px solid #B9BCC0;"></i>
@@ -75,7 +71,7 @@
                             <h5><%= pathways_step.step.title %></h5>
                         <% else %>
                           <h5><%= pathways_step.step.title %></h5>
-                          <div class="step_list_subtitle" ><%= pathways_step.step.subtitle %></div>
+                          <!-- <div class="step_list_subtitle" ><%= pathways_step.step.subtitle %></div> -->
                         <% end %>
                     <% end %>
                 <% end %>
