@@ -102,7 +102,11 @@ class PathwaysController < ApplicationController
     @assignments = Assignment.all.pluck(:pathway_id).uniq
 
     # @pathway_all = Pathway.all.where(:group_id => @group).pluck(:id)
-    @pathway_all = current_user.group.pathways.pluck(:id)
+    if current_user.super_admin?
+      @pathway_all = Pathway.all.pluck(:id)
+    else
+      @pathway_all = current_user.group.pathways.pluck(:id)
+    end
 
     @library_pathway_ids = @pathway_all - @assignments
     @library_pathways = Pathway.find(@library_pathway_ids)
