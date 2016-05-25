@@ -68,6 +68,8 @@ class AssignmentsController < ApplicationController
   	def edit
   		@assignment = Assignment.find(params[:id])
       @users=User.all.where(:type=>["LocalUser","LocalAdmin"])
+      @pathway = Pathway.find(@assignment.pathway_id)
+      @users_all = User.all.where(:type => ["LocalUser","LocalAdmin"], :group_id => @pathway.group_id)
   	end
 
   	def update

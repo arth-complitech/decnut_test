@@ -2,7 +2,7 @@
 <h3>Details of Assignment</h3><hr><br>
 
 <strong>Assigned to:</strong>
-  <%= @assignment.user.try(:fullname) %><br>
+  <%= @assignment.user.try(:email) %><br>
 
   <strong>Pathway Title:</strong>
   <%= @assignment.pathway.try(:title) %><br>
