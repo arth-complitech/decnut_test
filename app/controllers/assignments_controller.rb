@@ -3,6 +3,7 @@ class AssignmentsController < ApplicationController
 	def assign_user
 		@users=User.all.where(:type=>["LocalUser","LocalAdmin"])
 		@pathway=Pathway.find(params[:pathway_id])
+    @users_all = User.all.where(:type => ["LocalUser","LocalAdmin"], :group_id => @pathway.group_id)
 		@assignment=@pathway.assignments.build
 	end
 

@@ -20,7 +20,7 @@
     <div class="field">
       <%= f.label :user_id %>
       <% if current_user.super_admin? %>
-        <%= f.select :user_id ,options_from_collection_for_select(@users,'id','email',@assignment.user_id), :hide_label => true %>
+        <%= f.select :user_id ,options_from_collection_for_select(@users_all,'id','email',@assignment.user_id), :hide_label => true %>
       <% else %>
         <%= f.select :user_id ,options_from_collection_for_select(User.user_except_content_admin(current_user),'id','email',@assignment.user_id), :hide_label => true %>
       <% end %>
