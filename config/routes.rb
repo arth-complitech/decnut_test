@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   post "users/create" , to: "users#create" , as: :add_user
   patch "users/:user_id" , to: "users#update" , as: :update_user
   resources :assignments
-  get "users/update_departments", to:"users#update_departments"
+  # get "users/update_departments", to:"users#update_departments"
 
   match "invite_user" => "twilio#new_invite_user", :via => :get, as: :invite_new_user
   post "twilio/invite_user", to: "twilio#invite_user", as: :invite_user
