@@ -42,7 +42,6 @@
 	</div>
 	<div class="col-lg-4"></div>
 </div>
-<h4>Step Details</h4><br>
 <!-- <div class="row">
 	<div class="col-lg-4">
 		<div class="field">
@@ -53,19 +52,21 @@
 </div> -->
 <div class="row">
 	<div class="col-lg-4">
+		<h4>Step Details</h4><br>
 		<div class="field">
 			<ul id="arrange" style="list-style: none;">
 				<%= render 'step_listing', :pathway=>@pathway %>
  			</ul>
 		</div>
 	</div>
+	<div class="col-lg-8">
+		<div class="field">
+			<%= f.fields_for :steps %>
+		</div>
+	</div>
 </div>
 
 <br>
-<div class="field">
-	<%= f.fields_for :steps %>
-</div>
-
 <%= f.link_to_add "Add a step", :steps %>
 <br><br>
 
