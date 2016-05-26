@@ -20,12 +20,11 @@
       <%= f.text_area :memo, :hide_label => true %>
     </div>
     <% if current_user.content_admin? or current_user.local_admin? %>
-
     <%else%>
-      <div class="field">
-        <%= f.label :group %><br>
-        <%= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@pathway.group_id) , :hide_label => true  %>
-      </div>
+    <div class="field">
+      <%= f.label :group %><br>
+      <%= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@pathway.group_id) , :hide_label => true  %>
+    </div>
     <% end%>
     <div class="field">
       <%= f.label :font %><br>
@@ -43,36 +42,36 @@
 <h4>Step Details</h4><br>
 <div class="field">
   <%= f.fields_for :steps do |step| %>
-  <div class="row panel panel-default " style="margin-left: 2px; background-color:#eeeeee;">
+  <div class="panel panel-default " style="margin-left: 2px; background-color:#eeeeee;">
     <!-- <div class="panel-heading">
       <h3 class="panel-title">New Step</h3>
     </div> -->
     <div class="panel-body">
-      <div class="col-lg-4">
-        <%#= step.label :active %>
-        <%#= step.check_box :active , :hide_label => true%>
-        <%= step.label :title %> <br>
-        <%= step.text_field :title , :hide_label => true%><br>
-        <%= step.label :subtitle %><br>
-        <%= step.text_field :subtitle , :hide_label => true%><br>
-        <%= step.label :memo %> <br>
-        <%= step.text_field :memo , :hide_label => true%><br>
-        <%= step.label :url_to_youtube%>
-        <%= step.text_field :url_to_youtube , :hide_label => true%><br>
-        <%= step.label :file %><br>
-        <%= step.file_field :url_link , :hide_label => true%>
-      </div>
-      
-      <div class="col-lg-4">
-        <%= step.label :body %> <br>
-        <%= step.cktext_area  :body, :ckeditor=>{:toolbar=>"mini"} %>
+      <div class="row">
+        <div class="col-lg-6">
+          <%#= step.label :active %>
+          <%#= step.check_box :active , :hide_label => true%>
+          <%= step.label :title %> <br>
+          <%= step.text_field :title , :hide_label => true%><br>
+          <%= step.label :subtitle %><br>
+          <%= step.text_field :subtitle , :hide_label => true%><br>
+        </div>
         
-        <%#= f.fields_for :pathways_steps do |pathways_step| %>
-        <%#= pathways_step.text_field :display_order %>
-        <%# end %>
+        <div class="col-lg-6">
+          <%= step.label :memo %> <br>
+          <%= step.text_field :memo , :hide_label => true%><br>
+          <%= step.label :url_to_youtube%>
+          <%= step.text_field :url_to_youtube , :hide_label => true%><br>
+          <%#= f.fields_for :pathways_steps do |pathways_step| %>
+          <%#= pathways_step.text_field :display_order %>
+          <%# end %>
+        </div>
       </div>
-      <div class="col-lg-4">
-        
+      <div class="row">
+        <div class="col-lg-12">
+          <%= step.label :body %> <br>
+          <%= step.cktext_area  :body, :ckeditor=>{:toolbar=>"mini"} %>
+        </div>
       </div>
     </div>
     <%= step.link_to_remove "Remove this step" ,:style=>"margin-left: 20px; margin-top:30px;" %>
