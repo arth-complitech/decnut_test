@@ -40,16 +40,11 @@ class AssignmentsController < ApplicationController
 	def index
      if current_user.content_admin? or current_user.local_admin?
       puts "========content/local admin========"
-      @department_ids = Group.find(current_user.group_id).departments.pluck(:id)
-      @users = User.where(:department_id => @department_ids)
-      @user_ids = @users.pluck(:id)
-      @assignments = Assignment.all.where(:user_id => @user_ids)
+      @assignments = Assignment.all.where(:user_id => current_user.group.users.pluck(:id))
     else  
-      puts "==============superadmin"
+      puts "==============superadmin==========="
       @assignments = Assignment.all
     end
-		#@pathway_id = Assignment.all.where(:pathway_id => params[:pathway_id],:user_id => current_user.id)
-		#@pathway_ids = @assignments.pluck(:pathway_id)
 	end
 
 	def destroy

@@ -11,22 +11,15 @@ class DepartmentsController < ApplicationController
       @departments = Department.data_from_same_group(current_user.group_id)
      end 
   end
-
-
-
-
- def all_deps
-
+  
+  def all_deps
     @departments = Department.where("group_id = ? ",params[:group_id])
     puts "=====departments====="
     respond_to do |format|
         format.js
     end
   end
-
-
-
-
+  
   # GET /departments/1
   # GET /departments/1.json
   def show
