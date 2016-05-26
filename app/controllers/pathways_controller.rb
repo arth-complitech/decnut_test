@@ -152,6 +152,7 @@ class PathwaysController < ApplicationController
 
   def step_sort
     params[:arrange].each_with_index do |id, index|
+      @pathway=Pathway.find(params[:id])
       @pathway.pathways_steps.where(id: id).update_all(display_order: index + 1)
     end
     #render nothing: true

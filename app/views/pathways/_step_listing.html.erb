@@ -1,0 +1,17 @@
+<% @pathway.pathways_steps.order(:display_order).each do |pathway_step| %>
+<li id="arrange_<%= pathway_step.id %>" class="step-panel">
+	<div class="clicked_step"  id="<%= pathway_step.step_id %>">
+		<%= pathway_step.display_order %>
+		<%= pathway_step.step.title %>
+	</div>
+</li>
+<% end %>
+<script type="text/javascript">
+$(".clicked_step").click(function()
+{
+	$("div.toshow").hide();
+	var id = $(this).attr("id")
+	var step = "#stepdetails_" + id
+	$(step).show();
+});
+</script>

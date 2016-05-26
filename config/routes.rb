@@ -17,12 +17,14 @@ Rails.application.routes.draw do
   resources :pathways do 
     collection do
         post :sort
+        post :step_sort
     end 
   end
   resources :steps
 
   resources :pathways do
     resources :steps
+    #get "step_details/:step_id", to: "steps#step_details" , as: :step_details
     get "step_show/:step_id", to: "steps#step_show", as: :step_show
     get "step_index", to: "steps#step_index", as: :step_index
   end

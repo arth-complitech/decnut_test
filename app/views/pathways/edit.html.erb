@@ -54,34 +54,46 @@
 <div class="row">
 	<div class="col-lg-4">
 		<div class="field">
-			<% @pathway.pathways_steps.order(:display_order).each do |pathway_step| %>
-				<div class="clicked_step"  id="<%= pathway_step.step_id %>">
-					<%= pathway_step.display_order %>
-					<%= pathway_step.step.title %><br>
-				</div>
-			<% end %>
+			<ul id="arrange" style="list-style: none;">
+				<%= render 'step_listing', :pathway=>@pathway %>
+ 			</ul>
 		</div>
 	</div>
 </div>
+
 <br>
 <div class="field">
 	<%= f.fields_for :steps %>
 </div>
+
 <%= f.link_to_add "Add a step", :steps %>
 <br><br>
+
 <div class="actions">
 	<%= f.submit %>
 </div>
 <% end %>
+
 <br>
 <%= link_to 'Show', @pathway %> |
 <%= link_to 'Back', pathways_path %>
+
 <script type="text/javascript">
-$(".clicked_step").click(function()
-{
-	$("div.toshow").hide();
-	var id = $(this).attr("id")
-	var step = "#stepdetails_" + id
-	$(step).show();
-});
+	$( document ).ready(function() {
+	  console.log( "ready!" );
+
+	  $('#arrange').sortable({
+	  update: function( event, ui ) {
+	    $.ajax({
+	        url: '/pathways/step_sort',
+	        type: 'post',
+	        data:  $('#arrange').sortable('serialize') + "&id=<%=@pathway.id %>",
+	        dataType: 'script',
+	        complete: function(request){
+	            //$('#arrange').effect('highlight');
+	        }
+	      });
+	    }
+	  });
+	});
 </script>
