@@ -1,43 +1,36 @@
-<div id="stepdetails_<%= f.object.id %>" class="toshow">
-	<div class="panel panel-default" style="margin-left: 2px; background-color:#eeeeee;">
+<div id="stepdetails_<%= f.object.id %>">
+	<div class="row panel panel-default" style="margin-left: 2px; background-color:#eeeeee;">
 		<div class="panel-body">
-			<div class="row">
-				<div class="col-lg-6">
-					<%#= f.label :active %>
-					<%#= f.check_box :active , :hide_label => true%>
-					<%= f.label :title %> <br>
-					<%= f.text_field :title , :hide_label => true%><br>
-					<%= f.label :subtitle %><br>
-					<%= f.text_field :subtitle , :hide_label => true%><br>
-					
-				</div>
+			<div class="col-lg-4">
+				<%#= f.label :active %>
+				<%#= f.check_box :active , :hide_label => true%>
+				<%= f.label :title %> <br>
+				<%= f.text_field :title , :hide_label => true%><br>
+				<%= f.label :subtitle %><br>
+				<%= f.text_field :subtitle , :hide_label => true%><br>
+				<%= f.label :memo %> <br>
+				<%= f.text_field :memo , :hide_label => true%><br>
+				<%= f.label :url_to_youtube%>
+				<%= f.text_field :url_to_youtube , :hide_label => true%><br>
+			</div>
+			
+			<div class="col-lg-4">
+				<%= f.label :body %> <br>
+				<%= f.cktext_area :body, :ckeditor=>{:toolbar=>"mini"} %>
+				<%#= f.label :file %>
+				<%#= f.file_field :url_link , :hide_label => true%>
 				
-				<div class="col-lg-6">
-					<%= f.label :memo %> <br>
-					<%= f.text_field :memo , :hide_label => true%><br>
-					<%= f.label :url_to_youtube%>
-					<%= f.text_field :url_to_youtube , :hide_label => true%><br>
-					
-					<%#= f.label :file %>
-					<%#= f.file_field :url_link , :hide_label => true%>
-					
-					
-					<%#= f.fields_for :pathways_steps do |pathways_step| %>
-					<%#= pathways_step.text_field :display_order %>
-					<%# end %>
-				</div>
+				
+				<%#= f.fields_for :pathways_steps do |pathways_step| %>
+				<%#= pathways_step.text_field :display_order %>
+				<%# end %>
+			</div>
+			<div class="col-lg-4">
 				
 			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<%= f.label :body %> <br>
-					<%= f.cktext_area :body, :ckeditor=>{:toolbar=>"mini"} %>
-					<div class="panel-body">
-					</div>
-					<%= f.link_to_remove "Remove this step" %>
-				</div>
+			<div class="panel-body">
 			</div>
+			<%= f.link_to_remove "Remove this step" %>
 		</div>
 	</div>
-	
 </div>

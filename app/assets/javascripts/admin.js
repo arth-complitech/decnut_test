@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require jquery
+//= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery-ui/sortable	
@@ -21,7 +21,7 @@
 //
 // core js of limitless
 //= require admin/pace.min
-//= require admin/jquery.min
+// require admin/jquery.min
 //= require admin/bootstrap.min
 //= require admin/blockui.min
 //= require admin/nicescroll.min

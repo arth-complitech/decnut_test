@@ -4,17 +4,21 @@
         <div class="panel panel-flat">
             <div class="panel-heading">
                 <h5 class="panel-title">Listing Groups</h5>
-                <!-- <div class="heading-elements">
-                    <ul class="icons-list">
-                        <li><a data-action="collapse"></a></li>
-                        <li><a data-action="reload"></a></li>
-                        <li><a data-action="close"></a></li>
-                    </ul>
-                </div> -->
+                    <div class="heading-elements">
+                        <!-- <div class="heading-btn-group"> -->
+                            <!-- <a href="#" class="btn btn-link btn-float has-text">
+                                <i class="icon-user-plus text-primary"></i>
+                                <span>New Group</span>
+                            </a> -->
+                            <%= link_to new_group_path do %>
+                                <i class="icon-user-plus text-primary"></i>
+                                New Group
+                            <% end %>
+                        <!-- </div> -->
+                    </div>
                 <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
             </div>
-            <div class="panel-body">
-                <%= link_to 'New Group', new_group_path %>
+            <div class="panel-body">  
             </div>
             <div class="table-responsive">
                 <table class="table">
