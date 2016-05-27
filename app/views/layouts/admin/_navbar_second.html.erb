@@ -11,79 +11,85 @@
 		<ul class="nav navbar-nav">
 			<li class="active">
 				<a href="index.html">
-					<i class="icon-display4 position-left"></i> 
-						Dashboard
+					<i class="icon-display4 position-left"></i>
+					Dashboard
 				</a>
 			</li>
 			<li class="dropdown mega-menu mega-menu-wide">
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<i class="icon-puzzle4 position-left"></i> 
-						Components 
-						<span class="caret"></span>
+						<i class="icon-puzzle4 position-left"></i>
+							Components
+							<span class="caret"></span>
 				</a> -->
 				<%= link_to groups_path do %>
-					<i class="icon-puzzle4 position-left"></i>
-					Groups
+				<i class="icon-puzzle4 position-left"></i>
+				Groups
 				<% end %>
 			</li>
 			<li class="dropdown mega-menu mega-menu-wide">
-			<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<i class="icon-stars position-left"></i> 
-			Features 
-			<span class="caret"></span>
-			</a> -->
-				<%= link_to departments_path do %>
+				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="icon-stars position-left"></i>
-					Departments
+					Features
+					<span class="caret"></span>
+				</a> -->
+				<%= link_to departments_path do %>
+				<i class="icon-stars position-left"></i>
+				Departments
 				<% end %>
 			</li>
 			<li class="dropdown">
-			<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<i class="icon-make-group position-left"></i> 
-			Page kits 
-			<span class="caret"></span>
-			</a> -->
+				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-make-group position-left"></i>
+					Page kits
+					<span class="caret"></span>
+				</a> -->
 				<%= link_to users_path do %>
-        			<i class="icon-make-group position-left"></i>
-        			Users
-    			<% end %>
+				<i class="icon-make-group position-left"></i>
+				Users
+				<% end %>
 			</li>
 			<li class="dropdown">
-			<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<i class="icon-strategy position-left"></i> 
-			Starter kit 
-			<span class="caret"></span>
-			</a> -->
-			<%= link_to pathways_path do %>
-        		<i class="icon-man-woman"></i>
-			        Pathways
-			    <% end %>
+				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-strategy position-left"></i>
+					Starter kit
+					<span class="caret"></span>
+				</a> -->
+				<%= link_to pathways_path do %>
+				<i class="icon-man-woman"></i>
+				Pathways
+				<% end %>
 			</li>
 			<li class="dropdown">
-			<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<i class="icon-strategy position-left"></i> 
-			Starter kit 
-			<span class="caret"></span>
-			</a> -->
-			<%= link_to assignments_path do %>
-        		<i class="icon-strategy position-left"></i>
-			        Assignments
-			    <% end %>
+				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-strategy position-left"></i>
+					Starter kit
+					<span class="caret"></span>
+				</a> -->
+				<%= link_to assignments_path do %>
+				<i class="icon-strategy position-left"></i>
+				Assignments
+				<% end %>
+			</li>
+			<li class="dropdown">
+				<%= link_to destroy_user_session_path , method: :delete ,:class=>"menu-item border-menu-lime" do %>
+				<i class="fa fa-user"></i>
+				<span>Logout</span>
+				<% end %>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
 				<a href="changelog.html">
-				<i class="icon-history position-left"></i>
+					<i class="icon-history position-left"></i>
 					Changelog
-				<span class="label label-inline position-right bg-success-400">1.2.1</span>
+					<span class="label label-inline position-right bg-success-400">1.2.1</span>
 				</a>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="icon-cog3"></i>
-				<span class="visible-xs-inline-block position-right">Share</span>
-				<span class="caret"></span>
+					<i class="icon-cog3"></i>
+					<span class="visible-xs-inline-block position-right">Share</span>
+					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-right">
 					<li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
