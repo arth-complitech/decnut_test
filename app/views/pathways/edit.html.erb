@@ -42,59 +42,47 @@
 	</div>
 	<div class="col-lg-4"></div>
 </div>
-<!-- <div class="row">
-	<div class="col-lg-4">
-		<div class="field">
-			<%#= f.label :Step %><br>
-			<%#= select_tag :step_id, options_from_collection_for_select(@steps,'id','title'), class: "form-control" , :prompt => "--Select Step--" %>
-		</div>
-	</div>
-</div> -->
+<h4>Step Details</h4><br>
 <div class="row">
 	<div class="col-lg-4">
-		<h4>Step Details</h4><br>
 		<div class="field">
-			<ul id="arrange" style="list-style: none;">
-				<%= render 'step_listing', :pathway=>@pathway %>
- 			</ul>
-		</div>
-	</div>
-	<div class="col-lg-8">
-		<div class="field">
-			<%= f.fields_for :steps %>
+			<%= f.label :Step %><br>
+			<%= select_tag :step_id, options_from_collection_for_select(@steps,'id','title'), class: "form-control" , :prompt => "--Select Step--" %>
 		</div>
 	</div>
 </div>
-
 <br>
+<div class="field">
+	<%= f.fields_for :steps %>
+</div>
 <%= f.link_to_add "Add a step", :steps %>
 <br><br>
-
 <div class="actions">
 	<%= f.submit %>
 </div>
 <% end %>
-
 <br>
 <%= link_to 'Show', @pathway %> |
 <%= link_to 'Back', pathways_path %>
-
 <script type="text/javascript">
-	$( document ).ready(function() {
-	  console.log( "ready!" );
-
-	  $('#arrange').sortable({
-	  update: function( event, ui ) {
-	    $.ajax({
-	        url: '/pathways/step_sort',
-	        type: 'post',
-	        data:  $('#arrange').sortable('serialize') + "&id=<%=@pathway.id %>",
-	        dataType: 'script',
-	        complete: function(request){
-	            //$('#arrange').effect('highlight');
-	        }
-	      });
-	    }
-	  });
+	$("#step_id option").each(function()
+	{
+		var step_id= "#stepdetails_" + $(this).val()
+		$(step_id).hide();
+		});
+	$("#step_id").change(function(){
+		$("#step_id option").each(function()
+		{
+			var step_id= "#stepdetails_" + $(this).val()
+			if ($(this).val() == $("#step_id").val() )
+			{
+				$(step_id).show();
+			}
+			else
+			{
+				$(step_id).hide();
+				}
+		});
 	});
+	
 </script>

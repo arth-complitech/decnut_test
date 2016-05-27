@@ -10,18 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require jquery
+//= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery-ui/sortable	
 //= require jquery_nested_form
 //= require ckeditor/init
 //= require ckeditor/config
-//= require ckeditor/lang/en
+//= require ckeditor/lang/en-gb
 //
 // core js of limitless
 //= require admin/pace.min
-//= require admin/jquery.min
+// require admin/jquery.min
 //= require admin/bootstrap.min
 //= require admin/blockui.min
 //= require admin/nicescroll.min
