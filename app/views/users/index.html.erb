@@ -1,37 +1,66 @@
-<p id="notice"><%= notice %></p>
-<h3>Listing Users</h3><br>
-<div class="table-responsive">
-  <table class="table table-hover">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Mobile Number</th>
-      <th>Type</th>
-     <!--  <th>Department</th> -->
-      <th>Group</th>
-      <th>Email</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Users</span> - User List</h4>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.mobile_number %></td>
-        <td><%= user.type %></td>
-        <!-- <td><%#= user.department.try(:name)%></td> -->
-        <td><%= user.group.try(:name)%></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user_path(user) %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-  <%= link_to "New user" ,new_user_path%>
-<br>
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Users</a></li>
+        <li class="active">User list</li>
+      </ul>
+    </div>
+
+    <div class="heading-elements">
+      <div class="heading-btn-group">
+        <a href="#" class="btn btn-link btn-float has-text"><i class="icon-user-plus text-primary"></i><span>New User</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="page-content">
+    <!-- Main content -->
+    <div class="content-wrapper">
+      <!-- Simple lists -->
+      <div class="row">
+        <div class="col-md-9">
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+              <h5 class="panel-title">Users List</h5>
+            </div>
+            <div class="panel-body">
+              <ul class="media-list">
+                <% @users.each do |user| %>
+                  <li class="media">
+                    <div class="media-left media-middle">
+                      <a href="#">
+                        <%= image_tag "user_missing.png", class: "img-circle", alt: "" %>
+                      </a>
+                    </div>
+
+                    <div class="media-body">
+                      <div class="media-heading text-semibold"><%= user.first_name + " " + user.last_name %></div>
+                      <span class="text-muted" style="width: 17%; float: left;"><i class="icon-mobile"></i> <%= user.mobile_number %></span>
+                      <span class="text-muted" style="width: 40%; float: left;"><i class="icon-envelop2"></i> <%= user.email %></span>
+                      <span class="text-muted" style="width: 23%; float: left;"><i class="icon-make-group"></i> <%= user.group.try(:name)%> Group</span>
+                      <span class="text-muted" style="width: 20%; float: left;"><i class="icon-user-check"></i> <%= user.type %></span>
+                    </div>
+
+                    <div class="media-right media-middle">
+                      <ul class="icons-list icons-list-extended text-nowrap">
+                        <li><a href="<%= user_path(user) %>" data-popup="tooltip" title="Show User"><i class="icon-eye"></i></a></li>
+                        <li><a href="<%= edit_user_path(user) %>" data-popup="tooltip" title="Edit User" data-toggle="modal" data-target="#chat"><i class="icon-pencil3"></i></a></li>
+                        <li><%= link_to "<i class='icon-trash'></i>".html_safe, user_path(user), method: :delete, :data => {:confirm => "Are You Sure?", popup: "tooltip", :title => "Delete"} %></li>
+                      </ul>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
