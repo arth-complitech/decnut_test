@@ -13,6 +13,13 @@
  * require_tree .
  *= require_self
  *= require pathways
+ *
+ * global css of limitless
+ *= require admin/styles
+ *= require admin/bootstrap
+ *= require admin/core
+ *= require admin/components
+ *= require admin/colors 
  */
  
 @import "bootstrap-sprockets";

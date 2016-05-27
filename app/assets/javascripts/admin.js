@@ -18,6 +18,23 @@
 //= require ckeditor/init
 //= require ckeditor/config
 //= require ckeditor/lang/en
-// require group 
+//
+// core js of limitless
+//= require admin/pace.min
+//= require admin/jquery.min
+//= require admin/bootstrap.min
+//= require admin/blockui.min
+//= require admin/nicescroll.min
+//= require admin/drilldown
+//
+// theme js of limitless
+//= require admin/d3.min
+//= require admin/d3_tooltip
+//= require admin/switchery.min
+//= require admin/uniform.min
+//= require admin/bootstrap_multiselect
+//= require admin/moment.min
+//= require admin/daterangepicker
+//= require admin/app
+//
 //= require_self
-// require_tree .
