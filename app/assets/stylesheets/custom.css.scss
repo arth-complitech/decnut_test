@@ -15,3 +15,151 @@
 .padding-left-0{
 	padding-left: 0 !important;
 }
+
+.content-strip{
+	 padding-top:10px !important;
+	 padding-bottom:10px !important;
+}
+
+.content-strip .strip-content-cus {
+    position: relative;
+    z-index: 3;
+}
+
+.content-strip .strip-content-cus i {
+	position: absolute;
+	left: -10px;
+	height: 100px;
+	top: -45px;
+	width: 25px;
+	color: rgba(255,255,255,0.9);
+	line-height: 93px;
+	margin-left: 30px;
+	font-size: 20px;
+	margin-top:inherit;
+}
+
+.h4{
+	color:black;margin-top:20px;
+}
+
+.content-strip .strip-content-cus a {
+	margin-top:10px;
+}
+
+.content-strip .strip-content-cus h5 {
+	color:white;
+	font-size:18px;
+}
+
+.decoration{
+	margin-bottom:10px!important;
+}
+
+.complete-step-icon{
+	background-color: #37C597!important;
+	border-color:#37C597;
+}
+
+.incomplete-step-icon{
+	color:#B9BCC0!important;
+	border:1px solid #B9BCC0;	
+}
+
+.library-step-icon{
+	color:#777777!important;
+	position:inherit;
+	padding-left:0px; 
+	font-size:1.5em;
+}
+
+.header-light h4{
+	color:black;
+	margin-top:20px;
+}
+
+.step-content-strip{
+	padding-top:10px;
+	padding-bottom:10px;
+	bottom:0px;
+}
+
+.home{
+	font-size:1.5em!important; 
+	left:5px!important;
+	margin-left:0px!important;
+	padding-right:10px!important; 
+}
+
+.left-arrow{
+	float:left; 
+	margin-top:inherit; 
+	left:15px!important;
+	margin-left:20px!important;
+}
+
+.next-link{
+	margin-top:-5px!important;
+	float:right;
+	top:20px!important;
+	right:60px;
+}
+
+.next-button{
+	float:right; 
+	margin-top:inherit; 
+	right:10px!important;
+}
+
+.content-strip strip-content-cus h5{
+	color:white;
+}
+
+.news-article-share full-bottom{
+	margin-bottom: 0px !important; 
+	width:40%!important; 
+	margin:5px auto;
+}
+
+.full-bottom{
+	width:45%!important;
+	top:10px;
+}
+
+.mark-complete-link{
+	border-radius: 30px; 
+	border: 2px solid; 
+	border-color: green;
+	background-color: inherit!important;
+}
+
+.mark-complete-icon{
+	border-radius: 20px; 
+	background-color: white!important; 
+	color: green;
+}
+
+@media(min-width:320px) {
+    .news-article-share a {
+        font-size:12px!important;
+        left:90px;
+    }
+}
+
+@media(min-width:360px) {
+    .news-article-share a {
+        font-size:13px!important;
+        left:110px;
+    }
+}
+
+@media(min-width:414px) {
+    .news-article-share a {
+        font-size:16px!important;
+        left:120px;
+    }
+}
+
+.step-content{
+	margin-top:20px;
+}

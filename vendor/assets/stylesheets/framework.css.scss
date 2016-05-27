@@ -974,23 +974,6 @@ label{
 	}
 }
 
-@media(min-width:320px) {
-    .news-article-share a {
-        font-size:12px!important;
-    }
-}
-
-@media(min-width:360px) {
-    .news-article-share a {
-        font-size:13px!important;
-    }
-}
-
-@media(min-width:414px) {
-    .news-article-share a {
-        font-size:16px!important;
-    }
-}
 
 @media(min-width:414px) {
     .footer-light {
@@ -6290,12 +6273,12 @@ ul.tabs li.active-tab{
 
 /*News Article Share*/
 
-.news-article-share a{
+/* .news-article-share a{
     width:100%;
     float:left;
     text-align:center;
     font-size:18px;
-}
+}*/
 
 .news-article-share a i{
     width:100%;
