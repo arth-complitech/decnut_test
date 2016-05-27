@@ -17,7 +17,7 @@
 //= require jquery_nested_form
 //= require ckeditor/init
 //= require ckeditor/config
-//= require ckeditor/lang/en
+//= require ckeditor/lang/en-gb
 //
 // core js of limitless
 //= require admin/pace.min
