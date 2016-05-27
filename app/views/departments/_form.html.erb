@@ -1,40 +1,54 @@
-<%= bootstrap_form_for(@department) do |f| %>
-<% if @department.errors.any? %>
-<div id="error_explanation">
-  <h4><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h4>
-  <ul>
-    <% @department.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-<div class="row">
-  <div class="col-lg-4">
-    <div class="field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name , :hide_label => true%>
+<div class="page-content">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6">
+                <%= bootstrap_form_for(@department) do |f| %>
+                    <% if @department.errors.any? %>
+                        <div id="error_explanation">
+                            <h4><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h4>
+                            <ul>
+                                <% @department.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <!-- <h5 class="panel-title">Basic layout</h5>
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    <li><a data-action="collapse"></a></li>
+                                    <li><a data-action="reload"></a></li>
+                                    <li><a data-action="close"></a></li>
+                                </ul>
+                            </div> -->
+                            <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <%= f.label :name %>
+                                <%= f.text_field :name , :hide_label => true, :class => "form-control", :placeholder => "department name" %>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :memo %>
+                                <%= f.text_area :memo , :hide_label => true, :class => "form-control", :placeholder => "memo of department" %>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :group %>
+                                <%= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@department.group_id) , :hide_label => true, :class => "select select2-hidden-accessible" %>
+                            </div>
+                            <div class="text-right">
+                                <%= f.submit(:class => "btn btn-primary") do %>
+                                    <i class="icon-arrow-right14 position-right"></i>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
     </div>
-    <div class="field">
-      <%= f.label :memo %><br>
-      <%= f.text_area :memo , :hide_label => true%>
-    </div>
-    <div class="field">
-      <%= f.label :group %><br>
-      <%= f.select :group_id ,options_from_collection_for_select(Group.all,'id','name',@department.group_id) , :hide_label => true%>
-    </div>
-  </div>
-  <div class="col-lg-4">
-    <!--<div class="field">
-      <%#= f.label :status %><br>
-      <%#= f.text_field :status, :hide_label => true %>
-    </div>-->
-    
-  </div>
-  <div class="col-lg-4"></div>
 </div>
-<br>
-<div class="actions">
-  <%= f.submit  "data-disable-with"=> "Submiting..." , :class=>"btn btn-default"%>
-</div>
-<% end %>

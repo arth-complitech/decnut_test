@@ -1,40 +1,50 @@
-<%= bootstrap_form_for(@group) do |f| %>
-<% if @group.errors.any? %>
-<div id="error_explanation">
-  <h4><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h4>
-  <ul>
-    <% @group.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-<div class="row">
-  <div class="col-lg-4">
-    <div class="field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name , :hide_label => true%>
-    </div> 
-    <div class="field">
-      <%= f.label :memo %><br>
-      <%= f.text_area :memo , :hide_label => true%>
+<div class="page-content">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6">
+                <%= bootstrap_form_for(@group) do |f| %>
+                    <% if @group.errors.any? %>
+                        <div id="error_explanation">
+                            <h4><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h4>
+                            <ul>
+                                <% @group.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <!-- <h5 class="panel-title">Basic layout</h5>
+                                <div class="heading-elements">
+                                    <ul class="icons-list">
+                                        <li><a data-action="collapse"></a></li>
+                                        <li><a data-action="reload"></a></li>
+                                        <li><a data-action="close"></a></li>
+                                    </ul>
+                                </div> -->
+                                <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <%= f.label :name %>
+                                <%= f.text_field :name , :hide_label => true, :class => "form-control", :placeholder => "group name" %>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :memo %>
+                                <%= f.text_area :memo , :hide_label => true, :class => "form-control", :placeholder => "memo of group" %>
+                            </div>
+                            <div class="text-right">
+                                <%= f.submit(:class => "btn btn-primary") do %>
+                                    <i class="icon-arrow-right14 position-right"></i>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-lg-4">
-    <!--<div class="field">
-      <%#= f.label :status %><br>
-      <%#= f.text_field :status, :hide_label => true %>
-    </div>
-    
-    <div class="field">
-      <%#= f.label :active , :hide_label => true%><br>
-      <%#= f.check_box :active %>
-    </div>-->
-  </div>
-  <div class="col-lg-4">
-  </div>
 </div>
-<div class="actions">
-  <%= f.submit %>
-</div>
-<% end %>
