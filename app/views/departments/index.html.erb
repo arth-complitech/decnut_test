@@ -1,47 +1,71 @@
 <p id="notice"><%= notice %></p>
-<div class="page-content">
-    <div class="content-wrapper">
-        <div class="panel panel-flat">
-            <div class="panel-heading">
-                <h5 class="panel-title">Listing Departments</h5>
-                <div class="heading-elements">
-                    <!-- <ul class="icons-list">
-                        <li><a data-action="collapse"></a></li>
-                        <li><a data-action="reload"></a></li>
-                        <li><a data-action="close"></a></li>
-                    </ul> -->
-                    <%= link_to new_department_path do %>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Departments</span> - Department List</h4>
+            <ul class="breadcrumb breadcrumb-caret position-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Departments</a></li>
+                <li class="active">Department list</li>
+            </ul>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <%= link_to new_department_path do %>
+                    <i class="icon-user-plus text-primary">
+                        <span>New Department</span>
+                    </i>
+                <% end %>
+               <!--  <a href="#" class="btn btn-link btn-float has-text"><i class="icon-user-plus text-primary"><span> New Department</span></i></a> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-container">
+    <div class="page-content">
+        <div class="content-wrapper">
+            <div class="panel panel-flat">
+                <!-- <div class="panel-heading">
+                    <h5 class="panel-title">Listing Departments</h5>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
+                        </ul>
+                        <%#= link_to new_department_path do %>
                         <i class="icon-user-plus text-primary"></i>
                         New Department
-                    <% end %>
+                        <%# end %>
+                    </div>
+                    <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
                 </div>
-                <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
-            </div>
-            <div class="panel-body">
-            </div>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr class="bg-blue">
-                            <th>Name</th>
-                            <th>Memo</th>
-                            <th>Group</th>
-                            <th colspan="3">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <% @departments.each do |department| %>
-                        <tr>
-                            <td><%= department.name %></td>
-                            <td><%= department.memo %></td>
-                            <td><%= department.group.try(:name) %></td>
-                            <td><%= link_to 'Show', department %></td>
-                            <td><%= link_to 'Edit', edit_department_path(department) %></td>
-                            <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                        </tr>
-                    <% end %>
-                    </tbody>
-                </table>
+                <div class="panel-body">
+                </div> -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr class="bg-blue">
+                                <th>Name</th>
+                                <th>Memo</th>
+                                <th>Group</th>
+                                <th colspan="3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @departments.each do |department| %>
+                            <tr>
+                                <td><%= department.name %></td>
+                                <td><%= department.memo %></td>
+                                <td><%= department.group.try(:name) %></td>
+                                <td><%= link_to 'Show', department %></td>
+                                <td><%= link_to 'Edit', edit_department_path(department) %></td>
+                                <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

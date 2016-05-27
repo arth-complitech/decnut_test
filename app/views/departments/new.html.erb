@@ -1,5 +1,23 @@
-<h3>New Department</h3><hr><br>
-
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Deparments</span> - New Department</h4>
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Departments</a></li>
+        <li class="active">New Department</li>
+      </ul>
+    </div>
+    <div class="heading-elements">
+      <div class="heading-btn-group">
+        <%= link_to departments_path do %>
+          <i class="icon-arrow-left52 position-left">
+          <span>Back</span>
+          </i>
+        <%end %>
+      </div>
+    </div>
+  </div>
+</div>
 <%= render 'form' %>
-<br>
-<%= link_to 'Back', departments_path %>
+

@@ -1,5 +1,22 @@
-<h3>New Group</h3><hr><br>
-
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Groups</span> - New Group</h4>
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Groups</a></li>
+        <li class="active">New Group</li>
+      </ul>
+    </div>
+    <div class="heading-elements">
+      <div class="heading-btn-group">
+        <%= link_to groups_path do %>
+          <i class="icon-arrow-left52 position-left">
+          <span>Back</span>
+          </i>
+        <%end %>
+      </div>
+    </div>
+  </div>
+</div>
 <%= render 'form' %>
-<br>
-<%= link_to 'Back', groups_path %>

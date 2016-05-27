@@ -1,29 +1,30 @@
-<div class="page-content">
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-md-6">
-                <%= bootstrap_form_for(@group) do |f| %>
+<div class="page-container">
+    <div class="page-content">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-md-6">
+                    <%= bootstrap_form_for(@group) do |f| %>
                     <% if @group.errors.any? %>
-                        <div id="error_explanation">
-                            <h4><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h4>
-                            <ul>
-                                <% @group.errors.full_messages.each do |message| %>
-                                    <li><%= message %></li>
-                                <% end %>
-                            </ul>
-                        </div>
+                    <div id="error_explanation">
+                        <h4><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h4>
+                        <ul>
+                            <% @group.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
                     <% end %>
                     <div class="panel panel-flat">
                         <div class="panel-heading">
                             <!-- <h5 class="panel-title">Basic layout</h5>
-                                <div class="heading-elements">
-                                    <ul class="icons-list">
-                                        <li><a data-action="collapse"></a></li>
-                                        <li><a data-action="reload"></a></li>
-                                        <li><a data-action="close"></a></li>
-                                    </ul>
-                                </div> -->
-                                <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    <li><a data-action="collapse"></a></li>
+                                    <li><a data-action="reload"></a></li>
+                                    <li><a data-action="close"></a></li>
+                                </ul>
+                            </div> -->
+                            <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -36,14 +37,15 @@
                             </div>
                             <div class="text-right">
                                 <%= f.submit(:class => "btn btn-primary") do %>
-                                    <i class="icon-arrow-right14 position-right"></i>
+                                <i class="icon-arrow-right14 position-right"></i>
                                 <% end %>
                             </div>
                         </div>
                     </div>
-                <% end %>
-            </div>
-            <div class="col-md-6">
+                    <% end %>
+                </div>
+                <div class="col-md-6">
+                </div>
             </div>
         </div>
     </div>
