@@ -286,7 +286,7 @@ textarea{
 .color-teal-dark{  color: #16a085;}
 
 .bg-green-light{background-color: #2ecc71!important; color:#FFFFFF;}
-.bg-green-dark{background-color: #2abb67!important; color:#FFFFFF;}
+.bg-green-dark{background-color: #2abb67; color:#FFFFFF;}
 .border-green-light{border:solid 1px #2ecc71;}
 .border-green-dark{ border:solid 1px #2abb67;}
 .bg-hover-green-light:hover{background-color: #2ecc71!important; color:#FFFFFF!important; transition:all 200ms ease;}
@@ -3723,7 +3723,6 @@ ul.tabs li.active-tab{
 }
 
 .activity-item h5{
-    padding-top:2px;
     padding-left:60px;
     margin-bottom:0px;
 }
