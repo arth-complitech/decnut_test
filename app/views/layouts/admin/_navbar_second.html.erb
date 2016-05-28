@@ -9,13 +9,13 @@
 	</ul>
 	<div class="navbar-collapse collapse" id="navbar-second-toggle">
 		<ul class="nav navbar-nav">
-			<li class="active">
-				<a href="index.html">
+			<li>
+				<a href="#">
 					<i class="icon-display4 position-left"></i>
 					Dashboard
 				</a>
 			</li>
-			<li class="dropdown mega-menu mega-menu-wide">
+			<li class="dropdown mega-menu mega-menu-wide <%= cp(groups_path) %>">
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-puzzle4 position-left"></i>
 							Components
@@ -26,7 +26,7 @@
 				Groups
 				<% end %>
 			</li>
-			<li class="dropdown mega-menu mega-menu-wide">
+			<li class="dropdown mega-menu mega-menu-wide <%= cp(departments_path) %>">
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="icon-stars position-left"></i>
 					Features
@@ -37,7 +37,7 @@
 				Departments
 				<% end %>
 			</li>
-			<li class="dropdown">
+			<li class="<%= cp(users_path) %>">
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="icon-make-group position-left"></i>
 					Page kits
@@ -48,7 +48,7 @@
 				Users
 				<% end %>
 			</li>
-			<li class="dropdown">
+			<li class="<%= cp(pathways_path) %>">
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="icon-strategy position-left"></i>
 					Starter kit
@@ -59,7 +59,7 @@
 				Pathways
 				<% end %>
 			</li>
-			<li class="dropdown">
+			<li class="<%= cp(assignments_path) %>">
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="icon-strategy position-left"></i>
 					Starter kit
@@ -70,7 +70,7 @@
 				Assignments
 				<% end %>
 			</li>
-			<li class="dropdown">
+			<li>
 				<%= link_to destroy_user_session_path , method: :delete ,:class=>"menu-item border-menu-lime" do %>
 				<i class="fa fa-user"></i>
 				<span>Logout</span>
