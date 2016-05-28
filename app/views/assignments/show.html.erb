@@ -1,4 +1,56 @@
 <p id="notice"><%= notice %></p>
+<div class="page-header">
+	<div class="page-header-content">
+		<div class="page-title">
+			<h4>
+			<%= link_to assignments_path ,class: "text-semibold" do %>
+			<i class="icon-arrow-left52 position-left"></i>
+			<% end %>
+			<span class="text-semibold">Assignments</span> - Details of Assignment</h4>
+			<ul class="breadcrumb breadcrumb-caret position-right">
+				<li><a href="#">Dashboard</a></li>
+				<li><a href="#">Assignments</a></li>
+				<li class="active">Details of Assignments</li>
+			</ul>
+		</div>
+		<div class="heading-elements">
+			<%= link_to edit_assignment_path(@assignment) ,:class=> "btn bg-blue btn-labeled heading-btn" do %>
+			<b><i class="icon-pencil3"></i></b> Edit Assignment
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="page-container">
+	<div class="page-content">
+		<!-- Main content -->
+		<div class="content-wrapper">
+			<!-- Simple lists -->
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-flat">
+						<div class="panel-body">
+							<strong>Assigned to:</strong>
+							  <%= @assignment.user.try(:first_name) + " " + @assignment.user.try(:last_name) + " " + @assignment.user.try(:email) %><br>
+
+							  <strong>Pathway Title:</strong>
+							  <%= @assignment.pathway.try(:title) %><br>
+
+							  <strong>Created by:</strong>
+							  <%= User.find(@assignment.creator_user_id).email %><br>
+
+							  <strong title="steps completed out of total steps">Progress:</strong>
+							  <%= AssignmentsStep.all.where(:assignment_id => @assignment.id).count %> of <%= @assignment.pathway.steps.count %><br>
+
+							  <strong>Created on:</strong>
+							  <%= @assignment.created_at.strftime("%B %d, %Y") %><br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <h3>Details of Assignment</h3><hr><br>
 
 <strong>Assigned to:</strong>
