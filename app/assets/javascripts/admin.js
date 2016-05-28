@@ -30,6 +30,7 @@
 // theme js of limitless
 //= require admin/d3.min
 //= require admin/d3_tooltip
+//= require admin/tasks_grid
 //= require admin/switchery.min
 //= require admin/uniform.min
 //= require admin/bootstrap_multiselect
