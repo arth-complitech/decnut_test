@@ -9,13 +9,9 @@
       </ul>
     </div>
     <div class="heading-elements">
-      <div class="heading-btn-group">
-        <%= link_to new_user_path do %>
-          <i class="icon-user-plus text-primary">
-          <span>New user</span>
-          </i>
-        <%end %>
-      </div>
+      <%= link_to new_user_path ,:class=> "btn bg-blue btn-labeled heading-btn" do %>
+      <b><i class="icon-task"></i></b> Create user
+      <% end %>
     </div>
   </div>
 </div>
@@ -51,8 +47,8 @@
                       <li><a href="<%= user_path(user) %>" data-popup="tooltip" title="Show User"><i class="icon-eye"></i></a></li>
                       <li>
                         <%= link_to edit_user_path(user),:data=>{ popup: "tooltip", :title => "Edit" } do%>
-                          <i class="icon-pencil3"></i>
-                        <% end %> 
+                        <i class="icon-pencil3"></i>
+                        <% end %>
                       </li>
                       <li><%= link_to "<i class='icon-trash'></i>".html_safe, user_path(user), method: :delete, :data => {:confirm => "Are You Sure?", popup: "tooltip", :title => "Delete"} %></li>
                     </ul>

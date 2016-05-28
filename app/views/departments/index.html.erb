@@ -6,18 +6,13 @@
             <ul class="breadcrumb breadcrumb-caret position-right">
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Departments</a></li>
-                <li class="active">Department list</li>
+                <li class="active">list</li>
             </ul>
         </div>
         <div class="heading-elements">
-            <div class="heading-btn-group">
-                <%= link_to new_department_path do %>
-                    <i class="icon-user-plus text-primary">
-                        <span>New Department</span>
-                    </i>
-                <% end %>
-               <!--  <a href="#" class="btn btn-link btn-float has-text"><i class="icon-user-plus text-primary"><span> New Department</span></i></a> -->
-            </div>
+            <%= link_to new_department_path ,:class=> "btn bg-blue btn-labeled heading-btn" do %>
+                <b><i class="icon-task"></i></b> Create department
+            <% end %>
         </div>
     </div>
 </div>
