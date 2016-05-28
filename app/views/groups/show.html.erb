@@ -1,15 +1,45 @@
 <p id="notice"><%= notice %></p>
-	<h3>Details of Group</h3><hr><br>
-	<strong>Name:</strong>
-	<%= @group.name %><br>
-	<!--<strong>Active:</strong>
-	<%#= @group.active %><br>
-	<strong>Status:</strong>
-	<%#= @group.status %><br>-->
-	<strong>Code:</strong>
-	<%= @group.registration_code %><br>
-	<strong>Memo:</strong>
-	<%= @group.memo %><br>
-<br>
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<div class="page-header">
+	<div class="page-header-content">
+		<div class="page-title">
+			<h4>
+			<%= link_to groups_path ,class: "text-semibold" do %>
+			<i class="icon-arrow-left52 position-left"></i>
+			<% end %>
+			<span class="text-semibold">Groups</span> - Details of Group</h4>
+			<ul class="breadcrumb breadcrumb-caret position-right">
+				<li><a href="#">Dashboard</a></li>
+				<li><a href="#">Groups</a></li>
+				<li class="active">Details of Group</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="page-container">
+	<div class="page-content">
+		<!-- Main content -->
+		<div class="content-wrapper">
+			<!-- Simple lists -->
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-flat">
+						<div class="panel-body">
+							<strong>Name:</strong>
+							<%= @group.name %><br>
+							<!--<strong>Active:</strong>
+							<%#= @group.active %><br>
+							<strong>Status:</strong>
+							<%#= @group.status %><br>-->
+							<strong>Code:</strong>
+							<%= @group.registration_code %><br>
+							<strong>Memo:</strong>
+							<%= @group.memo %><br>
+							<br>
+							<%= link_to 'Edit', edit_group_path(@group) %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

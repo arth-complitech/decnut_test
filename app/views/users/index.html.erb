@@ -1,7 +1,7 @@
 <div class="page-header">
   <div class="page-header-content">
     <div class="page-title">
-      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Users</span> - User List</h4>
+      <h4><i class="icon-users"></i> &nbsp;<span class="text-semibold">Users</span> - User List</h4>
       <ul class="breadcrumb breadcrumb-caret position-right">
         <li><a href="#">Dashboard</a></li>
         <li><a href="#">Users</a></li>
@@ -49,7 +49,11 @@
                   <div class="media-right media-middle">
                     <ul class="icons-list icons-list-extended text-nowrap">
                       <li><a href="<%= user_path(user) %>" data-popup="tooltip" title="Show User"><i class="icon-eye"></i></a></li>
-                      <li><a href="<%= edit_user_path(user) %>" data-popup="tooltip" title="Edit User" data-toggle="modal" data-target="#chat"><i class="icon-pencil3"></i></a></li>
+                      <li>
+                        <%= link_to edit_user_path(user),:data=>{ popup: "tooltip", :title => "Edit" } do%>
+                          <i class="icon-pencil3"></i>
+                        <% end %> 
+                      </li>
                       <li><%= link_to "<i class='icon-trash'></i>".html_safe, user_path(user), method: :delete, :data => {:confirm => "Are You Sure?", popup: "tooltip", :title => "Delete"} %></li>
                     </ul>
                   </div>

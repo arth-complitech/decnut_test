@@ -1,6 +1,21 @@
-<h3>Editing Department</h3><hr><br>
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4>
+        <%= link_to departments_path ,class: "text-semibold" do %>
+          <i class="icon-arrow-left52 position-left"></i>
+        <% end %> 
+        <span class="text-semibold">Deparments</span> - Editing Department
+      </h4>
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Departments</a></li>
+        <li class="active">Editing Department</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <%= render 'form' %>
 <br>
-<%= link_to 'Show', @department %> |
-<%= link_to 'Back', departments_path %>
+<%= link_to 'Show', @department %> 
