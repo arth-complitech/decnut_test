@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     end 
   end
 
+  
+
   def check_user
     if current_user.content_admin? or current_user.super_admin?
       redirect_to groups_path
