@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def set_layout
     if user_signed_in?
       current_user.user? ? "application" : "admin"
-    end
+    end 
   end
 
   def check_user
